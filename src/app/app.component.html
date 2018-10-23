@@ -1,18 +1,39 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-<app-calificacion-list></app-calificacion-list>
-<app-cliente-list></app-cliente-list>
-<app-factura-list></app-factura-list>
-<app-habilidad-list></app-habilidad-list>
-<app-hoja-de-vida-list></app-hoja-de-vida-list>
-<app-prestador-list></app-prestador-list>
-<app-referencia-list></app-referencia-list>
-<app-servicio-list></app-servicio-list>
-<app-solicitud-list></app-solicitud-list>
-<app-tarjeta-credito-list></app-tarjeta-credito-list>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a id="prestadoresTag" class="nav-link" routerLink="/prestadores/list">Prestadores</a>
+    </li>
+    <li class="nav-item">
+        <a id="habilidadesTag" class="nav-link" routerLink="/habilidades/list">Habilidades</a>
+    </li>
+    <li class="nav-item">
+        <a id="calificacionesTag" class="nav-link" routerLink="/calificaciones/list">Calificacion</a>
+    </li>
+    <li class="nav-item">
+        <a id="clientesTag" class="nav-link" routerLink="/clientes/list">Cliente</a>
+    </li>
+    <li class="nav-item">
+        <a id="facturasTag" class="nav-link" routerLink="/facturas/list">Factura</a>
+    </li>
+    <li class="nav-item">
+        <a id="hojasdevidaTag" class="nav-link" routerLink="/hojasdevida/list">Hoja de Vida</a>
+    </li>
+    <li class="nav-item">
+        <a id="referenciasTag" class="nav-link" routerLink="/referencias/list">Referencia</a>
+    </li>
+    <li class="nav-item">
+        <a id="serviciosTag" class="nav-link" routerLink="/servicios/list">Servicio</a>
+    </li>
+    <li class="nav-item">
+        <a id="solicitudesTag" class="nav-link" routerLink="/solicitudes/list">Solicitud</a>
+    </li>
+    <li class="nav-item">
+        <a id="tarjetacreditoTag" class="nav-link" routerLink="/tarjetascredito/list">Tarjeta Crédito</a>
+    </li>
+</ul>
+<div class="list">
+    <router-outlet></router-outlet>
 </div>
+
 
 

@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+
+import {AppRoutingModule} from './app-routing/app-routing.module';
 
 //----------------------------------
 //Importar los modulos del proyecto.
@@ -23,12 +27,13 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule,    CalificacionModule,    ClienteModule,
-    FacturaModule,    HabilidadModule,    HojaDeVidaModule,
-    PrestadorModule,    ReferenciaModule,    ServicioModule,
-    SolicitudModule,    TarjetaCreditoModule
+    BrowserModule,    CalificacionModule,   ClienteModule,
+    FacturaModule,    HabilidadModule,      HojaDeVidaModule,
+    PrestadorModule,  ReferenciaModule,     ServicioModule,
+    SolicitudModule,  TarjetaCreditoModule, AppRoutingModule,
+    HttpClientModule, FormsModule
   ],
-  providers: [],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,52 @@
+[
+    {
+        "id":1,
+        "nombre":"Vicki Seakings",
+        "cedula":499574596
+    },
+    {
+        "id":2,
+        "nombre":"Shara Oakinfold",
+        "cedula":536034946
+    },
+    {
+        "id":3,
+        "nombre":"Celinda Feige",
+        "cedula":647940252
+    },
+    {
+        "id":4,
+        "nombre":"Vally Fawlks",
+        "cedula":993952408
+    },
+    {
+        "id":5,
+        "nombre":"Svend Culley",
+        "cedula":774858233
+    },
+    {
+        "id":6,
+        "nombre":"Field Hanes",
+        "cedula":718821681
+    },
+    {
+        "id":7,
+        "nombre":"Dennie Aggett",
+        "cedula":166776623
+    },
+    {
+        "id":8,
+        "nombre":"Stephine Mee",
+        "cedula":215052621
+    },
+    {
+        "id":9,
+        "nombre":"Lonnie Rigmand",
+        "cedula":651020104
+    },
+    {
+        "id":10,
+        "nombre":"Nevil Hathwood",
+        "cedula":982030976
+    }
+]
