@@ -1,3 +1,22 @@
-<p>
-  factura-list works!
-</p>
+<div class="container-fluid">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Numero</th> 
+                    <th>Fecha </th>
+                    <th>Valor Pago</th>
+                    <th>Metodo Pago</th>
+                </tr>
+            </thead>
+            <tbody *ngFor = "let factura of facturas">
+                <tr>
+                    <td><span>{{factura.numero}}</span></td>
+                    <td><span>{{factura.date}}</span></td>
+                    <td><span>{{factura.valor}}</span></td>
+                    <td><span>{{factura.pago}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

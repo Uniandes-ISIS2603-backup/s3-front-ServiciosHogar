@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {TarjetaCreditoService} from '../tarjeta-credito.service';
+import {TarjetaCredito} from '../tarjeta-credito';
+
 
 @Component({
   selector: 'app-tarjeta-credito-list',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TarjetaCreditoListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tarjetaService: TarjetaCreditoService) { }
 
-  ngOnInit() {
-  }
+  tarjetas: TarjetaCredito[];
+  /**
+     * Le pregunta al servicio para actualizar la lista de habilidades
+     */
+    getTarjetas(): void {
+        this.tarjetaService.getTarjetas()
+            .subscribe(tarjetas => this.tarjetas = tarjetas);
+    }
+    
+    /*
+     * Inicializará el componente y retornará la lista de habilidades del servicio
+     * Se llama cuando de crea el componente.
+     */
+    ngOnInit() {
+        this.getTarjetas();
+        
+    }
 
 }
