@@ -1,0 +1,501 @@
+[{
+  "numero": 37,
+  "date": "26/02/2018",
+  "valor": "$48368.31",
+  "pago": "PSE"
+}, {
+  "numero": 14,
+  "date": "31/03/2018",
+  "valor": "$27682.18",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 49,
+  "date": "13/02/2018",
+  "valor": "$72819.87",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 96,
+  "date": "24/12/2017",
+  "valor": "$40288.64",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 49,
+  "date": "08/10/2018",
+  "valor": "$71738.27",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 31,
+  "date": "27/06/2018",
+  "valor": "$147643.56",
+  "pago": "PSE"
+}, {
+  "numero": 1,
+  "date": "06/05/2018",
+  "valor": "$132209.56",
+  "pago": "PSE"
+}, {
+  "numero": 15,
+  "date": "11/10/2018",
+  "valor": "$93614.65",
+  "pago": "PSE"
+}, {
+  "numero": 66,
+  "date": "28/02/2018",
+  "valor": "$129190.79",
+  "pago": "PSE"
+}, {
+  "numero": 53,
+  "date": "21/01/2018",
+  "valor": "$29308.79",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 11,
+  "date": "29/07/2018",
+  "valor": "$22686.25",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 25,
+  "date": "06/04/2018",
+  "valor": "$41134.19",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 31,
+  "date": "17/11/2017",
+  "valor": "$67479.12",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 94,
+  "date": "25/08/2018",
+  "valor": "$138360.07",
+  "pago": "PSE"
+}, {
+  "numero": 67,
+  "date": "30/07/2018",
+  "valor": "$67536.29",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 67,
+  "date": "12/03/2018",
+  "valor": "$64900.70",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 86,
+  "date": "23/08/2018",
+  "valor": "$140817.89",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 18,
+  "date": "28/02/2018",
+  "valor": "$97751.29",
+  "pago": "Efectivo"
+}, {
+  "numero": 34,
+  "date": "09/04/2018",
+  "valor": "$100078.21",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 27,
+  "date": "17/05/2018",
+  "valor": "$138949.00",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 27,
+  "date": "07/03/2018",
+  "valor": "$80681.17",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 10,
+  "date": "07/10/2018",
+  "valor": "$79377.50",
+  "pago": "Efectivo"
+}, {
+  "numero": 95,
+  "date": "03/04/2018",
+  "valor": "$20650.89",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 23,
+  "date": "05/05/2018",
+  "valor": "$34680.80",
+  "pago": "Efectivo"
+}, {
+  "numero": 30,
+  "date": "20/06/2018",
+  "valor": "$66655.17",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 58,
+  "date": "21/05/2018",
+  "valor": "$32199.53",
+  "pago": "PSE"
+}, {
+  "numero": 37,
+  "date": "24/01/2018",
+  "valor": "$115332.63",
+  "pago": "Efectivo"
+}, {
+  "numero": 69,
+  "date": "03/11/2017",
+  "valor": "$93965.40",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 39,
+  "date": "09/06/2018",
+  "valor": "$106312.08",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 12,
+  "date": "28/09/2018",
+  "valor": "$80076.35",
+  "pago": "PSE"
+}, {
+  "numero": 32,
+  "date": "19/09/2018",
+  "valor": "$77839.34",
+  "pago": "Efectivo"
+}, {
+  "numero": 47,
+  "date": "06/01/2018",
+  "valor": "$44453.97",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 44,
+  "date": "05/02/2018",
+  "valor": "$131955.44",
+  "pago": "Efectivo"
+}, {
+  "numero": 9,
+  "date": "23/12/2017",
+  "valor": "$83060.29",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 59,
+  "date": "23/11/2017",
+  "valor": "$25990.49",
+  "pago": "PSE"
+}, {
+  "numero": 16,
+  "date": "14/01/2018",
+  "valor": "$137068.53",
+  "pago": "Efectivo"
+}, {
+  "numero": 50,
+  "date": "19/02/2018",
+  "valor": "$22509.97",
+  "pago": "Efectivo"
+}, {
+  "numero": 64,
+  "date": "14/04/2018",
+  "valor": "$116283.90",
+  "pago": "PSE"
+}, {
+  "numero": 84,
+  "date": "16/09/2018",
+  "valor": "$120170.83",
+  "pago": "PSE"
+}, {
+  "numero": 26,
+  "date": "03/06/2018",
+  "valor": "$139161.55",
+  "pago": "Efectivo"
+}, {
+  "numero": 42,
+  "date": "03/09/2018",
+  "valor": "$117339.69",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 62,
+  "date": "26/12/2017",
+  "valor": "$26630.75",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 34,
+  "date": "17/09/2018",
+  "valor": "$35093.90",
+  "pago": "PSE"
+}, {
+  "numero": 4,
+  "date": "29/05/2018",
+  "valor": "$43074.77",
+  "pago": "PSE"
+}, {
+  "numero": 72,
+  "date": "23/06/2018",
+  "valor": "$22608.15",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 40,
+  "date": "26/04/2018",
+  "valor": "$78863.37",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 31,
+  "date": "16/01/2018",
+  "valor": "$86632.30",
+  "pago": "Efectivo"
+}, {
+  "numero": 46,
+  "date": "15/02/2018",
+  "valor": "$59981.08",
+  "pago": "PSE"
+}, {
+  "numero": 93,
+  "date": "19/09/2018",
+  "valor": "$32179.31",
+  "pago": "PSE"
+}, {
+  "numero": 39,
+  "date": "06/03/2018",
+  "valor": "$50028.67",
+  "pago": "Efectivo"
+}, {
+  "numero": 10,
+  "date": "26/01/2018",
+  "valor": "$84041.88",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 30,
+  "date": "02/06/2018",
+  "valor": "$95000.19",
+  "pago": "Efectivo"
+}, {
+  "numero": 79,
+  "date": "01/11/2017",
+  "valor": "$83298.04",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 47,
+  "date": "13/11/2017",
+  "valor": "$119049.20",
+  "pago": "Efectivo"
+}, {
+  "numero": 55,
+  "date": "12/03/2018",
+  "valor": "$44340.58",
+  "pago": "PSE"
+}, {
+  "numero": 90,
+  "date": "24/09/2018",
+  "valor": "$27760.01",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 97,
+  "date": "07/04/2018",
+  "valor": "$64736.11",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 71,
+  "date": "01/12/2017",
+  "valor": "$26847.95",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 30,
+  "date": "15/12/2017",
+  "valor": "$90288.23",
+  "pago": "PSE"
+}, {
+  "numero": 72,
+  "date": "24/02/2018",
+  "valor": "$64372.68",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 68,
+  "date": "09/10/2018",
+  "valor": "$146825.46",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 31,
+  "date": "26/02/2018",
+  "valor": "$118353.44",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 64,
+  "date": "05/09/2018",
+  "valor": "$106440.45",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 32,
+  "date": "30/11/2017",
+  "valor": "$86166.46",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 1,
+  "date": "06/07/2018",
+  "valor": "$136781.62",
+  "pago": "PSE"
+}, {
+  "numero": 38,
+  "date": "04/01/2018",
+  "valor": "$80014.58",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 67,
+  "date": "03/03/2018",
+  "valor": "$71726.91",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 37,
+  "date": "03/09/2018",
+  "valor": "$139914.81",
+  "pago": "PSE"
+}, {
+  "numero": 22,
+  "date": "13/04/2018",
+  "valor": "$122809.42",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 89,
+  "date": "23/07/2018",
+  "valor": "$95397.24",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 27,
+  "date": "30/03/2018",
+  "valor": "$22963.69",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 68,
+  "date": "10/10/2018",
+  "valor": "$124487.06",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 54,
+  "date": "30/12/2017",
+  "valor": "$88530.38",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 30,
+  "date": "04/01/2018",
+  "valor": "$34211.84",
+  "pago": "Efectivo"
+}, {
+  "numero": 48,
+  "date": "07/01/2018",
+  "valor": "$80537.71",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 66,
+  "date": "03/04/2018",
+  "valor": "$88338.69",
+  "pago": "Efectivo"
+}, {
+  "numero": 36,
+  "date": "12/05/2018",
+  "valor": "$139873.50",
+  "pago": "PSE"
+}, {
+  "numero": 31,
+  "date": "20/09/2018",
+  "valor": "$69363.49",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 36,
+  "date": "15/05/2018",
+  "valor": "$64352.93",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 79,
+  "date": "23/03/2018",
+  "valor": "$127829.29",
+  "pago": "Efectivo"
+}, {
+  "numero": 7,
+  "date": "14/12/2017",
+  "valor": "$25195.42",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 92,
+  "date": "09/10/2018",
+  "valor": "$36265.07",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 5,
+  "date": "01/01/2018",
+  "valor": "$43103.10",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 89,
+  "date": "24/05/2018",
+  "valor": "$69600.40",
+  "pago": "Tarjeta crédito"
+}, {
+  "numero": 74,
+  "date": "26/09/2018",
+  "valor": "$69923.50",
+  "pago": "PSE"
+}, {
+  "numero": 43,
+  "date": "07/01/2018",
+  "valor": "$132694.56",
+  "pago": "PSE"
+}, {
+  "numero": 96,
+  "date": "25/04/2018",
+  "valor": "$74411.71",
+  "pago": "PSE"
+}, {
+  "numero": 32,
+  "date": "23/09/2018",
+  "valor": "$39340.98",
+  "pago": "Efectivo"
+}, {
+  "numero": 29,
+  "date": "21/03/2018",
+  "valor": "$62029.73",
+  "pago": "PSE"
+}, {
+  "numero": 89,
+  "date": "02/11/2017",
+  "valor": "$122786.29",
+  "pago": "Efectivo"
+}, {
+  "numero": 13,
+  "date": "12/05/2018",
+  "valor": "$127417.72",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 19,
+  "date": "30/06/2018",
+  "valor": "$41496.49",
+  "pago": "Efectivo"
+}, {
+  "numero": 62,
+  "date": "02/09/2018",
+  "valor": "$118015.54",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 6,
+  "date": "14/04/2018",
+  "valor": "$135968.40",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 91,
+  "date": "05/02/2018",
+  "valor": "$86865.71",
+  "pago": "PSE"
+}, {
+  "numero": 92,
+  "date": "01/08/2018",
+  "valor": "$120490.94",
+  "pago": "PSE"
+}, {
+  "numero": 86,
+  "date": "26/08/2018",
+  "valor": "$52937.96",
+  "pago": "Efectivo"
+}, {
+  "numero": 26,
+  "date": "30/04/2018",
+  "valor": "$113461.85",
+  "pago": "Tarjeta débito"
+}, {
+  "numero": 80,
+  "date": "29/10/2017",
+  "valor": "$96029.08",
+  "pago": "PSE"
+}, {
+  "numero": 89,
+  "date": "02/07/2018",
+  "valor": "$53300.49",
+  "pago": "PSE"
+}]

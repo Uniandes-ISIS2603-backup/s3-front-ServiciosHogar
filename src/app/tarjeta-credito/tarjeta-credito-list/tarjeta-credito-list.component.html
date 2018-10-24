@@ -1,3 +1,22 @@
-<p>
-  tarjeta-credito-list works!
-</p>
+<div class="container-fluid">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titular</th> 
+                    <th>Fecha Vencimiento </th>
+                    <th>Código seguridad</th>
+                    <th>Númer</th>
+                </tr>
+            </thead>
+            <tbody *ngFor = "let tarjeta of tarjetas">
+                <tr>
+                    <td><span>{{tarjeta.titular}}</span></td>
+                    <td><span>{{tarjeta.date}}</span></td>
+                    <td><span>{{tarjeta.code}}</span></td>
+                    <td><span>{{tarjeta.numero}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
