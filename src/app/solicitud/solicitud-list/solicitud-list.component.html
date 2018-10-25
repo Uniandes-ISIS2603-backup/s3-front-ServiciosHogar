@@ -1,3 +1,19 @@
-<p>
-  solicitud-list works!
-</p>
+<div class="container-fluid">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Fecha</th> 
+                    <th>Direccion </th>
+                </tr>
+            </thead>
+            <tbody *ngFor = "let solicitud of solicitudes">
+                <tr>
+                    <td><span>{{solicitud.fecha}}</span></td>
+                    <td><span>{{solicitud.direccion}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,3 +1,19 @@
-<p>
-  servicio-list works!
-</p>
+<div class="container-fluid">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Descripcion</th> 
+                    <th>Requerimientos </th>
+                </tr>
+            </thead>
+            <tbody *ngFor = "let servicio of servicios">
+                <tr>
+                    <td><span>{{servicio.descripcion}}</span></td>
+                    <td><span>{{servicio.requerimientos}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
