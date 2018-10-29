@@ -1,3 +1,51 @@
-<p>
-  hoja-de-vida-list works!
-</p>
+<div class="container-fluid">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Trayectoria</th> 
+                    <th>Fecha nacimiento </th>
+                    <th>Email </th>
+                    <th>Telefono </th>
+                    <th>Direccion </th>
+                    <th>Formacion </th>
+                    
+                </tr>
+            </thead>
+            <tbody *ngFor = "let hojaDeVida of hojasDeVida">
+                <tr>
+                    <td><span>{{hojaDeVida.trayectoria}}</span></td>
+                    <td><span>{{hojaDeVida.fechaNacimiento}}</span></td>
+                    <td><span>{{hojaDeVida.email}}</span></td>
+                    <td><span>{{hojaDeVida.telefono}}</span></td>
+                    <td><span>{{hojaDeVida.direccion}}</span></td>
+                    <td><span>{{hojaDeVida.formacion}}</span></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

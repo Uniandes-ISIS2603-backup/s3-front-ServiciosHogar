@@ -1,3 +1,32 @@
-<p>
-  referencia-list works!
-</p>
+<div class="container-fluid">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Empresa</th> 
+                    <th>Nombre remitente</th>
+                    <th>Id remitente </th>
+                    <th>Telefono remitente </th>
+                    <th>Cargo </th>
+                    <th>Email </th>
+                    <th>Parentesco </th>
+                    
+                </tr>
+            </thead>
+            <tbody *ngFor = "let referencia of referencias">
+                <tr>
+                    <td><span>{{referencia.empresa}}</span></td>
+                    <td><span>{{referencia.nombreRemitente}}</span></td>
+                    <td><span>{{referencia.idRemitente}}</span></td>
+                    <td><span>{{referencia.telRemitente}}</span></td>
+                    <td><span>{{referencia.cargo}}</span></td>
+                    <td><span>{{referencia.email}}</span></td>
+                    <td><span>{{referencia.parentesco}}</span></td>
+                    
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

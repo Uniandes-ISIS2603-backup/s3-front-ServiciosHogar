@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+
+//Importar Referencia
+import {ReferenciaService} from '../referencia.service';
+import {Referencia} from '../referencia';
+
+
 @Component({
   selector: 'app-referencia-list',
   templateUrl: './referencia-list.component.html',
@@ -7,9 +13,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReferenciaListComponent implements OnInit {
 
-  constructor() { }
+    constructor(private referenciaService: ReferenciaService) { }
+  
+  referencias: Referencia[];
+
+    getReferencias():void
+    {
+        this.referenciaService.getReferencias()
+            .subscribe(referencias => this.referencias = referencias)
+    }
 
   ngOnInit() {
+      this.getReferencias();
   }
 
 }
