@@ -6,8 +6,9 @@ import {HttpClient} from '@angular/common/http';
 import {Cliente} from './cliente';
 
 //Constantes
-const API_URL = "../../assets/"; //Cambio de ruta, ahora está en la carpeta assets donde están los JSON
-const clientes = '/clientes.json'; //JSON donde está la información de los prestadores
+import { environment } from '../../environments/environment';
+const API_URL = environment.apiURL; //Cambio de ruta, ahora está en la carpeta assets donde están los JSON
+const clientes = 'clientes'; //JSON donde está la información de los prestadores
 
 
 @Injectable({
