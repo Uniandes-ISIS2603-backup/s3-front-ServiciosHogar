@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  apiURL: 'http://localhost:8080/s3_servicioshogar-api/api/',
   production: false
 };
 
