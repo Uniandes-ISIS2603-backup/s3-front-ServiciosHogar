@@ -7,11 +7,13 @@ import {HabilidadListComponent} from '../habilidad/habilidad-list/habilidad-list
 import {CalificacionListComponent} from '../calificacion/calificacion-list/calificacion-list.component';
 import {ClienteListComponent} from '../cliente/cliente-list/cliente-list.component';
 import {FacturaListComponent} from '../factura/factura-list/factura-list.component';
+import {FacturaDetailComponent} from '../factura/factura-detail/factura-detail.component';
 import {HojaDeVidaListComponent} from '../hoja-de-vida/hoja-de-vida-list/hoja-de-vida-list.component';
 import {ReferenciaListComponent} from '../referencia/referencia-list/referencia-list.component';
 import {ServicioListComponent} from '../servicio/servicio-list/servicio-list.component';
 import {SolicitudListComponent} from '../solicitud/solicitud-list/solicitud-list.component';
 import {TarjetaCreditoListComponent} from '../tarjeta-credito/tarjeta-credito-list/tarjeta-credito-list.component';
+import {TarjetaCreditoDetailComponent} from '../tarjeta-credito/tarjeta-credito-detail/tarjeta-credito-detail.component';
 import { SolicitudDetailComponent } from '../solicitud/solicitud-detail/solicitud-detail.component';
 
 const routes: Routes = [
@@ -106,6 +108,10 @@ const routes: Routes = [
         children: [
             {
                 path: 'list',
+                component: TarjetaCreditoListComponent
+            },
+            {
+                path: 'id',
                 component: TarjetaCreditoListComponent
             }
         ]
