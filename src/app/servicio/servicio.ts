@@ -9,4 +9,6 @@ export interface Servicio
      * Los requerimientos del servicio.
      */
     requerimientos: string;
+
+    id: number;
 }

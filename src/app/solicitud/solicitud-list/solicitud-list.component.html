@@ -1,19 +1,26 @@
 <div class="container-fluid">
-    <div class="col">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Fecha</th> 
-                    <th>Direccion </th>
-                </tr>
-            </thead>
-            <tbody *ngFor = "let solicitud of solicitudes">
-                <tr>
-                    <td><span>{{solicitud.fecha}}</span></td>
-                    <td><span>{{solicitud.direccion}}</span></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="card-deck">
+        <a class="crd card-deck justify-content-center" *ngFor="let solicitud of solicitudes">
+            <img class="im card-img-top" src=".../100px180/" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Solicitud {{solicitud.id}}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h6 class="card-title">Direccion</h6>
+                    <p>{{solicitud.direccion}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h6 class="card-title">Fecha</h6>
+                    <p>{{solicitud.fecha}}</p>
+                </li>
+            </ul>
+            <div class="card-body">
+                <a routerLink="/solicitudes/{{solicitud.id}}" class="card-link">Ver servicios</a>
+            </div>
+        </a>
     </div>
 </div>
-

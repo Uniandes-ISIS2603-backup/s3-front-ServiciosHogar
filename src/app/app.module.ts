@@ -5,9 +5,9 @@ import {FormsModule} from '@angular/forms';
 
 import {AppRoutingModule} from './app-routing/app-routing.module';
 
-//----------------------------------
-//Importar los modulos del proyecto.
-//----------------------------------
+// ----------------------------------
+// Importar los modulos del proyecto.
+// ----------------------------------
 import {CalificacionModule} from './calificacion/calificacion.module';
 import {ClienteModule} from './cliente/cliente.module';
 import {FacturaModule} from './factura/factura.module';
@@ -18,7 +18,7 @@ import {ReferenciaModule} from './referencia/referencia.module';
 import {ServicioModule} from './servicio/servicio.module';
 import {SolicitudModule} from './solicitud/solicitud.module';
 import {TarjetaCreditoModule} from './tarjeta-credito/tarjeta-credito.module';
-//----------------------------------
+// ----------------------------------
 
 import { AppComponent } from './app.component';
 
@@ -33,7 +33,7 @@ import { AppComponent } from './app.component';
     SolicitudModule,  TarjetaCreditoModule, AppRoutingModule,
     HttpClientModule, FormsModule
   ],
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,6 +12,7 @@ import {ReferenciaListComponent} from '../referencia/referencia-list/referencia-
 import {ServicioListComponent} from '../servicio/servicio-list/servicio-list.component';
 import {SolicitudListComponent} from '../solicitud/solicitud-list/solicitud-list.component';
 import {TarjetaCreditoListComponent} from '../tarjeta-credito/tarjeta-credito-list/tarjeta-credito-list.component';
+import { SolicitudDetailComponent } from '../solicitud/solicitud-detail/solicitud-detail.component';
 
 const routes: Routes = [
 
@@ -93,6 +94,10 @@ const routes: Routes = [
             {
                 path: 'list',
                 component: SolicitudListComponent
+            },
+            {
+                path: ':id',
+                component: SolicitudDetailComponent
             }
         ]
     },
