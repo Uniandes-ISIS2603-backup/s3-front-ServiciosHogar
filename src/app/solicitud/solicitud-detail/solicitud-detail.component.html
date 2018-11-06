@@ -1,10 +1,9 @@
-<div class="container-fluid">
-    <div class="col">
-        <ul>
-            <li>{{solicitudDetail.id}}</li>
-            <li>{{solicitudDetail.fecha}}</li>
-            <li>{{solicitudDetail.direccion}}</li>
-        </ul>
-    </div>
+<div class="container-fluid p-3 mb-2 bg-info text-white">
+    <h1 style="font-size:300%;">Solicitud {{solicitudDetail.id}}</h1>
+    <h5>{{solicitudDetail.fecha}}</h5>
+    <h5>{{solicitudDetail.direccion}}</h5>
+</div>
+<div>
+    <app-servicio-list [servicios]="solicitudDetail.books"></app-servicio-list>
 </div>
 

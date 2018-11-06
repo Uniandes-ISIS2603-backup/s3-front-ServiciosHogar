@@ -8,19 +8,23 @@ import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+import { ServicioModule } from '../servicio/servicio.module';
+import { SolicitudCreateComponent } from './solicitud-create/solicitud-create.component';
+
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ServicioModule
   ],
   declarations: [SolicitudListComponent,
-  SolicitudDetailComponent],
+  SolicitudDetailComponent, SolicitudCreateComponent],
   providers: [SolicitudService],
   exports: [SolicitudListComponent,
-  SolicitudDetailComponent,
+  SolicitudDetailComponent, SolicitudCreateComponent
 ]
 
 })
