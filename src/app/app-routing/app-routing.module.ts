@@ -78,6 +78,10 @@ const routes: Routes = [
             {
                 path: 'list',
                 component: HojaDeVidaListComponent
+            },
+            {
+                path: 'referencias',
+                component: ReferenciaListComponent
             }
         ]
     },
@@ -88,6 +92,7 @@ const routes: Routes = [
                 path: 'list',
                 component: ReferenciaListComponent
             }
+            
         ]
     },
     {
