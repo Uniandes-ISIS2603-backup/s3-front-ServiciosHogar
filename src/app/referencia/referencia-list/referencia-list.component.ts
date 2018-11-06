@@ -17,18 +17,10 @@ export class ReferenciaListComponent implements OnInit {
     constructor(private hojaDeVidaService: HojaDeVidaService) { }
   
   referencias: Referencia[];
-
-    getReferencias():void
-    {
-        //Obtener actualizada la lista de referencias, que corresponden al HojaDeVidaDetail.
-        this.hojaDeVidaService.getReferencias()
-            .subscribe(referencias => this.referencias = referencias)
-    }
     
   ngOnInit() {
       this.getReferencias();
   }
-    referencias: Referencia[];
 
     getReferencias():void
     {
