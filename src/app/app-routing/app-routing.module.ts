@@ -14,7 +14,7 @@ import { SolicitudListComponent } from '../solicitud/solicitud-list/solicitud-li
 import { TarjetaCreditoListComponent } from '../tarjeta-credito/tarjeta-credito-list/tarjeta-credito-list.component';
 import { SolicitudDetailComponent } from '../solicitud/solicitud-detail/solicitud-detail.component';
 import { ClienteDetailComponent } from '../cliente/cliente-detail/cliente-detail.component';
-
+import {PrestadorDetailComponent} from '../prestador/prestador-detail/prestador-detail.component' 
 const routes: Routes = [
 
     {
@@ -23,6 +23,10 @@ const routes: Routes = [
             {
                 path: 'list',
                 component: PrestadorListComponent
+            },
+            {
+                path: ':id',
+                component: PrestadorDetailComponent
             }
         ]
     },
