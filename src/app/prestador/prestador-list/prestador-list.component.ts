@@ -6,7 +6,7 @@ import {Prestador} from '../prestador';
  * El componente de la lista de prestadores
  */
 @Component({
-  selector: 'app-prestador',
+  selector: 'app-prestador-list',
   templateUrl: './prestador-list.component.html',
   styleUrls: ['./prestador-list.component.css']
 })

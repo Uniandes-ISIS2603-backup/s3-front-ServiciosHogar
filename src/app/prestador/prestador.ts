@@ -1,8 +1,8 @@
-/* 
+/** 
  * Esta clase representa un Prestador de HomeServices
  * Contiene toda la información básica del prestador
  */
- export interface Prestador{
+ export class Prestador{
      
      /**
       * El id del prestador
@@ -18,6 +18,5 @@
       * La cédula del prestador
       */
      cedula:number;
+     
  }
-
-
