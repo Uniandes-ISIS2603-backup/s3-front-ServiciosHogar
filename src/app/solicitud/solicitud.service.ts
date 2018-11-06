@@ -34,4 +34,8 @@ export class SolicitudService {
   getSolicitudDetail(solicitudId): Observable<SolicitudDetail> {
     return this.http.get<SolicitudDetail>(API_URL + solicitudes + '/' + solicitudId);
 }
+
+createSolicitud(solicitud): Observable<Solicitud> {
+  return this.http.post<Solicitud>(API_URL + solicitudes, solicitud);
+}
 }

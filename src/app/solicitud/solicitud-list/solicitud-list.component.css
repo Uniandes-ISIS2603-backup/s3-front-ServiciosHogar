@@ -14,15 +14,19 @@
 }
 
 .im{
-    width: 100%;
+    width: 250px;
+    height: 250px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin: 0 auto;
 }
-.name{
-    margin: auto 0;
-}
-a{
-    color: #43e97b;
-}
+
+.btn-circle {
+    display:block;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    font-size: 150px;
+    padding: 0px;
+  }

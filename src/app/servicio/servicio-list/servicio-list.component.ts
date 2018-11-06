@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 //Importar Servicio
 import {ServicioService} from '../servicio.service';
@@ -13,13 +13,14 @@ export class ServicioListComponent implements OnInit
 {
     /**
      * Constructor del componente
-     * @param servicioService - El servicio del servicio
+     * @param servicioService - El servicio de la servicio
      */
     constructor(private servicioService: ServicioService) {}
     
     /**
      * Arreglo de servicios.
      */
+    @Input()
     servicios: Servicio[];
     
     /**
@@ -32,8 +33,8 @@ export class ServicioListComponent implements OnInit
     }
     
     /**
-     * Inicializará el componente y retornará la lista de servicios del servicio
-     * Se llama cuando de crea el componente.
+     * Inicializará el componente y retornará la lista de servicios de la servicio
+     * Se llama cuando se crea el componente.
      */
     ngOnInit() 
     {

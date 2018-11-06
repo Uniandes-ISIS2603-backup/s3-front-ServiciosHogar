@@ -1,4 +1,4 @@
-export interface Servicio 
+export class Servicio 
 { 
     /**
      * La descripcion del servicio.
