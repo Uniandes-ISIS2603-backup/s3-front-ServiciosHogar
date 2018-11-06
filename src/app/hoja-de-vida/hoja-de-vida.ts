@@ -1,8 +1,8 @@
-export interface HojaDeVida
+export class HojaDeVida
 {
-    trayectora: string;
+    trayectoria: string;
     
-    fechaNacimiento: date;
+    fechaNacimiento: string;
     
     email: string;
     

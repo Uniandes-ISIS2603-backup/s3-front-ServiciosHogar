@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 
 //Importar Referencia
-import {ReferenciaService} from '../referencia.service';
 import {Referencia} from '../referencia';
+//Importar el HojaDeVidaService
+import {HojaDeVidaService} from '../../hoja-de-vida/hoja-de-vida.service';
 
 
 @Component({
@@ -13,18 +14,27 @@ import {Referencia} from '../referencia';
 })
 export class ReferenciaListComponent implements OnInit {
 
-    constructor(private referenciaService: ReferenciaService) { }
+    constructor(private hojaDeVidaService: HojaDeVidaService) { }
   
   referencias: Referencia[];
 
     getReferencias():void
     {
-        this.referenciaService.getReferencias()
+        //Obtener actualizada la lista de referencias, que corresponden al HojaDeVidaDetail.
+        this.hojaDeVidaService.getReferencias()
             .subscribe(referencias => this.referencias = referencias)
     }
-
+    
   ngOnInit() {
       this.getReferencias();
   }
+    referencias: Referencia[];
+
+    getReferencias():void
+    {
+        //Obtener actualizada la lista de referencias, que corresponden al HojaDeVidaDetail.
+        this.hojaDeVidaService.getReferencias()
+            .subscribe(referencias => this.referencias = referencias)
+    }
 
 }
