@@ -17,6 +17,13 @@ export class ReferenciaListComponent implements OnInit {
     constructor(private hojaDeVidaService: HojaDeVidaService) { }
   
   referencias: Referencia[];
+    
+  ngOnInit() {
+      this.getReferencias();
+  }
+<<<<<<< HEAD
+ 
+=======
 
     getReferencias():void
     {
@@ -24,10 +31,6 @@ export class ReferenciaListComponent implements OnInit {
         this.hojaDeVidaService.getReferencias()
             .subscribe(referencias => this.referencias = referencias)
     }
-    
-  ngOnInit() {
-      this.getReferencias();
-  }
- 
+>>>>>>> 44cb103f13cd4bd9b204a8c2685b51b2a955b353
 
 }

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import {Factura} from './factura';
+import {FacturaDetail} from './factura-detail';
 
 const API_URL = "../../assets/"; //Cambio de ruta, ahora está en la carpeta assets donde están los JSON
 const facturas = '/facturas.json'; //JSON donde está la información de las habilidades
@@ -26,5 +27,13 @@ export class FacturaService {
     getFacturas(): Observable<Factura[]> {
         return this.http.get<Factura[]>(API_URL + facturas);
     }
+    
+       /**
+   * Devuelve un objeto Observable con un arraglo de los prestadores recuperados del API.
+   * @returns Lista con los solicitudes en tiempo real.
+   */
+getFacturaDetail(facturaId): Observable<FacturaDetail> {
+  return this.http.get<FacturaDetail>(API_URL + facturas + '/' + facturaId);
+}
     
 }
