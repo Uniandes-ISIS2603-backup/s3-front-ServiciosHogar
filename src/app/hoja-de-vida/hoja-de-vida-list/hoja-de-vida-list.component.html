@@ -1,34 +1,50 @@
+<head>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+</head>
+<body>
+ 
 <div class="container-fluid">
-    <div class="col">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Trayectoria</th> 
-                    <th>Fecha nacimiento </th>
-                    <th>Email </th>
-                    <th>Telefono </th>
-                    <th>Direccion </th>
-                    <th>Formacion </th>
-                    
-                </tr>
-            </thead>
-            <tbody *ngFor = "let hojaDeVida of hojasDeVida">
-                <tr>
-                    <td><span>{{hojaDeVida.trayectoria}}</span></td>
-                    <td><span>{{hojaDeVida.fechaNacimiento}}</span></td>
-                    <td><span>{{hojaDeVida.email}}</span></td>
-                    <td><span>{{hojaDeVida.telefono}}</span></td>
-                    <td><span>{{hojaDeVida.direccion}}</span></td>
-                    <td><span>{{hojaDeVida.formacion}}</span></td>
-                    
-                </tr>
-            </tbody>
-        </table>
-    </div>
+   <div class="row">
+       <span class="border">
+           <div class="col" style="background-color:#0099ff;">Trayectoria</div>
+       </span>
+      <span class="border">
+           <div class="col" style="background-color:lightgray;">{{hojaDeVida.trayectoria}}</div>
+       </span>
+  </div>
+    
+   <div class="row">
+       <span class="border">
+           <div class="col" style="background-color:#0099ff;">Email</div>
+       </span>
+      <span class="border">
+           <div class="col" style="background-color:lightgray;">{{hojaDeVida.email}}</div>
+       </span>
+  </div>
+    
+   <div class="row">
+       <span class="border">
+           <div class="col" style="background-color:#0099ff;">Dirección</div>
+       </span>
+      <span class="border">
+           <div class="col" style="background-color:lightgray;">{{hojaDeVida.direccion}}</div>
+       </span>
+  </div>
+    
+   <div class="row">
+       <span class="border">
+           <div class="col" style="background-color:#0099ff;">Formación</div>
+       </span>
+      <span class="border">
+           <div class="col" style="background-color:lightgray;">{{hojaDeVida.formacion}}</div>
+       </span>
+  </div>
+    
+  <button (click)="add()">Ver referencias</button>
+    
 </div>
-
-
-
 
 
 

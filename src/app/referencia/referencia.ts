@@ -1,4 +1,4 @@
-export interface Referencia
+export class Referencia
 {
     empresa: string;
     
@@ -6,7 +6,7 @@ export interface Referencia
     
     idRemitente: number;
     
-    telRemitente: string;
+    telRemitente: number;
     
     cargo: string;
     
