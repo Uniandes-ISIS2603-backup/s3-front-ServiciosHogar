@@ -36,5 +36,9 @@ getTarjetaDetail(tarjetaId): Observable<TarjetaCreditoDetail> {
     return this.http.get<TarjetaCreditoDetail>(API_URL + tarjetas + '/' + tarjetaId);
     
 }
+
+createTarjeta(tarjeta): Observable<Tarjeta> {
+  return this.http.post<Tarjeta>(API_URL + tarjetas, tarjeta);
+}
     
 }
