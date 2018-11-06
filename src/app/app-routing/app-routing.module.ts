@@ -109,7 +109,7 @@ const routes: Routes = [
             {
                 path: ':id',
                 component: SolicitudDetailComponent
-            }
+            },
             {
                 path: 'add',
                 component: SolicitudCreateComponent,
