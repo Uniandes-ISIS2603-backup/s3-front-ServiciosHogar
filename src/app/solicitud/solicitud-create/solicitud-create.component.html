@@ -1,1 +1,44 @@
-Hello world!
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <h2 class="text-center">Add a new solicitud</h2>
+            <br>
+            <form name="solicitud" (ngSubmit)="f.form.valid && createSolicitud()" #f="ngForm" novalidate>
+                <div class="form-group">
+                    <label for="solicitudDireccion"><b>Direccion</b></label>
+                    <input type="text" name="solicitudDireccion" class="form-control" id="solicitudDireccion"
+                        [(ngModel)]="solicitud.direccion" #solicitudDireccion="ngModel" [ngClass]="{ 'is-invalid': f.submitted && solicitudDireccion.invalid }"
+                        required>
+                    <div class="invalid-feedback">
+                        <div>The solicitud's direccion is missing</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="solicitudFecha"><b>Fecha</b></label>
+                    <input type="text" name="solicitudFecha" class="form-control" id="solicitudFecha"
+                        [(ngModel)]="solicitud.fecha" #solicitudFecha="ngModel" [ngClass]="{ 'is-invalid': f.submitted && solicitudFecha.invalid }"
+                        required>
+                    <div class="invalid-feedback">
+                        <div>The solicitud's fecha is missing</div>
+                    </div>
+                    <script>
+                        var email = document.getElementById('solicitudFecha').value;
+                        console.log()
+                        </script>
+                </div>
+
+                <div class="row form-inline justify-content-center align-self-center">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <div class="divider"></div>
+                    <button type="button" class="btn btn-danger" (click)="cancelCreation()">Cancel</button>
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+

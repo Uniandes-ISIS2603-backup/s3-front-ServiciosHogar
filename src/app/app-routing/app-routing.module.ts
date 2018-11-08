@@ -9,16 +9,15 @@ import { FacturaListComponent } from '../factura/factura-list/factura-list.compo
 import {FacturaDetailComponent} from '../factura/factura-detail/factura-detail.component';
 import { HojaDeVidaListComponent } from '../hoja-de-vida/hoja-de-vida-list/hoja-de-vida-list.component';
 import { ReferenciaListComponent } from '../referencia/referencia-list/referencia-list.component';
-import { ServicioListComponent } from '../servicio/servicio-list/servicio-list.component';
 import { SolicitudListComponent } from '../solicitud/solicitud-list/solicitud-list.component';
 import { TarjetaCreditoListComponent } from '../tarjeta-credito/tarjeta-credito-list/tarjeta-credito-list.component';
 import {TarjetaCreditoDetailComponent} from '../tarjeta-credito/tarjeta-credito-detail/tarjeta-credito-detail.component';
 import { SolicitudDetailComponent } from '../solicitud/solicitud-detail/solicitud-detail.component';
 import { ClienteDetailComponent } from '../cliente/cliente-detail/cliente-detail.component';
-import {PrestadorDetailComponent} from '../prestador/prestador-detail/prestador-detail.component' 
+import {PrestadorDetailComponent} from '../prestador/prestador-detail/prestador-detail.component';
 import { SolicitudCreateComponent } from '../solicitud/solicitud-create/solicitud-create.component';
 import { ClienteCreateComponent } from '../cliente/cliente-create/cliente-create.component';
-import {PrestadorCreateComponent} from '../prestador/prestador-create/prestador-create.component' 
+import {PrestadorCreateComponent} from '../prestador/prestador-create/prestador-create.component';
 
 
 const routes: Routes = [
@@ -102,16 +101,6 @@ const routes: Routes = [
                 path: 'list',
                 component: ReferenciaListComponent
             }
-            
-        ]
-    },
-    {
-        path: 'servicios',
-        children: [
-            {
-                path: 'list',
-                component: ServicioListComponent
-            }
         ]
     },
     {
@@ -122,14 +111,14 @@ const routes: Routes = [
                 component: SolicitudListComponent
             },
             {
-                path: ':id',
-                component: SolicitudDetailComponent
-            },
-            {
                 path: 'add',
                 component: SolicitudCreateComponent,
                 runGuardsAndResolvers: 'always'
             },
+            {
+                path: ':id',
+                component: SolicitudDetailComponent
+            }
         ]
     },
     {

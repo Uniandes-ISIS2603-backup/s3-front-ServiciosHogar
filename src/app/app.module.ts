@@ -22,7 +22,6 @@ import {FacturaModule} from './factura/factura.module';
 import {HojaDeVidaModule} from './hoja-de-vida/hoja-de-vida.module';
 import {PrestadorModule} from './prestador/prestador.module';
 import {ReferenciaModule} from './referencia/referencia.module';
-import {ServicioModule} from './servicio/servicio.module';
 import {SolicitudModule} from './solicitud/solicitud.module';
 import {TarjetaCreditoModule} from './tarjeta-credito/tarjeta-credito.module';
 // ----------------------------------
@@ -37,7 +36,7 @@ import {TarjetaCreditoModule} from './tarjeta-credito/tarjeta-credito.module';
     HttpClientModule,
     CalificacionModule,   ClienteModule,
     FacturaModule,    HojaDeVidaModule,
-    PrestadorModule,  ReferenciaModule,     ServicioModule,
+    PrestadorModule,  ReferenciaModule,
     SolicitudModule,  TarjetaCreditoModule,
     FormsModule,
     ToastrModule.forRoot({

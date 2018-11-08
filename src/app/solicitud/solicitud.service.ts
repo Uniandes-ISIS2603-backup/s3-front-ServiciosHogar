@@ -38,4 +38,13 @@ export class SolicitudService {
 createSolicitud(solicitud): Observable<Solicitud> {
   return this.http.post<Solicitud>(API_URL + solicitudes, solicitud);
 }
+
+/**
+    * Updates an solicitud
+    * @param solicitud The solicitud which will be update
+    * @returns The confirmation of the solicitud's update
+    */
+   updateSolicitud(solicitud): Observable<SolicitudDetail> {
+    return this.http.put<SolicitudDetail>(API_URL + solicitudes + '/' + solicitud.id, solicitud);
+}
 }

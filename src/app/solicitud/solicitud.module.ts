@@ -7,9 +7,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
-import { ServicioModule } from '../servicio/servicio.module';
-import { SolicitudCreateComponent } from './solicitud-create/solicitud-create.component';
+import { SolicitudServicioComponent } from './solicitud-servicios/solicitud-servicios.component';
+import {SolicitudCreateComponent} from './solicitud-create/solicitud-create.component';
 
 @NgModule({
   imports: [
@@ -17,15 +16,12 @@ import { SolicitudCreateComponent } from './solicitud-create/solicitud-create.co
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ServicioModule
+    FormsModule
   ],
   declarations: [SolicitudListComponent,
-  SolicitudDetailComponent, SolicitudCreateComponent],
+  SolicitudDetailComponent, SolicitudServicioComponent, SolicitudCreateComponent],
   providers: [SolicitudService],
-  exports: [SolicitudListComponent,
-  SolicitudDetailComponent, SolicitudCreateComponent
-]
+  exports: [SolicitudListComponent]
 
 })
 export class SolicitudModule { }

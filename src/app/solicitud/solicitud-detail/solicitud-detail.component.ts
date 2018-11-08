@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { SolicitudDetail } from '../solicitud-detail';
 import { SolicitudService } from '../solicitud.service';
 
+import { Servicio } from '../servicio';
+
 
 @Component({
     selector: 'app-solicitud-detail',

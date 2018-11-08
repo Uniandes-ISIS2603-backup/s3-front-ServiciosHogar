@@ -1,4 +1,5 @@
-import { Servicio } from '../servicio/servicio';
+
+import { Servicio } from './servicio';
 import { Solicitud } from './solicitud';
 
 export class SolicitudDetail extends Solicitud {
