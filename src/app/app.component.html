@@ -9,8 +9,15 @@
     <li class="nav-item">
         <a id="calificacionesTag" class="nav-link" routerLink="/calificaciones/list">Calificacion</a>
     </li>
-    <li class="nav-item">
-        <a id="clientesTag" class="nav-link" routerLink="/clientes/list">Cliente</a>
+    <li class="nav-item dropdown">       
+        <a class="nav-link dropdown-toggle" routerLink="/clientes/list"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Clientes
+          </a>
+          
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/clientes/list" >Clientes</a>
+            <a class="dropdown-item" routerLink="/clientes/add">Crear Cliente</a>
+          </div>
     </li>
     <li class="nav-item">
         <a id="facturasTag" class="nav-link" routerLink="/facturas/list">Factura</a>
@@ -34,6 +41,3 @@
 <div class="list">
     <router-outlet></router-outlet>
 </div>
-
-
-

@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ClienteCreateComponent } from './cliente-create/cliente-create.component';
 
 
 @NgModule({
@@ -17,8 +18,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  declarations: [ClienteListComponent, ClienteDetailComponent],
+  declarations: [ClienteListComponent, ClienteDetailComponent, ClienteCreateComponent],
   providers: [ClienteService],
-  exports: [ClienteListComponent, ClienteDetailComponent ]
+  exports: [ClienteListComponent, ClienteDetailComponent, ClienteCreateComponent ]
 })
 export class ClienteModule { }

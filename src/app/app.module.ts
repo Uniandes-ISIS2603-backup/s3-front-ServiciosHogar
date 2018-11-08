@@ -1,9 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
-
-import {AppRoutingModule} from './app-routing/app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorInterceptor } from './interceptors/httperrorinterceptor.service';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+/*import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDialogModule } from 'ngx-modal-dialog';*/
 
 // ----------------------------------
 // Importar los modulos del proyecto.
@@ -20,20 +27,38 @@ import {SolicitudModule} from './solicitud/solicitud.module';
 import {TarjetaCreditoModule} from './tarjeta-credito/tarjeta-credito.module';
 // ----------------------------------
 
-import { AppComponent } from './app.component';
-
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,    CalificacionModule,   ClienteModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    CalificacionModule,   ClienteModule,
     FacturaModule,    HabilidadModule,      HojaDeVidaModule,
     PrestadorModule,  ReferenciaModule,     ServicioModule,
-    SolicitudModule,  TarjetaCreditoModule, AppRoutingModule,
-    HttpClientModule, FormsModule
-  ],
+    SolicitudModule,  TarjetaCreditoModule,
+    FormsModule,
+    ToastrModule.forRoot({
+        timeOut: 10000,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true,
+    }),
+    BrowserAnimationsModule,
+   /*NgxPaginationModule,
+    NgbModule,
+    ModalDialogModule,
+    AngularFontAwesomeModule,*/
+],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpErrorInterceptor,
+        multi: true
+    }
+]
 })
 export class AppModule { }
