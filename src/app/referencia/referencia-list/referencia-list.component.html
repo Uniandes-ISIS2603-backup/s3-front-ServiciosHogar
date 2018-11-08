@@ -1,32 +1,37 @@
+
+<div class="laClase">
+    <input placeholder="NombreRemitente" />
+    <input placeholder="Empresa" />
+    <input placeholder="Cargo" />
+    <input placeholder="Email" />
+
+    <!-- <input placeholder="NombreRemitente" [(ngModel)]="nuevaReferencia.nombreRemitente"/>
+    <input placeholder="Empresa" [(ngModel)]="nuevaReferencia.empresa"/>
+    <input placeholder="Cargo" [(ngModel)]="nuevaReferencia.cargo"/>
+    <input placeholder="Email" [(ngModel)]="nuevaReferencia.email"/> -->
+
+    <button (click)="agregarReferencia()">Agregar</button>
+</div>
 <div class="container-fluid">
-    <div class="col">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Empresa</th> 
-                    <th>Nombre remitente</th>
-                    <th>Id remitente </th>
-                    <th>Telefono remitente </th>
-                    <th>Cargo </th>
-                    <th>Email </th>
-                    <th>Parentesco </th>
-                    
-                </tr>
-            </thead>
-            <tbody *ngFor = "let referencia of referencias">
-                <tr>
-                    <td><span>{{referencia.empresa}}</span></td>
-                    <td><span>{{referencia.nombreRemitente}}</span></td>
-                    <td><span>{{referencia.idRemitente}}</span></td>
-                    <td><span>{{referencia.telRemitente}}</span></td>
-                    <td><span>{{referencia.cargo}}</span></td>
-                    <td><span>{{referencia.email}}</span></td>
-                    <td><span>{{referencia.parentesco}}</span></td>
-                    
-                    
-                </tr>
-            </tbody>
-        </table>
+    <div class="card-deck">
+        <a class="crd card-deck justify-content-center" *ngFor="let referencia of referencias">
+            <img style="width:142px;height:142px" src="https://techflourish.com/images/transparent-people-png-clipart-1.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Referencia de {{referencia.nombreRemitente}}</h5>
+                <p class="card-text">{{referencia.empresa}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h6 class="card-title">Cargo</h6>
+                    <p>{{referencia.cargo}}</p>
+                </li>
+                <li class="list-group-item">
+                    <h6 class="card-title">Contacto</h6>
+                    <p>Email: {{referencia.email}} </p>
+                </li>
+            </ul>
+
+        </a>
+
     </div>
 </div>
-

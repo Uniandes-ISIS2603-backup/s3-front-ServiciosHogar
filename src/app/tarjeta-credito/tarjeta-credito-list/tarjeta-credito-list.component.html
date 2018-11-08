@@ -1,22 +1,27 @@
-<div class="container-fluid">
-    <div class="col">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Titular</th> 
-                    <th>Fecha Vencimiento </th>
-                    <th>Código seguridad</th>
-                    <th>Númer</th>
-                </tr>
-            </thead>
-            <tbody *ngFor = "let tarjeta of tarjetas">
-                <tr>
-                    <td><span>{{tarjeta.titular}}</span></td>
-                    <td><span>{{tarjeta.date}}</span></td>
-                    <td><span>{{tarjeta.code}}</span></td>
-                    <td><span>{{tarjeta.numero}}</span></td>
-                </tr>
-            </tbody>
-        </table>
+<div>
+        <div class="card-group">
+            <a class="crd card-deck justify-content-center">
+            <div class="card-body">
+                <button type="button" class="btn text-info bg-transparent" routerLink="/tarjetas/add"><p style="font-size: 20px">Crear Tarjeta</p></button>
+            </div>
+        </a>
+                <div class="col-4"  *ngFor="let tarjeta of tarjetas">
+                    <div class="card">
+                            <div class="card-body">
+                            <h6>Titular de la tarjeta</h6>
+                              <p class="card-title">{{tarjeta.titular}}</p>
+                              <h6>Fecha vencimiento tarjeta</h6>
+                              <p class="card-text">{{tarjeta.date}}</p>
+                              <h6>Codigo de tarjeta</h6>
+                              <p class="card-text">{{tarjeta.code}}</p>
+                              <h6>Numero de la tarjeta</h6>
+                              <p class="card-text">{{tarjeta.numero}}</p>
+                            </div>
+
+                            <div class="card-body">
+                                    <button type="button" >Ver clientes</button>
+                                </div>
+                    </div>
+                </div>
+            </div>
     </div>
-</div>

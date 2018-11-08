@@ -1,22 +1,21 @@
-<div class="container-fluid">
-    <div class="col">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Numero</th> 
-                    <th>Fecha </th>
-                    <th>Valor Pago</th>
-                    <th>Metodo Pago</th>
-                </tr>
-            </thead>
-            <tbody *ngFor = "let factura of facturas">
-                <tr>
-                    <td><span>{{factura.numero}}</span></td>
-                    <td><span>{{factura.date}}</span></td>
-                    <td><span>{{factura.valor}}</span></td>
-                    <td><span>{{factura.pago}}</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div>
+    <div class="card-group">
+            <div class="col-4"  *ngFor="let factura of facturas">
+                <div class="card">
+                        <div class="card-body">
+                        <h6>Número de factura</h6>
+                          <p class="card-title">{{factura.numero}}</p>
+                          <h6>Fecha de factura</h6>
+                          <p class="card-text">{{factura.date}}</p>
+                          <h6>Valor de factura</h6>
+                          <p class="card-text">{{factura.valor}}</p>
+                          <h6>Método de pago de factura</h6>
+                          <p class="card-text">{{factura.pago}}</p>
+                        </div>
+                        <div class="card-body">
+                                <button type="button">Ver solicitudes</button>
+                            </div>
+                </div>
+            </div>
+        </div>
 </div>
