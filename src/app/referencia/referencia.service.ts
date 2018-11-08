@@ -18,6 +18,6 @@ export class ReferenciaService {
   
     getReferencias(): Observable<Referencia[]>
     {
-        return this.http.get<Referencia[]>(API_URL + referencias)
+        return this.http.get<Referencia[]>(API_URL + referencias);
     }
 }

@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDialogModule } from 'ngx-modal-dialog';*/
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // ----------------------------------
 // Importar los modulos del proyecto.
@@ -18,7 +21,6 @@ import { ModalDialogModule } from 'ngx-modal-dialog';*/
 import {CalificacionModule} from './calificacion/calificacion.module';
 import {ClienteModule} from './cliente/cliente.module';
 import {FacturaModule} from './factura/factura.module';
-import {HabilidadModule} from './habilidad/habilidad.module';
 import {HojaDeVidaModule} from './hoja-de-vida/hoja-de-vida.module';
 import {PrestadorModule} from './prestador/prestador.module';
 import {ReferenciaModule} from './referencia/referencia.module';
@@ -36,7 +38,7 @@ import {TarjetaCreditoModule} from './tarjeta-credito/tarjeta-credito.module';
     AppRoutingModule,
     HttpClientModule,
     CalificacionModule,   ClienteModule,
-    FacturaModule,    HabilidadModule,      HojaDeVidaModule,
+    FacturaModule,    HojaDeVidaModule,
     PrestadorModule,  ReferenciaModule,     ServicioModule,
     SolicitudModule,  TarjetaCreditoModule,
     FormsModule,

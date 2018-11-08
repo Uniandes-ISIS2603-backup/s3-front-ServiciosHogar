@@ -1,24 +1,9 @@
-<button>Crear prestador</button>
 <div class="container-fluid">
-    <div class="card-deck">
-        <a class="crd card-deck justify-content-center" *ngFor="let prestador of prestadores">
-            
-            <div class="card-body">
-                <h5 class="card-title">Prestador {{prestador.id}}</h5>                
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <h6 class="card-title">Nombre</h6>
-                    <p>{{prestador.nombre}}</p>
-                </li>
-                <li class="list-group-item">
-                    <h6 class="card-title">Cedula</h6>
-                    <p>{{prestador.cedula}}</p>
-                </li>
-            </ul>
-            <div class="card-body">
-                <a routerLink="/prestadores/{{prestador.id}}/habilidades" class="card-link">Ver habilidades</a>
-            </div>
-        </a>
+    <div class="row">
+        <div class="col-md-2" *ngFor = "let prestador of prestadores">
+            <figure class="figure" routerLink="/prestadores/{{prestador.id}}" style="cursor: pointer;"> 
+                <figcaption class="title-caption text-center">{{prestador.nombre}}</figcaption>
+            </figure>
+        </div>
     </div>
 </div>

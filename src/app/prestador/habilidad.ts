@@ -1,3 +1,4 @@
+import { Prestador } from './prestador';
 /** 
  * Esta clase representa ua Habilidad de HomeServices
  * Contiene toda la información básica de la habilidad
@@ -19,15 +20,10 @@
       */
      tipo: string;
      
-     /**
-      * El id del prestador
-      */
-      prestador_id: number;
-      
-      /**
-       * El nombre del prestador de la habilidad
-       */
-       prestador: string;
+    /**
+    * El prestador de la habilidad
+    */
+    prestador: Prestador;
 
  }
 

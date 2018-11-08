@@ -1,0 +1,33 @@
+<div id="collapseAddReview" [ngbCollapse]="isCollapsed">
+    <div class="container-fluid">
+        <h3>Add a review</h3>
+        <form name="post" (ngSubmit)="habilidadForm.form.valid && postHabilidad(habilidadForm)" #habilidadForm="ngForm" novalidate>
+              <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="habilidadTipo"><b>Tipo</b></label>
+                        <input type="text" name="habilidadTipo" class="form-control" id="habilidadTipo" [(ngModel)]="habilidad.tipo"
+                               #habilidadTipo="ngModel" [ngClass]="{ 'is-invalid': habilidadForm.submitted && habilidadTipo.invalid }" required>
+                               <div class="invalid-feedback">
+                            <div>El tipo de la habilidad está perdido</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="habilidadDescripcion"><b>Descripción</b></label>
+                        <textarea name="habilidadDescripcion" class="form-control" id="habilidadDescripcion" [(ngModel)]="habilidad.descripcion"
+                                  #habilidadDescripcion="ngModel" [ngClass]="{ 'is-invalid': habilidadForm.submitted && habilidadDescripcion.invalid }"
+                                  required></textarea>
+                        <div class="invalid-feedback">
+                            <div>La descripción de la habilidad está perdida</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-inline justify-content-center align-self-center">
+                <button type="submit" class="btn btn-primary">Post habilidad</button>
+            </div>
+        </form>
+    </div>
+</div>
