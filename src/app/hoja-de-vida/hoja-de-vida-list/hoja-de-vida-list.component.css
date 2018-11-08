@@ -25,3 +25,34 @@
 a{
     color: #43e97b;
 }
+.laClase{
+    display : grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.borderlist {
+    list-style-position:inside;
+    border: 1px solid black;
+}
+
+li {
+    border:1px solid
+  }
+
+  .tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-qxtp{background-color:#a2b6e7;text-align:left;vertical-align:top}
+.tg .tg-hc5y{background-color:#a2b6e7;text-align:left}
+.tg .tg-zuva{background-color:#c0c0c0;text-align:left}
+.tg .tg-y6fn{background-color:#c0c0c0;text-align:left;vertical-align:top}
+
+.clasesita{
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.hola{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}

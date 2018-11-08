@@ -14,23 +14,30 @@ import {HojaDeVidaService} from '../../hoja-de-vida/hoja-de-vida.service';
 })
 export class ReferenciaListComponent implements OnInit {
 
-    constructor(private hojaDeVidaService: HojaDeVidaService) { }
-  
-  referencias: Referencia[];
-    
-  ngOnInit() {
-      this.getReferencias();
-  }
-<<<<<<< HEAD
- 
-=======
+    referencias: Referencia[];
+    nuevaReferencia: Referencia = {
+        empresa : '',
+        nombreRemitente : '',
+        idRemitente: 0,
+        telRemitente: 0,
+        cargo: '',
+        email: '',
+        parentesco: ''
+    };
 
-    getReferencias():void
-    {
-        //Obtener actualizada la lista de referencias, que corresponden al HojaDeVidaDetail.
-        this.hojaDeVidaService.getReferencias()
-            .subscribe(referencias => this.referencias = referencias)
-    }
->>>>>>> 44cb103f13cd4bd9b204a8c2685b51b2a955b353
+constructor(private hojaDeVidaService: HojaDeVidaService) { }
+ngOnInit() {
+      this.getReferencias();
+}
+getReferencias(): void {
+       //Obtener actualizada la lista de referencias, que corresponden al HojaDeVidaDetail.
+       this.hojaDeVidaService.getReferencias()
+           .subscribe(referencias => this.referencias = referencias)
+}
+
+agregarReferencia(){
+    console.log(this.nuevaReferencia);
+}
+
 
 }
