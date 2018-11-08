@@ -3,6 +3,11 @@
     <h5>{{solicitudDetail.fecha}}</h5>
     <h5>{{solicitudDetail.direccion}}</h5>
 </div>
+<div class="col-md-3">
+        <button type="button" class="btn" [ngClass]="{ 'btn-primary': servicioComponent.isCollapsed,'btn-outline-primary':!servicioComponent.isCollapsed}" (click)="toggleServicios()">
+            Mostrar Servicios
+        </button>
+</div>
 <div>
 
     <app-solicitud-servicios [solicitudServicios]="solicitudDetail.servicios"></app-solicitud-servicios>

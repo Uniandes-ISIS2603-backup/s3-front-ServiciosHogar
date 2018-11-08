@@ -1,6 +1,7 @@
-<div class="container-fluid">
-    <div class="card-deck justify-content-center">
-        <a class="crd card " *ngFor="let servicio of solicitudServicios">
+
+<div class="container-fluid" id="collapseServicio" [ngbCollapse]="isCollapsed">
+    <div class="card-deck">
+        <a class="crd card justify-content-center" *ngFor="let servicio of solicitudServicios">
             <div class="card-body ">
                 <span class="dot"></span>
                 <h5 class="card-title">Servicio {{servicio.id}}</h5>

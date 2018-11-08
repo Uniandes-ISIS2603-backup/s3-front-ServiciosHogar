@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SolicitudServicioComponent } from './solicitud-servicios/solicitud-servicios.component';
 import {SolicitudCreateComponent} from './solicitud-create/solicitud-create.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {SolicitudCreateComponent} from './solicitud-create/solicitud-create.comp
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   declarations: [SolicitudListComponent,
   SolicitudDetailComponent, SolicitudServicioComponent, SolicitudCreateComponent],

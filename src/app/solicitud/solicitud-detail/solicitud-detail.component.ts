@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SolicitudDetail } from '../solicitud-detail';
 import { SolicitudService } from '../solicitud.service';
+import { SolicitudServicioComponent } from '../solicitud-servicios/solicitud-servicios.component';
 
 import { Servicio } from '../servicio';
 
@@ -32,6 +33,10 @@ export class SolicitudDetailComponent implements OnInit {
     * El id del solicitud que viene en el path get .../solicituds/solicitud_id
     */
     solicitud_id: number;
+
+
+    @ViewChild(SolicitudServicioComponent) servicioComponent: SolicitudServicioComponent;
+
     /**
     * The method which obtains the solicitud whose details we want to show
     */
@@ -52,5 +57,9 @@ export class SolicitudDetailComponent implements OnInit {
         this.solicitudDetail = new SolicitudDetail();
         this.getSolicitudDetail();
         }
+    }
+
+    toggleServicios(): void {
+        this.servicioComponent.isCollapsed = !this.servicioComponent.isCollapsed;
     }
 }
