@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 
 // ----------------------------------
@@ -31,7 +32,7 @@ import { AppComponent } from './app.component';
     FacturaModule,    HabilidadModule,      HojaDeVidaModule,
     PrestadorModule,  ReferenciaModule,     ServicioModule,
     SolicitudModule,  TarjetaCreditoModule, AppRoutingModule,
-    HttpClientModule, FormsModule
+    HttpClientModule, FormsModule, NgbModule
   ],
 
   bootstrap: [AppComponent]

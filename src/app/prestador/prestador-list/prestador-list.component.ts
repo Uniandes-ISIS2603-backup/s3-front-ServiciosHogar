@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import {PrestadorService} from '../prestador.service';
 import {Prestador} from '../prestador'; 
 
@@ -12,23 +14,20 @@ import {Prestador} from '../prestador';
 })
 export class PrestadorListComponent implements OnInit {
     
+    @Input() prestadores: Prestador[];
     /**
      * Constructor del componente
      * @param prestadorService El proveedor de servicios del prestador
      */
-    constructor(private prestadorService: PrestadorService) { }
-
-    /**
-     * Lista de prestadores que pertenecen a HomeServices
-     */
-    prestadores: Prestador[];
-    
+    constructor(private prestadorService: PrestadorService, private route: ActivatedRoute) { }
+     
     /**
      * Le pregunta al servicio para actualizar la lista de prestadores
      */
     getPrestadores(): void {
         this.prestadorService.getPrestadores()
-            .subscribe(prestadores => this.prestadores = prestadores);
+            .subscribe(prestadores => {
+            this.prestadores = prestadores});
     }
     
     /*
@@ -36,8 +35,7 @@ export class PrestadorListComponent implements OnInit {
      * Se llama cuando de crea el componente.
      */
     ngOnInit() {
-        this.getPrestadores();
-        
+       this.getPrestadores();
     }
 
 }

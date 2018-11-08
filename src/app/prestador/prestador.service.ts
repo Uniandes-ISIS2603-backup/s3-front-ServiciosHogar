@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http';
  * Interface con los datos básicos del prestador
  */
 import {Prestador} from './prestador';
+import {PrestadorDetail} from './prestador-detail';
 import {Habilidad} from './habilidad';
 
 import { environment } from '../../environments/environment';
@@ -16,10 +17,7 @@ const habilidades = '/habilidades';
 /**
  * El proveedor del servicio para todo lo relacionado con prestadores
  */
-@Injectable(
-{
-    providedIn: 'root'
-})
+@Injectable()
 export class PrestadorService{
 
     
@@ -42,8 +40,8 @@ export class PrestadorService{
      * @param prestadorId El identificador del prestador
      * @returns El prestador 
      */
-    getPrestador(prestadorId): Observable<Prestador>{
-        return this.http.get<Prestador>(API_URL + prestadores + '/' + prestadorId);
+    getPrestadorDetail(prestadorId): Observable<PrestadorDetail>{
+        return this.http.get<PrestadorDetail>(API_URL + prestadores + '/' + prestadorId);
     }
     
     /**
@@ -69,7 +67,7 @@ export class PrestadorService{
      * @param habilidad La habilidad
      * @returns True si la habilidad fue creada, falso de lo contrario
      */
-    postHabilidad(habilidad): Observable<boolean> {
-        return this.http.post<boolean>(API_URL + prestadores + habilidades, habilidad);
+    createHabilidad(prestadorId, habilidad): Observable<boolean> {
+        return this.http.post<boolean>(API_URL + prestadores + '/'+ prestadorId + habilidades, habilidad);
     }
 }

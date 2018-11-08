@@ -16,6 +16,7 @@ import { SolicitudDetailComponent } from '../solicitud/solicitud-detail/solicitu
 import { ClienteDetailComponent } from '../cliente/cliente-detail/cliente-detail.component';
 import {PrestadorDetailComponent} from '../prestador/prestador-detail/prestador-detail.component' 
 import { SolicitudCreateComponent } from '../solicitud/solicitud-create/solicitud-create.component';
+import {PrestadorCreateComponent} from '../prestador/prestador-create/prestador-create.component' 
 
 const routes: Routes = [
 
@@ -28,16 +29,13 @@ const routes: Routes = [
             },
             {
                 path: ':id',
-                component: PrestadorDetailComponent
-            }
-        ]
-    },
-    {
-        path: 'habilidades',
-        children: [
+                component: PrestadorDetailComponent,
+                runGuardsAndResolvers: 'always'
+            },
             {
-                path: 'list',
-                component: HabilidadListComponent
+                path: 'add',
+                component: PrestadorCreateComponent,
+                runGuardsAndResolvers: 'always'
             }
         ]
     },
