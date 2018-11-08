@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 
 //Importar Referencia
 import {Referencia} from '../referencia';
-//Importar el HojaDeVidaService
-import {HojaDeVidaService} from '../../hoja-de-vida/hoja-de-vida.service';
+//Importar el ReferenciaService
+import { ReferenciaService } from '../referencia.service';
 
 
 @Component({
@@ -25,18 +25,19 @@ export class ReferenciaListComponent implements OnInit {
         parentesco: ''
     };
 
-constructor(private hojaDeVidaService: HojaDeVidaService) { }
+constructor(private referenciaService: ReferenciaService) { }
 ngOnInit() {
       this.getReferencias();
 }
 getReferencias(): void {
        //Obtener actualizada la lista de referencias, que corresponden al HojaDeVidaDetail.
-       this.hojaDeVidaService.getReferencias()
+       this.referenciaService.getReferencias()
            .subscribe(referencias => this.referencias = referencias)
 }
 
 agregarReferencia(){
     console.log(this.nuevaReferencia);
+    this.referencias.push(this.nuevaReferencia);
 }
 
 
