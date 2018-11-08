@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { PrestadorListComponent } from '../prestador/prestador-list/prestador-list.component';
-import { HabilidadListComponent } from '../habilidad/habilidad-list/habilidad-list.component';
 import { CalificacionListComponent } from '../calificacion/calificacion-list/calificacion-list.component';
 import { ClienteListComponent } from '../cliente/cliente-list/cliente-list.component';
 import { FacturaListComponent } from '../factura/factura-list/factura-list.component';

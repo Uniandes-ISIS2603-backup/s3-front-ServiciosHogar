@@ -12,35 +12,38 @@ import {Prestador} from '../../prestador/prestador';
 export class PrestadorAddHabilidadComponent implements OnInit, OnChanges {
 
     /**
-    * The constructor of the component
-    * @param prestadorService The prestador service which communicates with the API
-    * @param toastrService The toastr to show messages to the user
+    * El constructor del componente
+    * @param prestadorService El servicio de prestador que se comunica con el API
+    * @param toastrService El toastr para mostrar mensajes al usuario
     */
     constructor(
         private prestadorService: PrestadorService,
     ) { }
 
     /**
-    * The prestador's id
+    * El id del prestador
     */
     @Input() prestador: Prestador;
 
     /**
-    * The habilidad to post
+    * La habilidad a postear
     */
     habilidad: Habilidad;
     
+    /**
+     * Si el componente está visible o no
+     */
     public isCollapsed = true;
 
     /**
-    * The Event Emitter which sends the signal when a habilidad has just been posted
-    * so that the list of habilidads refreshes
+    * The Event Emitter que envía una señal cuando una habilidad ha sido posteada
+    * así la lista de habilidades se refresca
     */
     @Output() updateHabilidades = new EventEmitter();
 
     /**
-    * This function posts a habilidad
-    * @param habilidadForm The form of the habilidad
+    * La función para postear una habilidad
+    * @param habilidadForm La forma de la habilidad
     */
     postHabilidad(habilidadForm: NgForm): Habilidad {
         this.habilidad.prestador = this.prestador;
@@ -53,15 +56,15 @@ export class PrestadorAddHabilidadComponent implements OnInit, OnChanges {
     }
 
     /**
-    * The function which initializes the component.
+    * La función que inicializa el componente
     */
     ngOnInit() {
         this.habilidad = new Habilidad();
     }
 
     /**
-    * The function which notices that the input which defines the prestador_id has changed.
-    * If the prestador has changed, we update the habilidads to show
+    * La función que nota que el input que define el id del prestador ha cambiado
+    * Si el prestador ha cambiado, actualizamos la lista de habilidades a mostar
     */
     ngOnChanges() {
         this.ngOnInit();

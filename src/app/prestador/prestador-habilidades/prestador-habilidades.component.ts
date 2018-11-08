@@ -7,24 +7,28 @@ import { Habilidad } from '../habilidad';
 })
 export class PrestadorHabilidadComponent implements OnInit {
     
+    /**
+     * La lista de habilidades del prestador que se va a desplegar
+     */
     @Input() prestadorHabilidades : Habilidad [];
     
+    /**
+     * Si el componente está visible o no
+     */
     public isCollapsed = false;
     
     /**
-     * The function called when a review is posted to update the habilidades
+     * La función llamada cuando una habilidad es posteada para actualizar la lista de habilidades
      */
     updateHabilidades(habilidades:Habilidad[]): void {
         this.prestadorHabilidades = habilidades;
         
     }
     
-    ngOnInit(){
-        
-    }
-    debug(){
-        console.log(this.prestadorHabilidades)
-    }
+    /**
+     * Método que inicializa el componente
+     */
+    ngOnInit(){}
 }
 
 

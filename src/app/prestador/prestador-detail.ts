@@ -7,6 +7,9 @@ import { Habilidad } from './habilidad';
  */
 export class PrestadorDetail extends Prestador
 {
+    /**
+     * Las habilidades asociadas al prestador
+     */
     habilities: Habilidad[];
 }
 

@@ -12,9 +12,9 @@ import {Prestador} from '../prestador';
 export class PrestadorCreateComponent implements OnInit {
 
     /**
-    * Constructor for the component
-    * @param prestadorService The prestadores services provider
-    * @param router The router
+    * Constructor del componente
+    * @param prestadorService El prestador de servicios de prestadores
+    * @param router El router
     */
     constructor(
         private prestadorService: PrestadorService,
@@ -22,20 +22,20 @@ export class PrestadorCreateComponent implements OnInit {
     ) {}
 
     /**
-    * The new prestador
+    * El nuevo prestador
     */
     prestador: Prestador;
 
     /**
-    * Cancels the creation of the new prestador
-    * Redirects to the prestadores list page
+    * Cancela la creación del nuevo prestador
+    * Redirige a la página de la lista de prestadores
     */
     cancelCreation(): void {
         this.router.navigate(['/prestadores/list']);
     }
 
     /**
-    * Creates a new prestador
+    * Crea un nuevo prestador
     */
     createPrestadors(): Prestador {
         this.prestadorService.createPrestador(this.prestador)
@@ -47,7 +47,7 @@ export class PrestadorCreateComponent implements OnInit {
     }
 
     /**
-    * This function will initialize the component
+    * Esta función inicializará el componente
     */
     ngOnInit() {
         this.prestador = new Prestador();

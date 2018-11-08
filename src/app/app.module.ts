@@ -12,7 +12,6 @@ import {AppRoutingModule} from './app-routing/app-routing.module';
 import {CalificacionModule} from './calificacion/calificacion.module';
 import {ClienteModule} from './cliente/cliente.module';
 import {FacturaModule} from './factura/factura.module';
-import {HabilidadModule} from './habilidad/habilidad.module';
 import {HojaDeVidaModule} from './hoja-de-vida/hoja-de-vida.module';
 import {PrestadorModule} from './prestador/prestador.module';
 import {ReferenciaModule} from './referencia/referencia.module';
@@ -29,7 +28,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,    CalificacionModule,   ClienteModule,
-    FacturaModule,    HabilidadModule,      HojaDeVidaModule,
+    FacturaModule,     HojaDeVidaModule,
     PrestadorModule,  ReferenciaModule,     ServicioModule,
     SolicitudModule,  TarjetaCreditoModule, AppRoutingModule,
     HttpClientModule, FormsModule, NgbModule

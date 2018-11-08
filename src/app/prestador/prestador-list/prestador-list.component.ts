@@ -14,7 +14,11 @@ import {Prestador} from '../prestador';
 })
 export class PrestadorListComponent implements OnInit {
     
+    /**
+     * La lista de libros que se va a desplegar
+     */
     @Input() prestadores: Prestador[];
+    
     /**
      * Constructor del componente
      * @param prestadorService El proveedor de servicios del prestador

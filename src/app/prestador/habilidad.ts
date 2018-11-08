@@ -21,7 +21,7 @@ import { Prestador } from './prestador';
      tipo: string;
      
     /**
-    * El nombre del prestador de la habilidad
+    * El prestador de la habilidad
     */
     prestador: Prestador;
 

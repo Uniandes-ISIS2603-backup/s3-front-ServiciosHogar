@@ -15,13 +15,10 @@ import {PrestadorAddHabilidadComponent} from '../prestador-add-habilidad/prestad
 export class PrestadorDetailComponent implements OnInit, OnDestroy {
     /**
      * El constructor del componente
-     * @param prestadorService El servicio prestador que se comunica con el API
-     * @param route The route which helps to retrieves the id of the book to be shown
-    * @param router The router which is needed to know when the component needs to reload
-    * @param toastrService The toastr to show messages to the user
-    * @param modalDialogService The popup provider
-    * @param viewRef The container for the popup 
-     */
+     * @param prestadorService El servicio de prestador que se comunica con el API
+     * @param route La ruta que ayuda a retornar el id del prestador a mostrar
+    * @param router El router que es usado para saber cuando el componente debe ser recargado
+    */
     constructor(
         private prestadorService: PrestadorService,
         private route: ActivatedRoute,
@@ -49,7 +46,7 @@ export class PrestadorDetailComponent implements OnInit, OnDestroy {
     otros_prestadores: Prestador[];
 
     /**
-     * La subscribción que ayuda a saber cuando un nuevo libros necesita ser cargado
+     * La subscribción que ayuda a saber cuando un nuevo prestador necesita ser cargado
      */
     navigationSubscription;
     
@@ -58,14 +55,24 @@ export class PrestadorDetailComponent implements OnInit, OnDestroy {
      */
     @ViewChild(PrestadorHabilidadComponent) habilidadListComponent: PrestadorHabilidadComponent;
     
+    /**
+     * El niño PrestadorAddHabilidadComponent
+     */
     @ViewChild(PrestadorAddHabilidadComponent) habilidadAddComponent: PrestadorAddHabilidadComponent;
     
+    /**
+     * Despliega el compoenete de listar habilidades, mientras que contrae el de agregar habilidad
+     */
     toggleHabilidades(): void {
         if (this.habilidadAddComponent.isCollapsed == false) {
             this.habilidadAddComponent.isCollapsed = true;
         }
         this.habilidadListComponent.isCollapsed = !this.habilidadListComponent.isCollapsed;
     }
+
+    /**
+     * Despliega el compoenete de agregar habilidad, mientras que contrae el de listar habilidades
+     */
         toggleCreateHabilidad(): void {
             if (this.habilidadListComponent.isCollapsed == false) {
                 this.habilidadListComponent.isCollapsed = true;
@@ -91,8 +98,8 @@ export class PrestadorDetailComponent implements OnInit, OnDestroy {
             });
     }
 
-        /**
-     * The function called when a review is posted, so that the child component can refresh the list
+    /**
+     * La función llamada cuando una habilidad es posteada, así el componente hijo puede refrescar la lista de habilidad
      */
     updateHabilidades(): void {
         this.getPrestadorDetail();
@@ -101,6 +108,10 @@ export class PrestadorDetailComponent implements OnInit, OnDestroy {
         this.habilidadAddComponent.isCollapsed = true;
     }
 
+    /**
+     * Método que inicializa el componente
+     * Necesitamos inicializar el prestador, así nunca es considerado indefinido
+     */
     ngOnInit() {
         this.prestador_id = + this.route.snapshot.paramMap.get('id');
         this.prestadorDetail = new PrestadorDetail();
@@ -109,6 +120,10 @@ export class PrestadorDetailComponent implements OnInit, OnDestroy {
         this.getOtherPrestadores();
     }
 
+    /**
+     * Este método ayuda a refrescar la vista cuando necesitamos cargar otro prestador en ella
+     * cuando otro de los prestadores de la lista es seleccionado
+     */
     ngOnDestroy() {
         if (this.navigationSubscription) {
             this.navigationSubscription.unsubscribe();

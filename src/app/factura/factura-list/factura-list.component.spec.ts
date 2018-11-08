@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import {AppRoutingModule} from '../../app-routing/app-routing.module';
 import {APP_BASE_HREF} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
@@ -17,7 +17,7 @@ describe('FacturaListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ AppRoutingModule, HttpClientModule, AppModule ],
-      declarations: [ ]
+      declarations: [ ],
       providers: [{provide: APP_BASE_HREF, useValue: ''}, FacturaService]
 
     })
@@ -42,12 +42,4 @@ describe('FacturaListComponent', () => {
         expect(component.facturas.length).toEqual(facturas.length);
     });
 
-    /**
-     * Prueba que los datos dados por el servicio esten correctos.
-     */
-    it('un prestador debe ser una habilidad (primero y último)', () => {
-        component.habilidades = habilidades;
-        expect(component.habilidades[0].descripcion).toEqual(habilidades[0].descripcion);
-        expect(component.habilidades[habilidades.length - 1].descripcion).toEqual(habilidades[habilidades.length - 1].descripcion);
-    });
 });
