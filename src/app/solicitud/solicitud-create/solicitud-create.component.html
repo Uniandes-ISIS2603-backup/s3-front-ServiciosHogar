@@ -6,29 +6,26 @@
             <br>
             <form name="solicitud" (ngSubmit)="f.form.valid && createSolicitud()" #f="ngForm" novalidate>
                 <div class="form-group">
-                    <label for="solicitudDireccion"><b>Direccion</b></label>
-                    <input type="text" name="solicitudDireccion" class="form-control" id="solicitudDireccion"
-                        [(ngModel)]="solicitud.direccion" #solicitudDireccion="ngModel" [ngClass]="{ 'is-invalid': f.submitted && solicitudDireccion.invalid }"
-                        required>
-                    <div class="invalid-feedback">
-                        <div>The solicitud's direccion is missing</div>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label for="solicitudFecha"><b>Fecha</b></label>
-                    <input type="text" name="solicitudFecha" class="form-control" id="solicitudFecha"
-                        [(ngModel)]="solicitud.fecha" #solicitudFecha="ngModel" [ngClass]="{ 'is-invalid': f.submitted && solicitudFecha.invalid }"
-                        required>
-                    <div class="invalid-feedback">
-                        <div>The solicitud's fecha is missing</div>
+                    <div [ngClass]="{ 'is-invalid': f.submitted && solicitudFecha.invalid }">
+                        <input class="form-control" id="solicitudFecha" name="solicitudFecha" [(ngModel)]="solicitud.fecha"
+                            ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" #solicitudFecha="ngModel" [ngClass]="{'is-invalid': (solicitudFecha.untouched || solicitudFecha.invalid) }"
+                            required>
+                        <div class="invalid-feedback">
+                            <div>The solicitud's fecha is missing</div>
+                        </div>
                     </div>
-                    <script>
-                        var email = document.getElementById('solicitudFecha').value;
-                        console.log()
-                        </script>
                 </div>
-
+                <div class="form-group">
+                    <label for="solicitudDescripcion"><b>Descripcion</b></label>
+                    <textarea name="solicitudDescripcion" class="form-control" id="solicitudDescripcion" [(ngModel)]="solicitud.descripcion"
+                        #solicitudDescripcion="ngModel" [ngClass]="{ 'is-invalid': f.submitted && solicitudDescripcion.invalid }"
+                        required></textarea>
+                    <div class="invalid-feedback">
+                        <div>The solicitud's descripcion is missing</div>
+                    </div>
+                </div>
+                <br>
                 <div class="row form-inline justify-content-center align-self-center">
                     <button type="submit" class="btn btn-primary">Create</button>
                     <div class="divider"></div>
@@ -41,4 +38,3 @@
 </div>
 <br>
 <br>
-

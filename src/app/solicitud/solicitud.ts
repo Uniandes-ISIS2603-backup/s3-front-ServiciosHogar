@@ -1,13 +1,17 @@
 export class Solicitud {
     /**
-     * La fecha de la solicitud.
-     */
-    fecha: string;
+    * The solicitud's id
+    */
+    id: number;
 
     /**
-     * Los direccion de la solicitud.
-     */
-    direccion: string;
+    * The solicitud's fecha
+    */
+   fecha: any;
 
-    id: number;
+    /**
+    * The solicitud's direccion
+    */
+   direccion: string;
+
 }

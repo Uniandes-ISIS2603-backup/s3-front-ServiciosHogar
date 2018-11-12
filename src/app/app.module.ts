@@ -1,17 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpErrorInterceptor } from './interceptors/httperrorinterceptor.service';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-/*import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ModalDialogModule } from 'ngx-modal-dialog';*/
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ToastrModule} from 'ngx-toastr';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpErrorInterceptor} from './interceptors/httperrorinterceptor.service';
+import {NgxPermissionsModule} from 'ngx-permissions';
+
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing/app-routing.module';
 
 // ----------------------------------
 // Importar los modulos del proyecto.
@@ -34,21 +33,25 @@ import {TarjetaCreditoModule} from './tarjeta-credito/tarjeta-credito.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CalificacionModule,   ClienteModule,
-    FacturaModule,    HojaDeVidaModule,
-    PrestadorModule,  ReferenciaModule,
-    SolicitudModule,  TarjetaCreditoModule,
+    BrowserAnimationsModule,
     FormsModule,
     ToastrModule.forRoot({
         timeOut: 10000,
         positionClass: 'toast-bottom-right',
         preventDuplicates: true,
     }),
-    BrowserAnimationsModule,
-   /*NgxPaginationModule,
+    NgxPaginationModule,
+    NgxPermissionsModule.forRoot(),
     NgbModule,
-    ModalDialogModule,
-    AngularFontAwesomeModule,*/
+
+    CalificacionModule,
+    ClienteModule,
+    FacturaModule,
+    HojaDeVidaModule,
+    PrestadorModule,
+    ReferenciaModule,
+    SolicitudModule,
+    TarjetaCreditoModule,
 ],
 
   bootstrap: [AppComponent],

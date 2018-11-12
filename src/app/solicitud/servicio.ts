@@ -1,14 +1,19 @@
+import {Solicitud} from './solicitud';
 export class Servicio {
     /**
-    * The book's id
+    * The servicio's id
     */
     id: number;
 
     /**
-    * A brief summary of the review
-    */
+     * The servicio's descripcion
+     */
     descripcion: string;
 
+    /**
+     * The servicio's requerimientos
+     */
     requerimientos: string;
 
+    solicitud: Solicitud;
 }

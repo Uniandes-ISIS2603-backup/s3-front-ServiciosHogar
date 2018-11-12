@@ -1,50 +1,73 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
-// Se importa la interface con los datos del solicitud.
 import {Solicitud} from './solicitud';
-
-// Constantes
-import { environment } from '../../environments/environment';
-import { SolicitudDetail } from './solicitud-detail';
-const API_URL = environment.apiURL; // Cambio de ruta, ahora está en la carpeta assets donde están los JSON
-const solicitudes = 'clientes/7/solicitudes'; // JSON donde está la información de los prestadores
+import {SolicitudDetail} from './solicitud-detail';
+import {Servicio} from './servicio';
 
 
-@Injectable({
-  providedIn: 'root'
-})
-export class SolicitudService {
+import {environment} from '../../environments/environment';
+const API_URL = environment.apiURL;
+const solicitudes = 'clientes/7/solicitudes';
+const servicios = '/servicios';
 
-  /**
-   * Constructor del solicitud
-   * @param http The HttpClient - es necesario para el performance de los requerimientos
-   */
-  constructor(private http: HttpClient){}
-
-  /**
-   * Devuelve un objeto Observable con un arraglo de los prestadores recuperados del API.
-   * @returns Lista con los solicitudes en tiempo real.
-   */
-  getSolicitudes(): Observable<Solicitud[]> {
-      return this.http.get<Solicitud[]>(API_URL + solicitudes);
-  }
-
-  getSolicitudDetail(solicitudId): Observable<SolicitudDetail> {
-    return this.http.get<SolicitudDetail>(API_URL + solicitudes + '/' + solicitudId);
-}
-
-createSolicitud(solicitud): Observable<Solicitud> {
-  return this.http.post<Solicitud>(API_URL + solicitudes, solicitud);
-}
 
 /**
-    * Updates an solicitud
-    * @param solicitud The solicitud which will be update
-    * @returns The confirmation of the solicitud's update
+* The service provider for everything related to solicitudes
+*/
+@Injectable()
+export class SolicitudService {
+
+    /**
+    * Constructor of the service
+    * @param http The HttpClient - This is necessary in order to perform requests
     */
-   updateSolicitud(solicitud): Observable<SolicitudDetail> {
-    return this.http.put<SolicitudDetail>(API_URL + solicitudes + '/' + solicitud.id, solicitud);
-}
+    constructor(private http: HttpClient) {}
+
+    /**
+    * Returns the Observable object containing the list of solicitudes retrieved from the API
+    * @returns The list of solicitudes in real time
+    */
+    getSolicitudes(): Observable<Solicitud[]> {
+        return this.http.get<Solicitud[]>(API_URL + solicitudes);
+    }
+
+    /**
+    * Creates a new solicitud
+    * @param solicitud The new solicitud
+    * @returns The solicitud with its new id if it was created, false if it wasn't
+    */
+    createSolicitud(solicitud): Observable<SolicitudDetail> {
+        console.log(solicitud);
+        console.log(API_URL + solicitudes, solicitud);
+        return this.http.post<SolicitudDetail>(API_URL + solicitudes, solicitud);
+    }
+
+    /**
+    * Returns the Observable object with the details of an author retrieved from the API
+    * @returns The author details
+    */
+    getSolicitudDetail(solicitudId): Observable<SolicitudDetail> {
+        return this.http.get<SolicitudDetail>(API_URL + solicitudes + '/' + solicitudId);
+    }
+
+    /**
+    * Creates a servicio
+    * @param servicio The servicio
+    * @returns True if the servicio was posted, false otherwise
+    */
+    createServicio(solicitudId, servicio): Observable<Servicio> {
+        return this.http.post<Servicio>(API_URL + solicitudes + '/' + solicitudId + servicios, servicio);
+    }
+
+    /**
+        * Updates a new solicitud
+        * @param solicitud The updated solicitud
+        * @returns The updated solicitud
+        */
+    updateSolicitud(solicitud): Observable<SolicitudDetail> {
+        console.log(API_URL + solicitudes + '/' + solicitud.id, solicitud);
+        return this.http.put<SolicitudDetail>(API_URL + solicitudes + '/' + solicitud.id, solicitud);
+    }
 }

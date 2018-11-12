@@ -4,9 +4,6 @@
             <img class="im card-img-top" src="https://openclipart.org/image/800px/svg_to_png/278694/gear2.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Solicitud {{solicitud.id}}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's
-                    content.</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
@@ -19,12 +16,14 @@
                 </li>
             </ul>
             <div class="card-body">
-                <button routerLink="/solicitudes/{{solicitud.id}}" type="button" class="btn btn-info">Ver servicios</button>
+                <button routerLink="/solicitudes/{{solicitud.id}}" type="button" class="btn btn-info">Ver detail</button>
             </div>
         </a>
-        <div class="card-body">
-            <button routerLink="/solicitudes/add" type="button" class="btn btn-info">+</button>
-        </div>
+        <a class="crd card">
+            <div class="m-auto">
+                <h1 class="text-info" style="font-size: 150pt" routerLink="/solicitudes/add" >+</h1>
+            </div>
+        </a>
 
     </div>
 </div>

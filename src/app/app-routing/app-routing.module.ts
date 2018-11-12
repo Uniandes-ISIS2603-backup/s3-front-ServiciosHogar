@@ -1,23 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
+import {NgxPermissionsGuard} from 'ngx-permissions';
 
-import { PrestadorListComponent } from '../prestador/prestador-list/prestador-list.component';
 import { CalificacionListComponent } from '../calificacion/calificacion-list/calificacion-list.component';
 import { ClienteListComponent } from '../cliente/cliente-list/cliente-list.component';
+import { ClienteDetailComponent } from '../cliente/cliente-detail/cliente-detail.component';
+import { ClienteCreateComponent } from '../cliente/cliente-create/cliente-create.component';
+import { PrestadorListComponent } from '../prestador/prestador-list/prestador-list.component';
+import {PrestadorDetailComponent} from '../prestador/prestador-detail/prestador-detail.component';
+import {PrestadorCreateComponent} from '../prestador/prestador-create/prestador-create.component';
+import {SolicitudDetailComponent} from '../solicitud/solicitud-detail/solicitud-detail.component';
+import {SolicitudCreateComponent} from '../solicitud/solicitud-create/solicitud-create.component';
+import {SolicitudEditComponent} from '../solicitud/solicitud-edit/solicitud-edit.component';
+import {SolicitudListComponent } from '../solicitud/solicitud-list/solicitud-list.component';
 import { FacturaListComponent } from '../factura/factura-list/factura-list.component';
 import {FacturaDetailComponent} from '../factura/factura-detail/factura-detail.component';
 import { HojaDeVidaListComponent } from '../hoja-de-vida/hoja-de-vida-list/hoja-de-vida-list.component';
 import { ReferenciaListComponent } from '../referencia/referencia-list/referencia-list.component';
-import { SolicitudListComponent } from '../solicitud/solicitud-list/solicitud-list.component';
 import { TarjetaCreditoListComponent } from '../tarjeta-credito/tarjeta-credito-list/tarjeta-credito-list.component';
-import {TarjetaCreditoDetailComponent} from '../tarjeta-credito/tarjeta-credito-detail/tarjeta-credito-detail.component';
-import { SolicitudDetailComponent } from '../solicitud/solicitud-detail/solicitud-detail.component';
-import { ClienteDetailComponent } from '../cliente/cliente-detail/cliente-detail.component';
-import {PrestadorDetailComponent} from '../prestador/prestador-detail/prestador-detail.component';
-import { SolicitudCreateComponent } from '../solicitud/solicitud-create/solicitud-create.component';
-import { ClienteCreateComponent } from '../cliente/cliente-create/cliente-create.component';
-import {PrestadorCreateComponent} from '../prestador/prestador-create/prestador-create.component';
 
 
 const routes: Routes = [
@@ -113,11 +114,17 @@ const routes: Routes = [
             {
                 path: 'add',
                 component: SolicitudCreateComponent,
-                runGuardsAndResolvers: 'always'
+                canActivate: [NgxPermissionsGuard]
+            },
+            {
+                path: ':id/edit',
+                component: SolicitudEditComponent,
+                canActivate: [NgxPermissionsGuard]
             },
             {
                 path: ':id',
-                component: SolicitudDetailComponent
+                component: SolicitudDetailComponent,
+                runGuardsAndResolvers: 'always'
             }
         ]
     },
