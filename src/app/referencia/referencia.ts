@@ -1,5 +1,4 @@
-export class Referencia
-{
+export class Referencia {
     empresa: string;
     nombreRemitente: string;
     idRemitente: number;

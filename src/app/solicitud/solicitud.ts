@@ -7,11 +7,11 @@ export class Solicitud {
     /**
     * The solicitud's fecha
     */
-   fecha: any;
+    fecha: any;
 
     /**
     * The solicitud's direccion
     */
-   direccion: string;
+    direccion: string;
 
 }

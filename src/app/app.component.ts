@@ -1,26 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
+/**
+ * The app component. This component is the base of the ServiciosHogar
+ */
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    
+
     /**
-     * Título que va  a parecer en la Barra de Navegacion en el buscador
+     * The title that appears on the NavBar and the web browser
      */
     title: String;
 
     /**
-     * Asigan el título de la página web
+     * Assigns a title to the web page
      */
     ngOnInit(): void {
-        this.title = "s3-front-ServiciosHogar";
+        this.title = "ServiciosHogar";
+        this.authService.start();
     }
 
-    /**
+       /**
      * @ignore
      */
-    constructor() {}
+    constructor(private authService: AuthService) { }
+
+    logout(): void {
+        this.authService.logout()
+    }
+
 }
+
+
+
+
+
