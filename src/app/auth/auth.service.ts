@@ -25,10 +25,14 @@ export class AuthService {
         if (!role) {
             this.setGuestRole();
         } else if (role === 'ADMIN') {
-            this.setAdministratorRole();
-        } else {
-            this.setClientRole();
+            this.setAdministradorRole();
+        } else if(role == 'CLIENTE') {
+            this.setClienteRole();
+        } else if(role == 'PRESTADOR') {
+            this.setPrestadorRole();
         }
+       
+
     }
 
     setGuestRole (): void {
@@ -36,17 +40,24 @@ export class AuthService {
         this.roleService.addRole('GUEST', ['']);
     }
 
-    setClientRole (): void {
+    setClienteRole (): void {
         this.roleService.flushRoles();
-        this.roleService.addRole('CLIENT', ['leave_review']);
-        localStorage.setItem('role', 'CLIENT');
+        this.roleService.addRole('CLIENTE', ['']);
+        localStorage.setItem('role', 'CLIENTE');
     }
 
-    setAdministratorRole (): void {
+    setPrestadorRole (): void {
         this.roleService.flushRoles();
-        this.roleService.addRole('ADMIN', ['edit_author_permission', 'delete_author_permission']);
+        this.roleService.addRole('PRESTADOR', ['']);
+        localStorage.setItem('role', 'PRESTADOR');
+    }
+    
+    setAdministradorRole (): void {
+        this.roleService.flushRoles();
+        this.roleService.addRole('ADMIN', ['']);
         localStorage.setItem('role', 'ADMIN');
     }
+
 
     printRole (): void {
         console.log(this.roleService.getRoles());
@@ -57,12 +68,17 @@ export class AuthService {
      * @param role The desired role to set to the user
      */
     login (role): void {
-        if (role === 'Administrator') {
-            this.setAdministratorRole();
-        } else {
-            this.setClientRole()
+        if (role === 'ADMIN') {
+            this.setAdministradorRole();
+            this.router.navigateByUrl('/books/list');
+        } else if(role === 'CLIENTE'){
+            this.setClienteRole()
+            this.router.navigateByUrl('/books/list');
+        } else if(role === 'PRESTADOR') {
+            this.setPrestadorRole()
+            this.router.navigateByUrl('/books/list');
         }
-        this.router.navigateByUrl('/books/list');
+       
     }
 
     /**

@@ -57,7 +57,7 @@
             <div class="text-center p-2 bg-primary text-white">
                 <h2>Registrate!</h2>
             </div>
-            <form class="p-5">
+            <form class="p-5" name="sign-up" (ngSubmit)="f.form.valid && signUp()" #f="ngForm" novalidate>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Correo electronico</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -65,15 +65,15 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="contraseña">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña"[(ngModel)]="user.password" required >
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Nombre</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="contraseña">
+                    <label for="username">Nombre</label>
+                    <input type="text" class="form-control" id="exampleInputUsername" placeholder="Ingresa tu nombre" [(ngModel)]="user.name" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Direccion</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="contraseña">
+                    <input type="text" class="form-control" id="exampleInputDireccion" placeholder="Ingresa tu dirección">
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Ingresar</button>

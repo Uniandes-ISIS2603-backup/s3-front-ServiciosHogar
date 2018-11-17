@@ -33,6 +33,7 @@ import {SolicitudModule} from './solicitud/solicitud.module';
         }),
         NgxPaginationModule,
         NgxPermissionsModule.forRoot(),
+        NgxPermissionsModule,
         NgbModule,
 
         SolicitudModule
