@@ -4,7 +4,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgxPermissionsGuard} from 'ngx-permissions';
 
 const routes: Routes = [
-    
 ];
 
 @NgModule({
