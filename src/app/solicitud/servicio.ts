@@ -1,17 +1,19 @@
+import {Solicitud} from './solicitud';
 export class Servicio {
     /**
-    * The solicitud's id
+    * The servicio's id
     */
     id: number;
 
     /**
-    * The solicitud's descripcion
-    */
+     * The servicio's descripcion
+     */
     descripcion: string;
 
     /**
-    * The solicitud's requerimientos
-    */
+     * The servicio's requerimientos
+     */
     requerimientos: string;
 
+    solicitud: Solicitud;
 }

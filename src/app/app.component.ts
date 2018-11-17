@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { AuthService } from './auth/auth.service';
 
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 /**
  * The app component. This component is the base of the ServiciosHogar
  */
@@ -16,6 +18,18 @@ export class AppComponent implements OnInit {
      */
     title: String;
 
+    route: string;
+
+  constructor(private authService: AuthService, location: Location, router: Router) {
+    router.events.subscribe((val) => {
+      if(location.path() != ''){
+        this.route = location.path();
+      } else {
+        this.route = 'Home'
+      }
+    });
+  }
+
     /**
      * Assigns a title to the web page
      */
@@ -23,11 +37,6 @@ export class AppComponent implements OnInit {
         this.title = "ServiciosHogar";
         this.authService.start();
     }
-
-       /**
-     * @ignore
-     */
-    constructor(private authService: AuthService) { }
 
     logout(): void {
         this.authService.logout()

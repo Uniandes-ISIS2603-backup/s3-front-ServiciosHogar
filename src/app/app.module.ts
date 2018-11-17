@@ -12,6 +12,9 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AuthModule} from './auth/auth.module';
 
+
+import {SolicitudModule} from './solicitud/solicitud.module';
+
 @NgModule({
     declarations: [
         AppComponent
@@ -30,7 +33,9 @@ import {AuthModule} from './auth/auth.module';
         }),
         NgxPaginationModule,
         NgxPermissionsModule.forRoot(),
-        NgbModule
+        NgbModule,
+
+        SolicitudModule
     ],
     bootstrap: [AppComponent],
     providers: [
