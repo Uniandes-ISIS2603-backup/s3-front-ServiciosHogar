@@ -5,26 +5,26 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppModule } from '../../app.module';
 
-import { SolicitudListComponent } from './solicitud-list.component';
-import { Solicitud } from '../solicitud';
-import { SolicitudService } from '../solicitud.service';
+import { PrestadorListComponent } from './prestador-list.component';
+import { Prestador } from '../prestador';
+import { PrestadorService } from '../prestador.service';
 
-describe('SolicitudComponent', () => {
-    let component: SolicitudListComponent;
-    let fixture: ComponentFixture<SolicitudListComponent>;
-    const solicitudes: Solicitud[] = require('../../../assets/solicitudes.json');
+describe('PrestadorComponent', () => {
+    let component: PrestadorListComponent;
+    let fixture: ComponentFixture<PrestadorListComponent>;
+    const prestadores: Prestador[] = require('../../../assets/prestadores.json');
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [AppRoutingModule, HttpClientModule, AppModule],
             declarations: [],
-            providers: [{ provide: APP_BASE_HREF, useValue: '' }, SolicitudService]
+            providers: [{ provide: APP_BASE_HREF, useValue: '' }, PrestadorService]
         })
             .compileComponents();
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(SolicitudListComponent);
+        fixture = TestBed.createComponent(PrestadorListComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
@@ -33,9 +33,8 @@ describe('SolicitudComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should have a list of solicitudes', () => {
-        component.solicitudes = solicitudes;
-        expect(component.solicitudes.length).toEqual(solicitudes.length);
+    it('should have a list of prestadores', () => {
+        component.prestadores = prestadores;
+        expect(component.prestadores.length).toEqual(prestadores.length);
     });
-
 });

@@ -1,29 +1,48 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import 'rxjs/add/operator/filter';
-
+import {Component, OnInit} from '@angular/core';
 
 import {Solicitud} from '../solicitud';
 import {SolicitudService} from '../solicitud.service';
+
+/**
+* The component for the list of solicitudes in the ServiciosHogar
+*/
 @Component({
-    selector: 'app-solicitud-list',
+    selector: 'app-solicitud',
     templateUrl: './solicitud-list.component.html',
     styleUrls: ['./solicitud-list.component.css']
 })
 export class SolicitudListComponent implements OnInit {
 
     /**
-    * The list of solicitudes to display
+    * Constructor for the component
+    * @param solicitudService The author's services provider
     */
-    @Input() solicitudes: Solicitud[];
+    constructor(
+        private solicitudService: SolicitudService,
+    ) {}
 
     /**
-    * The component's constructor
+    * The list of solicitudes which belong to the ServiciosHogar
     */
-    constructor(private solicitudService: SolicitudService, private route: ActivatedRoute) {}
+    solicitudes: Solicitud[];
 
     /**
-    * This method retrieves all the solicitudes in the Solicitudestore to show them in the list
+    * Shows or hides the create component
+    */
+    showCreate: boolean;
+
+    /**
+     * Shows or hides the edit component.
+     */
+    showEdit: boolean;
+
+    /**
+     * The id of the solicitud being edited.
+     */
+    solicitud_edit_id: number;
+
+    /**
+    * Asks the service to update the list of solicitudes
     */
     getSolicitudes(): void {
         this.solicitudService.getSolicitudes()
@@ -33,10 +52,40 @@ export class SolicitudListComponent implements OnInit {
     }
 
     /**
-    * The method which initializes the component
+    * Shows or hides the create component
     */
-    ngOnInit() {
-            this.getSolicitudes();
+    showHideCreate(): void {
+        this.showEdit = false;
+        this.showCreate = !this.showCreate!
     }
 
+    /**
+    * Shows or hides the create component
+    */
+    showHideEdit(solicitud_id: number): void {
+        if (!this.showEdit || (this.showEdit && solicitud_id != this.solicitud_edit_id)) {
+            this.showCreate = false;
+            this.showEdit = true;
+            this.solicitud_edit_id = solicitud_id;
+        }
+        else {
+            this.showEdit = false;
+        }
+    }
+
+    updateSolicitud(): void {
+        this.showEdit = false;
+    }
+
+    /**
+    * This will initialize the component by retrieving the list of solicitudes from the service
+    * This method will be called when the component is created
+    */
+    ngOnInit() {
+        this.showCreate = false;
+        this.showEdit = false;
+        this.getSolicitudes();
+    }
 }
+
+

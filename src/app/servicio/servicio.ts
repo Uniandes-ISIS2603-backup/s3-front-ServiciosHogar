@@ -1,4 +1,5 @@
-import {Solicitud} from './solicitud';
+import { Calificacion } from './calificacion';
+
 export class Servicio {
     /**
     * The servicio's id
@@ -15,5 +16,8 @@ export class Servicio {
      */
     requerimientos: string;
 
-    solicitud: Solicitud;
+    /**
+     * The servicio's calificacion
+     */
+    calificacion: Calificacion;
 }

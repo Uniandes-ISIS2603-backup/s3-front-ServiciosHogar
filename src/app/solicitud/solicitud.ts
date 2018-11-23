@@ -1,3 +1,4 @@
+import { Factura } from '../factura/factura';
 export class Solicitud {
     /**
     * The solicitud's id
@@ -13,5 +14,10 @@ export class Solicitud {
     * The solicitud's direccion
     */
    direccion: string;
+
+   /**
+    * The solicitud's factura
+    */
+   factura: Factura;
 
 }

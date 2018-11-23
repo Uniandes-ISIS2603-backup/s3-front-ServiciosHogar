@@ -70,13 +70,13 @@ export class AuthService {
     login (role): void {
         if (role === 'ADMIN') {
             this.setAdministradorRole();
-            this.router.navigateByUrl('/books/list');
+            this.router.navigateByUrl('/');
         } else if(role === 'CLIENTE'){
             this.setClienteRole()
-            this.router.navigateByUrl('/books/list');
+            this.router.navigateByUrl('/');
         } else if(role === 'PRESTADOR') {
             this.setPrestadorRole()
-            this.router.navigateByUrl('/books/list');
+            this.router.navigateByUrl('/');
         }
        
     }

@@ -1,4 +1,5 @@
-export interface Calificacion 
+import {Servicio} from "./servicio";
+export class Calificacion 
 {   
     /**
      * El id de la calificacion
@@ -14,4 +15,9 @@ export interface Calificacion
      * Calificacion.
      */
     calificacion: number;
+
+    /**
+    * The servicio of the calificacion
+    */
+    servicio: Servicio;
 }
