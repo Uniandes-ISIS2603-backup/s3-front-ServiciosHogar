@@ -5,10 +5,14 @@ import {NgxPermissionsGuard} from 'ngx-permissions';
 
 import {SolicitudListComponent} from '../solicitud/solicitud-list/solicitud-list.component';
 import {SolicitudDetailComponent} from '../solicitud/solicitud-detail/solicitud-detail.component';
+import {SolicitudCreateComponent} from '../solicitud/solicitud-create/solicitud-create.component';
 import {ServicioListComponent} from '../servicio/servicio-list/servicio-list.component';
 import {ServicioDetailComponent} from '../servicio/servicio-detail/servicio-detail.component';
 import {PrestadorListComponent} from '../prestador/prestador-list/prestador-list.component';
 import {PrestadorDetailComponent} from '../prestador/prestador-detail/prestador-detail.component';
+import {PrestadorCreateComponent} from '../prestador/prestador-create/prestador-create.component';
+import { AuthLoginComponent } from '../auth/auth-login/auth-login.component';
+import { AuthSignUpComponent } from '../auth/auth-sign-up/auth-sign-up.component';
 
 const routes: Routes = [
     
@@ -17,12 +21,28 @@ const routes: Routes = [
         children: [
             {
                 path: 'list',
-                component: SolicitudListComponent
+                component: SolicitudListComponent,
+                canActivate: [NgxPermissionsGuard],
+                data: {
+                    permissions: {
+                        only: ['CLIENT']
+                    }
+                }
             },
             {
                 path: ':id',
                 component: SolicitudDetailComponent,
                 runGuardsAndResolvers: 'always'
+            },
+            {
+                path: 'add',
+                component: SolicitudCreateComponent,
+                canActivate: [NgxPermissionsGuard],
+                data: {
+                    permissions: {
+                        only: ['ADMIN']
+                    }
+                }
             }
         ]
     },
@@ -45,12 +65,41 @@ const routes: Routes = [
         children: [
             {
                 path: 'list',
-                component: PrestadorListComponent
+                component: PrestadorListComponent,
+                canActivate: [NgxPermissionsGuard],
+                data: {
+                    permissions: {
+                        only: ['ADMIN']
+                    }
+                }
             },
             {
                 path: ':id',
                 component: PrestadorDetailComponent,
                 runGuardsAndResolvers: 'always'
+            },
+            {
+                path: 'add',
+                component: SolicitudCreateComponent,
+                canActivate: [NgxPermissionsGuard],
+                data: {
+                    permissions: {
+                        only: ['ADMIN', 'PRESTADOR']
+                    }
+                }
+            }
+        ]
+    },
+    {
+        path: 'auth',
+        children: [
+            {
+                path: 'login',
+                component: AuthLoginComponent,
+            },
+            {
+                path: ':sign-up',
+                component: AuthSignUpComponent
             }
         ]
     }

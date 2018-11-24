@@ -9,25 +9,32 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">                    
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown" *ngIf="route != 'Home'">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            <li class="nav-item dropdown" *ngIf="route !='Home'" >
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false"><span class="fa fa-user-circle"></span> Usuario
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" routerLink="/"><span class="fa fa-vcard"></span> Mi perfil</a>
+                    <div class="dropdown-divider" *ngxPermissionsOnly="['CLIENTE']" ></div>
+                    <a class="dropdown-item" routerLink="/solicitudes/list" *ngxPermissionsOnly="['CLIENTE']" ><span class="fa fa-vcard"></span> Solicitudes</a>
+                    <div class="dropdown-divider" *ngxPermissionsOnly="['ADMIN', 'PRESTADOR']" ></div>
+                    <a class="dropdown-item" routerLink="/prestadores/list" *ngxPermissionsOnly="['ADMIN']" ><span class="fa fa-vcard"></span> Prestadores</a>
+                    <div class="dropdown-divider" *ngxPermissionsOnly="['ADMIN']" ></div>
+                    <a class="dropdown-item" routerLink="/servicios/list" *ngxPermissionsOnly="['ADMIN', 'PRESTADOR']" ><span class="fa fa-vcard"></span> Servicios</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" routerLink="/"><span class="fa fa-sign-out"></span> Cerrar sesion</a>
                 </div>
             </li>
             <li class="nav-item" *ngIf="route == 'Home'">
-                <button class="btn btn-light mr-2" routerLink="/solicitudes/list"><span class="fa fa-briefcase"></span>
-                    Trabaja con nosotros</button>
-                <button class="btn btn-outline-light" routerLink="/solicitudes/list"><span class="fa fa-sign-in"></span>
-                    Iniciar sesion</button>
-            </li>
+                    <button class="btn btn-light mr-2" routerLink="/solicitudes/list"><span class="fa fa-briefcase"></span>
+                        Trabaja con nosotros</button>
+                    <button class="btn btn-outline-light" routerLink="/auth/sign-up"><span class="fa fa-sign-in"></span>
+                        Iniciar sesion</button>
+                </li>
         </ul>
+        
     </div>
 </nav>
 
@@ -76,7 +83,7 @@
                     <input type="text" class="form-control" id="exampleInputDireccion" placeholder="Ingresa tu dirección">
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <button routerLink="/solicitudes/list" class="btn btn-primary">Ingresar</button>
                 </div>
             </form>
             <div class="text-center">

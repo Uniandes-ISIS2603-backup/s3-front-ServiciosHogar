@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {NgxPermissionsModule} from 'ngx-permissions';
 
 import {SolicitudListComponent} from './solicitud-list/solicitud-list.component';
 import {SolicitudService} from './solicitud.service';
@@ -17,6 +18,7 @@ import {ServicioModule} from '../servicio/servicio.module';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        NgxPermissionsModule,
         CommonModule,
         FormsModule,
         ServicioModule
