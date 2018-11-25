@@ -15,7 +15,7 @@ export class SolicitudListComponent implements OnInit {
 
     /**
     * Constructor for the component
-    * @param solicitudService The author's services provider
+    * @param solicitudService The solicitud's services provider
     */
     constructor(
         private solicitudService: SolicitudService,

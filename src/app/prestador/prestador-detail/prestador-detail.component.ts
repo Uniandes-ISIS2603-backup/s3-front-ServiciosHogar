@@ -36,7 +36,7 @@ export class PrestadorDetailComponent implements OnInit {
     prestador_id: number;
 
     /**
-    * The method which retrieves the books of an prestador
+    * The method which retrieves the  of an prestador
     */
     getPrestadorDetail(): void {
         this.prestadorService.getPrestadorDetail(this.prestador_id)

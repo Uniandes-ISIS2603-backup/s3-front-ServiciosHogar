@@ -38,10 +38,4 @@ describe('PrestadorComponent', () => {
         expect(component.prestadores.length).toEqual(prestadores.length);
     });
 
-    it('an author should be an prestadores (first and last)', () => {
-        component.prestadores = prestadores;
-        expect(component.prestadores[0].name).toEqual(prestadores[0].name);
-        expect(component.prestadores[prestadores.length - 1].name).toEqual(prestadores[prestadores.length - 1].name);
-    });
-
 });

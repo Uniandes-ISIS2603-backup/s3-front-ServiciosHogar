@@ -24,7 +24,7 @@ export class PrestadorService {
 
     /**
     * Returns the Observable object containing the list of prestadores retrieved from the API
-    * @returns The list of books in real time
+    * @returns The list of prestadores in real time
     */
     getPrestadores(): Observable<Prestador[]> {
         return this.http.get<Prestador[]>(API_URL + prestadores);

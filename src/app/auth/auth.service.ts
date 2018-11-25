@@ -20,7 +20,7 @@ export class AuthService {
     start (): void {
         this.permissionsService.flushPermissions();
         this.roleService.flushRoles();
-        this.permissionsService.loadPermissions(['edit_author_permission', 'delete_author_permission', 'leave_review']);
+        this.permissionsService.loadPermissions(['edit_solicitud_permission', 'delete_solicitud_permission', 'leave_solicitud']);
         const role = localStorage.getItem('role');
         if (!role) {
             this.setGuestRole();
@@ -76,7 +76,7 @@ export class AuthService {
             this.router.navigateByUrl('/solicitudes/add');
         } else if(role === 'PRESTADOR') {
             this.setPrestadorRole()
-            this.router.navigateByUrl('/servicios/list');
+            this.router.navigateByUrl('/servicios/add');
         }
        
     }

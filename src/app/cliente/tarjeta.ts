@@ -1,4 +1,5 @@
-export class TarjetaCredito {
+import { Cliente } from "./cliente";
+export class Tarjeta {
     /**
      * Nombre del titular
      */
@@ -7,7 +8,7 @@ export class TarjetaCredito {
     /**
      * Fecha de vencimiento
      */
-    date: any;
+    date: string;
 
     /**
      * Código de seguridad
@@ -18,4 +19,9 @@ export class TarjetaCredito {
      * Número de la tarjeta
      */
     numero: number;
+
+    /**
+    * The cliente of the tarjeta
+    */
+    cliente: Cliente;
 }

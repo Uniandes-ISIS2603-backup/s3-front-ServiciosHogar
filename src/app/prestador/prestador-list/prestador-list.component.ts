@@ -4,7 +4,7 @@ import {Prestador} from '../prestador';
 import {PrestadorService} from '../prestador.service';
 
 /**
-* The component for the list of prestadores in the BookStore
+* The component for the list of prestadores in the ServiciosHogar
 */
 @Component({
     selector: 'app-prestador',
@@ -15,14 +15,14 @@ export class PrestadorListComponent implements OnInit {
 
     /**
     * Constructor for the component
-    * @param prestadorService The author's services provider
+    * @param prestadorService The solicitud's services provider
     */
     constructor(
         private prestadorService: PrestadorService,
     ) {}
 
     /**
-    * The list of prestadores which belong to the BookStore
+    * The list of prestadores which belong to the ServiciosHogar
     */
     prestadores: Prestador[];
 

@@ -1,3 +1,8 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 export class Factura {
     /**
      * El numero de la factura
@@ -7,7 +12,7 @@ export class Factura {
     /**
      * La fecha de la factura
      */
-    date: any;
+    date: string;
 
     /**
      * Valor de la factura
@@ -19,5 +24,3 @@ export class Factura {
      */
     pago: string;
 }
-
-

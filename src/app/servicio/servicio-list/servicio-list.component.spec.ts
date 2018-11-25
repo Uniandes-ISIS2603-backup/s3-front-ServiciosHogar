@@ -38,10 +38,4 @@ describe('ServicioComponent', () => {
         expect(component.servicios.length).toEqual(servicios.length);
     });
 
-    it('an author should be an servicios (first and last)', () => {
-        component.servicios = servicios;
-        expect(component.servicios[0].name).toEqual(servicios[0].name);
-        expect(component.servicios[servicios.length - 1].name).toEqual(servicios[servicios.length - 1].name);
-    });
-
 });

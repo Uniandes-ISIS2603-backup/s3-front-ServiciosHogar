@@ -6,7 +6,6 @@ import { Servicio } from '../servicio/servicio';
 */
 export class SolicitudDetail extends Solicitud {
 
-
     /**
      * The solicitud's servicios
      */

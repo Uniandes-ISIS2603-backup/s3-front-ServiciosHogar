@@ -1,21 +1,54 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
-import {NgxPermissionsGuard} from 'ngx-permissions';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { NgxPermissionsGuard } from 'ngx-permissions';
 
-import {SolicitudListComponent} from '../solicitud/solicitud-list/solicitud-list.component';
-import {SolicitudDetailComponent} from '../solicitud/solicitud-detail/solicitud-detail.component';
-import {SolicitudCreateComponent} from '../solicitud/solicitud-create/solicitud-create.component';
-import {ServicioListComponent} from '../servicio/servicio-list/servicio-list.component';
-import {ServicioDetailComponent} from '../servicio/servicio-detail/servicio-detail.component';
-import {PrestadorListComponent} from '../prestador/prestador-list/prestador-list.component';
-import {PrestadorDetailComponent} from '../prestador/prestador-detail/prestador-detail.component';
-import {PrestadorCreateComponent} from '../prestador/prestador-create/prestador-create.component';
+import { SolicitudListComponent } from '../solicitud/solicitud-list/solicitud-list.component';
+import { SolicitudDetailComponent } from '../solicitud/solicitud-detail/solicitud-detail.component';
+import { SolicitudCreateComponent } from '../solicitud/solicitud-create/solicitud-create.component';
+import { ServicioListComponent } from '../servicio/servicio-list/servicio-list.component';
+import { ServicioDetailComponent } from '../servicio/servicio-detail/servicio-detail.component';
+import { PrestadorListComponent } from '../prestador/prestador-list/prestador-list.component';
+import { PrestadorDetailComponent } from '../prestador/prestador-detail/prestador-detail.component';
+import { PrestadorCreateComponent } from '../prestador/prestador-create/prestador-create.component';
+import { ClienteListComponent } from '../cliente/cliente-list/cliente-list.component';
+import { ClienteDetailComponent } from '../cliente/cliente-detail/cliente-detail.component';
+import { ClienteCreateComponent } from '../cliente/cliente-create/cliente-create.component';
 import { AuthLoginComponent } from '../auth/auth-login/auth-login.component';
 import { AuthSignUpComponent } from '../auth/auth-sign-up/auth-sign-up.component';
 
 const routes: Routes = [
-    
+
+    {
+        path: 'clientes',
+        children: [
+            {
+                path: 'list',
+                component: ClienteListComponent,
+                canActivate: [NgxPermissionsGuard],
+                data: {
+                    permissions: {
+                        only: ['ADMIN']
+                    }
+                }
+            },
+            {
+                path: ':id',
+                component: ClienteDetailComponent,
+                runGuardsAndResolvers: 'always'
+            },
+            {
+                path: 'add',
+                component: ClienteCreateComponent,
+                canActivate: [NgxPermissionsGuard],
+                data: {
+                    permissions: {
+                        only: ['ADMIN', 'CLIENT']
+                    }
+                }
+            }
+        ]
+    },
     {
         path: 'solicitudes',
         children: [
@@ -40,7 +73,7 @@ const routes: Routes = [
                 canActivate: [NgxPermissionsGuard],
                 data: {
                     permissions: {
-                        only: ['ADMIN']
+                        only: ['CLIENT']
                     }
                 }
             }
@@ -80,7 +113,7 @@ const routes: Routes = [
             },
             {
                 path: 'add',
-                component: SolicitudCreateComponent,
+                component: PrestadorCreateComponent,
                 canActivate: [NgxPermissionsGuard],
                 data: {
                     permissions: {
@@ -108,7 +141,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
+        RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
     ],
     exports: [RouterModule],
     declarations: []

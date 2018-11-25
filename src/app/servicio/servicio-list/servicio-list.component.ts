@@ -15,7 +15,7 @@ export class ServicioListComponent implements OnInit {
 
     /**
     * Constructor for the component
-    * @param servicioService The author's services provider
+    * @param servicioService The solicitud's services provider
     */
     constructor(
         private servicioService: ServicioService,
