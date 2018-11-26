@@ -39,10 +39,10 @@
     </div>
 </nav>
 
-<div id="container">
+<div id="wrapper">
 
     <!-- Menu lateral  -->
-    <nav id="sidebar" class="nav flex-column bg-dark text-white" style="overflow:hidden" *ngxPermissionsOnly="['ADMIN']">
+    <nav id="sidebar" class="nav flex-column bg-dark text-white" style="overflow:hidden; display: inline-block" *ngxPermissionsOnly="['ADMIN']">
         <li class="nav-item bg-secondary text-white mb-4 mt-2 p-3">
             <h4 class="text-center"><span class="fa fa-cogs mr-4"></span>Dashboard</h4>
         </li>
@@ -59,7 +59,7 @@
     </nav>
 
     <!-- Contenido de la pagina  -->
-    <div id="content">
+    <div id="content" style="display: inline-block">
         <div class="container-fluid p-5" *ngxPermissionsOnly="['GUEST']">
             <div class="row no-gutters shadow-lg bg-white rounded" *ngIf="route == 'Home'">
                 <div class="col-sm-8">
@@ -126,7 +126,9 @@
                 </div>
             </div>
         </div>
-        <div>
+        
+        <!-- Contenido del rooter  -->
+        <div class="container-fluid">
             <router-outlet></router-outlet>
             <br>
             <br>
