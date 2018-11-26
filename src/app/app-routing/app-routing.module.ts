@@ -33,19 +33,14 @@ const routes: Routes = [
                 }
             },
             {
-                path: ':id',
-                component: ClienteDetailComponent,
+                path: 'add',
+                component: ClienteCreateComponent,
                 runGuardsAndResolvers: 'always'
             },
             {
-                path: 'add',
-                component: ClienteCreateComponent,
-                canActivate: [NgxPermissionsGuard],
-                data: {
-                    permissions: {
-                        only: ['ADMIN', 'CLIENT']
-                    }
-                }
+                path: ':id',
+                component: ClienteDetailComponent,
+                runGuardsAndResolvers: 'always'
             }
         ]
     },
@@ -63,11 +58,6 @@ const routes: Routes = [
                 }
             },
             {
-                path: ':id',
-                component: SolicitudDetailComponent,
-                runGuardsAndResolvers: 'always'
-            },
-            {
                 path: 'add',
                 component: SolicitudCreateComponent,
                 canActivate: [NgxPermissionsGuard],
@@ -76,6 +66,11 @@ const routes: Routes = [
                         only: ['CLIENT']
                     }
                 }
+            },
+            {
+                path: ':id',
+                component: SolicitudDetailComponent,
+                runGuardsAndResolvers: 'always'
             }
         ]
     },
@@ -107,9 +102,8 @@ const routes: Routes = [
                 }
             },
             {
-                path: ':id',
-                component: PrestadorDetailComponent,
-                runGuardsAndResolvers: 'always'
+                path: 'sign-up',
+                component: PrestadorCreateComponent,
             },
             {
                 path: 'add',
@@ -117,9 +111,14 @@ const routes: Routes = [
                 canActivate: [NgxPermissionsGuard],
                 data: {
                     permissions: {
-                        only: ['ADMIN', 'PRESTADOR']
+                        only: ['ADMIN']
                     }
                 }
+            },
+            {
+                path: ':id',
+                component: PrestadorDetailComponent,
+                runGuardsAndResolvers: 'always'
             }
         ]
     },

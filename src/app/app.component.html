@@ -1,3 +1,8 @@
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<!-- Barra de naveacion -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="/" style="text-shadow: 2px 2px black;">
         Servicios
@@ -9,99 +14,133 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">                    
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown" *ngIf="route !='Home'" >
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"><span class="fa fa-user-circle"></span> Usuario
+            <li class="nav-item dropdown" *ngxPermissionsExcept="['GUEST', 'ADMIN']">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><span class="fa fa-user-circle"></span>
+                    Usuario
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" routerLink="/"><span class="fa fa-vcard"></span> Mi perfil</a>
-                    <div class="dropdown-divider" *ngxPermissionsOnly="['CLIENTE']" ></div>
-                    <a class="dropdown-item" routerLink="/solicitudes/list" *ngxPermissionsOnly="['CLIENTE']" ><span class="fa fa-vcard"></span> Solicitudes</a>
-                    <div class="dropdown-divider" *ngxPermissionsOnly="['ADMIN', 'PRESTADOR']" ></div>
-                    <a class="dropdown-item" routerLink="/prestadores/list" *ngxPermissionsOnly="['ADMIN']" ><span class="fa fa-vcard"></span> Prestadores</a>
-                    <div class="dropdown-divider" *ngxPermissionsOnly="['ADMIN']" ></div>
-                    <a class="dropdown-item" routerLink="/servicios/list" *ngxPermissionsOnly="['ADMIN', 'PRESTADOR']" ><span class="fa fa-vcard"></span> Servicios</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" routerLink="/"><span class="fa fa-sign-out"></span> Cerrar sesion</a>
+                    <a class="dropdown-item" href="/" (click)="logout()"><span class="fa fa-sign-out"></span>
+                        Cerrar
+                        sesion</a>
                 </div>
             </li>
-            <li class="nav-item" *ngIf="route == 'Home'">
-                    <button class="btn btn-light mr-2" routerLink="/solicitudes/list"><span class="fa fa-briefcase"></span>
-                        Trabaja con nosotros</button>
-                    <button class="btn btn-outline-light" routerLink="/auth/sign-up"><span class="fa fa-sign-in"></span>
-                        Iniciar sesion</button>
-                </li>
+            <li class="nav-item" *ngxPermissionsOnly="['GUEST']">
+                <button class="btn btn-light mr-2" routerLink="/prestadores/sign-up"><span class="fa fa-briefcase"></span>
+                    Trabaja con nosotros</button>
+                <button class="btn btn-outline-light" routerLink="/auth/login"><span class="fa fa-sign-in"></span>
+                    Iniciar sesion</button>
+            </li>
         </ul>
-        
+
     </div>
 </nav>
 
-<div class="container-fluid p-5" *ngIf="route == 'Home'">
-    <div class="row no-gutters shadow-lg bg-white rounded">
-        <div class="col-sm-8">
-            <img src="http://portlanddixie.info/wp-content/uploads/2017/07/hero.jpg" style="object-fit: cover; height: 200px; width: 100%;"
-                class="img" alt="Responsive image">
-            <div class="text-center p-4">
-                <h1>¿Quienes somos?</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare leo diam,
-                    in elementum neque condimentum ut. Integer elementum enim posuere lobortis mollis. Sed pretium diam
-                    turpis, et posuere massa ullamcorper at. Phasellus venenatis justo in enim feugiat ultricies.
-                    Mauris
-                    magna augue, vulputate et elementum id, consectetur eget neque. Integer finibus molestie enim eget
-                    sollicitudin. Aliquam at tincidunt erat. Quisque ac pellentesque augue. Aliquam ornare sodales
-                    nunc, id
-                    interdum nunc dictum at. Pellentesque convallis vulputate risus, nec pretium tellus mattis at. In
-                    hac
-                    habitasse platea dictumst. Vivamus commodo tortor nulla, sed pharetra risus finibus sit amet.
-                    Vestibulum varius finibus metus et posuere. Vivamus congue, diam vitae accumsan condimentum, libero
-                    tellus luctus velit, a feugiat lacus lorem et turpis. Ut bibendum orci et velit lacinia, ut tempor
-                    felis elementum.</p>
+<div id="container">
+
+    <!-- Menu lateral  -->
+    <nav id="sidebar" class="nav flex-column bg-dark text-white" style="overflow:hidden" *ngxPermissionsOnly="['ADMIN']">
+        <li class="nav-item bg-secondary text-white mb-4 mt-2 p-3">
+            <h4 class="text-center"><span class="fa fa-cogs mr-4"></span>Dashboard</h4>
+        </li>
+        <li class="nav-item m-1">
+            <button class="btn btn-outline-light btn-lg btn-block" routerLink="/clientes/list"><span class="fa fa-group mr-4"></span>Clientes</button>
+        </li>
+        <li class="nav-item m-1">
+            <button class="btn btn-outline-light btn-lg btn-block" routerLink="/prestadores/list"><span class="fa fa-briefcase mr-4"></span>Prestadores</button>
+        </li>
+        <li class="nav-item m-1">
+            <button class="btn btn-outline-light btn-lg btn-block" href="/" (click)="logout()"><span class="fa fa-sign-out mr-4"></span>Cerrar
+                sesion</button>
+        </li>
+    </nav>
+
+    <!-- Contenido de la pagina  -->
+    <div id="content">
+        <div class="container-fluid p-5" *ngxPermissionsOnly="['GUEST']">
+            <div class="row no-gutters shadow-lg bg-white rounded" *ngIf="route == 'Home'">
+                <div class="col-sm-8">
+                    <img src="http://portlanddixie.info/wp-content/uploads/2017/07/hero.jpg" style="object-fit: cover; height: 200px; width: 100%;"
+                        class="img" alt="Responsive image">
+                    <div class="text-center p-4">
+                        <h1>¿Quienes somos?</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare leo diam,
+                            in elementum neque condimentum ut. Integer elementum enim posuere lobortis mollis. Sed
+                            pretium diam
+                            turpis, et posuere massa ullamcorper at. Phasellus venenatis justo in enim feugiat
+                            ultricies.
+                            Mauris
+                            magna augue, vulputate et elementum id, consectetur eget neque. Integer finibus
+                            molestie enim eget
+                            sollicitudin. Aliquam at tincidunt erat. Quisque ac pellentesque augue. Aliquam ornare
+                            sodales
+                            nunc, id
+                            interdum nunc dictum at. Pellentesque convallis vulputate risus, nec pretium tellus
+                            mattis at. In
+                            hac
+                            habitasse platea dictumst. Vivamus commodo tortor nulla, sed pharetra risus finibus sit
+                            amet.
+                            Vestibulum varius finibus metus et posuere. Vivamus congue, diam vitae accumsan
+                            condimentum, libero
+                            tellus luctus velit, a feugiat lacus lorem et turpis. Ut bibendum orci et velit
+                            lacinia, ut tempor
+                            felis elementum.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 pb-2">
+                    <div class="text-center p-2 bg-primary text-white">
+                        <h2>Registrate!</h2>
+                    </div>
+
+                    <!-- Formulario registro cliente (falta poner el real) -->
+                    <form class="p-5" name="sign-up" (ngSubmit)="f.form.valid && signUp()" #f="ngForm" novalidate>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Correo electronico</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="Ingresa tu correo">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Contraseña</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Nombre</label>
+                            <input type="text" class="form-control" id="exampleInputUsername" placeholder="Ingresa tu nombre"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Direccion</label>
+                            <input type="text" class="form-control" id="exampleInputDireccion" placeholder="Ingresa tu dirección">
+                        </div>
+                        <div class="text-center">
+                            <button routerLink="/solicitudes/list" class="btn btn-primary">Ingresar</button>
+                        </div>
+                    </form>
+                    <div class="text-center">
+                        <a href="#" (click)=authService.setAdministradorRole()>¿Eres administrador?</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-sm-4 pb-2">
-            <div class="text-center p-2 bg-primary text-white">
-                <h2>Registrate!</h2>
-            </div>
-            <form class="p-5" name="sign-up" (ngSubmit)="f.form.valid && signUp()" #f="ngForm" novalidate>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Correo electronico</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Ingresa tu correo">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña" required >
-                </div>
-                <div class="form-group">
-                    <label for="username">Nombre</label>
-                    <input type="text" class="form-control" id="exampleInputUsername" placeholder="Ingresa tu nombre"  required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Direccion</label>
-                    <input type="text" class="form-control" id="exampleInputDireccion" placeholder="Ingresa tu dirección">
-                </div>
-                <div class="text-center">
-                    <button routerLink="/solicitudes/list" class="btn btn-primary">Ingresar</button>
-                </div>
-            </form>
-            <div class="text-center">
-                <a href="#">¿Eres administrador?</a>
-            </div>
+        <div>
+            <router-outlet></router-outlet>
+            <br>
+            <br>
         </div>
+
+        <!-- Pie de pagina  -->
+        <footer class="footer bg-light" id="footer">
+            <div class="container">
+                <p class="navbar-text text-center">
+                    <img src="../assets/uniandes.png" alt="logo" width="8%" /><span id="footer-text">© Grupo 6 -
+                        Sech</span>
+                    <a href="/"> ServiciosHogar</a>
+                </p>
+            </div>
+        </footer>
     </div>
 </div>
-<div>
-    <router-outlet></router-outlet>
-    <br>
-    <br>
-</div>
-<footer class="footer bg-light" id="footer">
-    <div class="container">
-        <p class="navbar-text text-center">
-            <img src="../assets/uniandes.png" alt="logo" width="8%" /><span id="footer-text">© Grupo 6 - Sech</span>
-            <a href="/"> ServiciosHogar</a>
-        </p>
-    </div>
-</footer>

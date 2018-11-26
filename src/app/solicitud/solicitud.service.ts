@@ -7,7 +7,7 @@ import { SolicitudDetail } from './solicitud-detail';
 
 import { environment } from '../../environments/environment';
 const API_URL = environment.apiURL;
-const solicitudes = '/solicitudes';
+const solicitudes = 'clientes/7/solicitudes';
 
 
 /**

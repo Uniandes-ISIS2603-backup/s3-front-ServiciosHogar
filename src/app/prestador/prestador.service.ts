@@ -7,7 +7,7 @@ import { PrestadorDetail } from './prestador-detail';
 
 import { environment } from '../../environments/environment';
 const API_URL = environment.apiURL;
-const prestadores = '/prestadores';
+const prestadores = 'prestadores';
 
 
 /**

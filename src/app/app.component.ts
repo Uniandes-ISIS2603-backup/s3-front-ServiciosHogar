@@ -3,6 +3,7 @@ import { AuthService } from './auth/auth.service';
 
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+
 /**
  * The app component. This component is the base of the ServiciosHogar
  */
@@ -30,12 +31,16 @@ export class AppComponent implements OnInit {
     });
   }
 
+  printRole(): void{
+    this.authService.printRole();
+  }
     /**
      * Assigns a title to the web page
      */
     ngOnInit(): void {
         this.title = "ServiciosHogar";
         this.authService.start();
+        this.printRole();
     }
 
     logout(): void {

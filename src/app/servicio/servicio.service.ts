@@ -8,7 +8,7 @@ import { Calificacion } from './calificacion';
 
 import { environment } from '../../environments/environment';
 const API_URL = environment.apiURL;
-const servicios = '/servicios';
+const servicios = 'servicios';
 const calificacion = '/calificacion';
 
 
