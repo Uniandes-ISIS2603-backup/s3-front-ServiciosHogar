@@ -9,7 +9,7 @@ import {Tarjeta} from './tarjeta';
 
 import {environment} from '../../environments/environment';
 const API_URL = environment.apiURL;
-const clientes = '/clientes';
+const clientes = 'clientes';
 const tarjetas = '/tarjetas';
 
 

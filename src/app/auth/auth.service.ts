@@ -63,10 +63,10 @@ export class AuthService {
             this.router.navigateByUrl('/prestadores/list');
         } else if (role === 'CLIENTE') {
             this.setClienteRole()
-            this.router.navigateByUrl('/clientes/1');
+            this.router.navigateByUrl('/clientes/4');
         } else if (role === 'PRESTADOR') {
             this.setPrestadorRole()
-            this.router.navigateByUrl('/prestadores/1');
+            this.router.navigateByUrl('/prestadores/2');
         }
 
     }

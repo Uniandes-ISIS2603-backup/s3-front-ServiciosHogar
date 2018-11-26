@@ -1,55 +1,44 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import 'rxjs/add/operator/filter';
+import { Component, OnInit } from '@angular/core';
+
+//Importar Cliente
+import {ClienteService} from '../cliente.service';
+import {Cliente} from '../cliente';
 
 
-import {Cliente} from '../../cliente/cliente';
-import {ClienteService} from '../../cliente/cliente.service';
 @Component({
-    selector: 'app-cliente-list',
-    templateUrl: './cliente-list.component.html',
-    styleUrls: ['./cliente-list.component.css']
+  selector: 'app-cliente-list',
+  templateUrl: './cliente-list.component.html',
+  styleUrls: ['./cliente-list.component.css']
 })
-export class ClienteListComponent implements OnInit {
-
+export class ClienteListComponent implements OnInit 
+{
     /**
-    * The list of clientes to display
-    */
-    @Input() clientes: Cliente[];
-
+     * Constructor del componente
+     * @param clienteService - El servicio del cliente
+     */
+    constructor(private clienteService: ClienteService) {}
+    
     /**
-    * The component's constructor
-    */
-    constructor(private clienteService: ClienteService, private route: ActivatedRoute) {}
-
-    allclientes: string = 'no';
+     * Arreglo de clientes.
+     */
+    clientes: Cliente[];
+    
     /**
-    * This method retrieves all the clientes in the Servicioshogar to show them in the list
-    */
-    getClientes(): void {
+     * Le pregunta al servicio para actualizar la lista de clientes.
+     */
+    getClientes(): void 
+    {
         this.clienteService.getClientes()
-            .subscribe(clientes => {
-                this.clientes = clientes;
-            });
+            .subscribe(clientes => this.clientes = clientes);
     }
-
+    
     /**
-    * The method which initializes the component
-    */
-    ngOnInit() {
-        this.route.queryParams
-            .filter(params => params.allclientes)
-            .subscribe(params => {
-                console.log(params);
-
-                this.allclientes = params.allclientes;
-                console.log(this.allclientes);
-            });
-        if (this.allclientes == 'yes') {
-            console.log("allclientes");
-
-            this.getClientes();
-        }
+     * Inicializará el componente y retornará la lista de clientes del servicio
+     * Se llama cuando de crea el componente.
+     */
+    ngOnInit() 
+    {
+        this.getClientes();
     }
 
 }
