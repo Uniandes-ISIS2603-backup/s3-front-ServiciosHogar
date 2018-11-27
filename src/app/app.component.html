@@ -3,7 +3,7 @@
 
 
 <!-- Barra de naveacion -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="width: 100%">
     <a class="navbar-brand" href="/" style="text-shadow: 2px 2px black;">
         Servicios
         <span class="fa fa-home"></span>
@@ -42,8 +42,8 @@
 <div id="wrapper">
 
     <!-- Menu lateral  -->
-    <nav id="sidebar" class="nav flex-column bg-dark text-white" style="overflow:hidden; display: inline-block" *ngxPermissionsOnly="['ADMIN']">
-        <li class="nav-item bg-secondary text-white mb-4 mt-2 p-3">
+    <nav id="sidebar" class="nav flex-column bg-dark text-white pt-5" *ngxPermissionsOnly="['ADMIN']">
+        <li class="nav-item bg-secondary text-white mb-4 mt-4 p-3">
             <h4 class="text-center"><span class="fa fa-cogs mr-4"></span>Dashboard</h4>
         </li>
         <li class="nav-item m-1">
@@ -59,7 +59,7 @@
     </nav>
 
     <!-- Contenido de la pagina  -->
-    <div id="content" style="display: inline-block">
+    <div id="content">
         <div class="container-fluid p-5" *ngxPermissionsOnly="['GUEST']">
             <div class="row no-gutters shadow-lg bg-white rounded" *ngIf="route == 'Home'">
                 <div class="col-sm-8">
@@ -96,30 +96,11 @@
                     </div>
 
                     <!-- Formulario registro cliente (falta poner el real) -->
-                    <form class="p-5" name="sign-up" (ngSubmit)="f.form.valid && signUp()" #f="ngForm" novalidate>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Correo electronico</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                placeholder="Ingresa tu correo">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="username">Nombre</label>
-                            <input type="text" class="form-control" id="exampleInputUsername" placeholder="Ingresa tu nombre"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Direccion</label>
-                            <input type="text" class="form-control" id="exampleInputDireccion" placeholder="Ingresa tu dirección">
-                        </div>
-                        <div class="text-center">
-                            <button (click)=authService.setClienteRole()  class="btn btn-primary">Ingresar</button>
-                        </div>
-                    </form>
+                    <div class="container-fluid">
+                        <app-cliente-create></app-cliente-create>
+                        <br>
+                        <br>
+                    </div>
                     <div class="text-center">
                         <a href="#" (click)=authService.setAdministradorRole()>¿Eres administrador?</a>
                     </div>

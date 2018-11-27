@@ -8,7 +8,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ClienteListComponent} from './cliente-list/cliente-list.component';
 import {ClienteTarjetaComponent} from './cliente-tarjetas/cliente-tarjeta.component';
-import {ClienteCreateComponent} from './cliente-create/cliente-create.component';
+import {SharedModule} from './cliente-create/SharedModule';
 import {ClienteDetailComponent} from './cliente-detail/cliente-detail.component';
 import {ClienteAddTarjetaComponent} from './cliente-add-tarjeta/cliente-add-tarjeta.component';
 import {ClienteEditComponent} from './cliente-edit/cliente-edit.component';
@@ -23,10 +23,11 @@ import {ClienteService} from './cliente.service';
         CommonModule,
         FormsModule,
         NgbModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SharedModule
     ],
     declarations: [
-        ClienteListComponent, ClienteDetailComponent, ClienteTarjetaComponent, ClienteCreateComponent, ClienteAddTarjetaComponent, ClienteEditComponent
+        ClienteListComponent, ClienteDetailComponent, ClienteTarjetaComponent, ClienteAddTarjetaComponent, ClienteEditComponent
     ],
     providers: [ClienteService],
     exports: [ClienteListComponent, ClienteEditComponent]

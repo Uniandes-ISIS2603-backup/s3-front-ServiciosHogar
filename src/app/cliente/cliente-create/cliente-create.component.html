@@ -2,21 +2,51 @@
     <div class="col-3"></div>
     <div class="col-6">
         <br>
-        <h2 class="text-center">Create an cliente</h2>
+        <h2 *ngxPermissionsExcept="['GUEST']">Crear un cliente</h2>
         <br>
-        <form name="cliente" (ngSubmit)="f.form.valid && createCliente()" #f="ngForm" novalidate>
+        <form class="text-left" name="cliente" (ngSubmit)="f.form.valid && createCliente()" #f="ngForm" novalidate>
             <div class="form-group">
                 <label for="clienteNombre"><b>Nombre</b></label>
                 <input type="text" name="clienteNombre" class="form-control" id="clienteNombre" [(ngModel)]="cliente.nombre"
-                    #clienteNombre="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clienteNombre.invalid }" required>
+                    #clienteNombre="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clienteNombre.invalid }"
+                    required>
                 <div class="invalid-feedback">
                     <div>The cliente's nombre is missing</div>
                 </div>
+
+                <label for="clienteDireccion"><b>Direccion</b></label>
+                <input type="text" name="clienteDireccion" class="form-control" id="clienteDireccion" [(ngModel)]="cliente.direccion"
+                    #clienteDireccion="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clienteDireccion.invalid }"
+                    required>
+                <div class="invalid-feedback">
+                    <div>The cliente's direccion is missing</div>
+                </div>
+
+                <label for="clienteCorreo"><b>Correo</b></label>
+                <input type="text" name="clienteCorreo" class="form-control" id="clienteCorreo" [(ngModel)]="cliente.correo"
+                    #clienteCorreo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clienteCorreo.invalid }"
+                    required>
+                <div class="invalid-feedback">
+                    <div>The cliente's correo is missing</div>
+                </div>
+
+                <label for="clienteContrasenia"><b>Contraseña</b></label>
+                <input type="text" name="clienteContrasenia" class="form-control" id="clienteContrasenia" [(ngModel)]="cliente.contrasenia"
+                    #clienteContrasenia="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clienteContrasenia.invalid }"
+                    required>
+                <div class="invalid-feedback">
+                    <div>The cliente's contraseña is missing</div>
+                </div>
             </div>
             <div class="row form-inline justify-content-center align-self-center">
-                <button type="submit" class="btn btn-primary">Create</button>
-                <div class="divider"></div>
-                <button type="button" class="btn btn-danger" (click)="cancelCreation()">Cancel</button>
+                <div *ngxPermissionsExcept="['GUEST']">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <div class="divider"></div>
+                    <button type="button" class="btn btn-danger" (click)="cancelCreation()">Cancel</button>
+                </div>
+                <div *ngxPermissionsOnly="['GUEST']">
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                </div>
             </div>
         </form>
     </div>

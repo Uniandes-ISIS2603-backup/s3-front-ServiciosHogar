@@ -1,16 +1,25 @@
+#content{
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.navbar{
+    z-index: 10;
+}
 
 .nav{
-        float:left;
-        height:100vh;
-        display: inline-block;
-        white-space: nowrap;
-        width: 60px;
-        transition: width 1s ;
-    }   
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height:100vh;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 60px;
+    transition: width 1s ;
+}   
 
 .nav:hover {
-        width: 250px;
-    }    
-   
-
-    
+    width: 250px;
+} 

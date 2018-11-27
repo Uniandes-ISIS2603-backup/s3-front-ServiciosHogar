@@ -20,6 +20,9 @@ import {PrestadorModule} from './prestador/prestador.module';
 import {ServicioModule} from './servicio/servicio.module';
 import {SolicitudModule} from './solicitud/solicitud.module';
 
+import {SharedModule} from './cliente/cliente-create/SharedModule';
+
+
 @NgModule({
     declarations: [
         AppComponent
@@ -46,7 +49,8 @@ import {SolicitudModule} from './solicitud/solicitud.module';
         HojaDeVidaModule,
         PrestadorModule,
         ServicioModule,
-        SolicitudModule
+        SolicitudModule,
+        SharedModule
     ],
     bootstrap: [AppComponent],
     providers: [
