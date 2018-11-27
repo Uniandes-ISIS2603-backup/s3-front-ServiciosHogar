@@ -15,7 +15,7 @@ export class FacturaListComponent implements OnInit {
 
     /**
     * Constructor for the component
-    * @param facturaService The author's services provider
+    * @param facturaService The servicio's services provider
     */
     constructor(
         private facturaService: FacturaService,

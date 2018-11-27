@@ -1,26 +1,32 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {DatePipe} from '@angular/common';
 import {ToastrService} from 'ngx-toastr';
 
 import {PrestadorService} from '../prestador.service';
-
 import {Prestador} from '../prestador';
+import {Servicio} from '../../servicio/servicio';
 
 @Component({
     selector: 'app-prestador-create',
     templateUrl: './prestador-create.component.html',
-    styleUrls: ['./prestador-create.component.css']
+    styleUrls: ['./prestador-create.component.css'],
+    providers: [DatePipe]
 })
 export class PrestadorCreateComponent implements OnInit {
 
     /**
     * Constructor for the component
     * @param prestadorService The prestadores' services provider
-    * @param toastrService The toastr to show messages to the user 
+    * @param servicioService The servicios' services provider
+    * @param toastrService The toastr to show messages to the user
+    * @param router The router
     */
     constructor(
+        private dp: DatePipe,
         private prestadorService: PrestadorService,
-        private toastrService: ToastrService
+        private toastrService: ToastrService,
+        private router: Router
     ) {}
 
     /**
@@ -29,37 +35,38 @@ export class PrestadorCreateComponent implements OnInit {
     prestador: Prestador;
 
     /**
-    * The output which tells the parent component
-    * that the user no longer wants to create an prestador
+    * The list of all the servicios in the PrestadorStore
     */
-    @Output() cancel = new EventEmitter();
+    servicios: Servicio[];
 
     /**
-    * The output which tells the parent component
-    * that the user created a new prestador
+    * The servicios of the new prestador
+    * This list is passed as a parameter to the child two-list component
+    * It is also updated by that child component
     */
-    @Output() create = new EventEmitter();
+    prestadorServicios: Servicio[];
+
+    /**
+    * Cancels the creation of the new prestador
+    * Redirects to the prestadores' list page
+    */
+    cancelCreation(): void {
+        this.toastrService.warning('The prestador wasn\'t created', 'Prestador creation');
+        this.router.navigate(['/prestadores/list']);
+    }
 
     /**
     * Creates a new prestador
     */
     createPrestador(): Prestador {
         this.prestadorService.createPrestador(this.prestador)
-            .subscribe((prestador) => {
-                this.prestador = prestador;
-                this.create.emit();
-                this.toastrService.success("The prestador was created", "Prestador creation");
+            .subscribe(prestador => {
+                this.prestador.id = prestador.id;
+                this.router.navigate(['/prestadores/' + prestador.id]);
             }, err => {
-                this.toastrService.error(err, "Error");
+                this.toastrService.error(err, 'Error');
             });
         return this.prestador;
-    }
-
-    /**
-    * Informs the parent component that the user no longer wants to create an prestador
-    */
-    cancelCreation(): void {
-        this.cancel.emit();
     }
 
     /**
@@ -68,4 +75,5 @@ export class PrestadorCreateComponent implements OnInit {
     ngOnInit() {
         this.prestador = new Prestador();
     }
+
 }

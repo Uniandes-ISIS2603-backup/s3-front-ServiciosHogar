@@ -1,41 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {AppRoutingModule} from '../../app-routing/app-routing.module';
-import { APP_BASE_HREF } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-
-import { AppModule } from '../../app.module';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PrestadorListComponent } from './prestador-list.component';
-import { Prestador } from '../prestador';
-import { PrestadorService } from '../prestador.service';
 
-describe('PrestadorComponent', () => {
-    let component: PrestadorListComponent;
-    let fixture: ComponentFixture<PrestadorListComponent>;
-    const prestadores: Prestador[] = require('../../../assets/prestadores.json');
+describe('PrestadorListComponent', () => {
+  let component: PrestadorListComponent;
+  let fixture: ComponentFixture<PrestadorListComponent>;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [AppRoutingModule, HttpClientModule, AppModule],
-            declarations: [],
-            providers: [{ provide: APP_BASE_HREF, useValue: '' }, PrestadorService]
-        })
-            .compileComponents();
-    });
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ PrestadorListComponent ]
+    })
+    .compileComponents();
+  }));
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(PrestadorListComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(PrestadorListComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
-
-    it('should have a list of prestadores', () => {
-        component.prestadores = prestadores;
-        expect(component.prestadores.length).toEqual(prestadores.length);
-    });
-
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

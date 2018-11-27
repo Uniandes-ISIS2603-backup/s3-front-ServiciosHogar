@@ -1,13 +1,16 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
-import { Prestador } from './prestador';
-import { PrestadorDetail } from './prestador-detail';
+import {Prestador} from './prestador';
+import {PrestadorDetail} from './prestador-detail';
+import {HojaDeVida} from './hojaDeVida';
 
-import { environment } from '../../environments/environment';
+
+import {environment} from '../../environments/environment';
 const API_URL = environment.apiURL;
 const prestadores = 'prestadores';
+const hojaDeVida = 'hojaDeVida';
 
 
 /**
@@ -20,7 +23,7 @@ export class PrestadorService {
     * Constructor of the service
     * @param http The HttpClient - This is necessary in order to perform requests
     */
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
     /**
     * Returns the Observable object containing the list of prestadores retrieved from the API
@@ -31,28 +34,46 @@ export class PrestadorService {
     }
 
     /**
-    * Returns the Observable object containing the prestador retrieved from the API
-    * @returns The prestador
+    * Creates a new prestador
+    * @param prestador The new prestador
+    * @returns The prestador with its new id if it was created, false if it wasn't
+    */
+    createPrestador(prestador): Observable<PrestadorDetail> {
+        return this.http.post<PrestadorDetail>(API_URL + prestadores, prestador);
+    }
+
+    /**
+    * Returns the Observable object with the details of an servicio retrieved from the API
+    * @returns The servicio details
     */
     getPrestadorDetail(prestadorId): Observable<PrestadorDetail> {
         return this.http.get<PrestadorDetail>(API_URL + prestadores + '/' + prestadorId);
     }
-    
+
     /**
-    * Creates an prestador
-    * @param prestador The prestador which will be created
-    * @returns The confirmation of the prestador's creation
+    * Creates a hojaDeVida
+    * @param hojaDeVida The hojaDeVida
+    * @returns True if the hojaDeVida was posted, false otherwise
     */
-    createPrestador(prestador): Observable<Prestador> {
-        return this.http.post<Prestador>(API_URL + prestadores, prestador);
+    createHojaDeVida(prestadorId, hojaDeVida): Observable<HojaDeVida> {
+        return this.http.post<HojaDeVida>(API_URL + prestadores + '/' + prestadorId + hojaDeVida, hojaDeVida);
+    }
+
+    /**
+        * Updates a new prestador
+        * @param prestador The updated prestador
+        * @returns The updated prestador
+        */
+    updatePrestador(prestador): Observable<PrestadorDetail> {
+        return this.http.put<PrestadorDetail>(API_URL + prestadores + '/' + prestador.id, prestador);
     }
     
     /**
-    * Updates an prestador
-    * @param prestador The prestador which will be update
-    * @returns The confirmation of the prestador's update
+    * Deletes a prestador
+    * @param prestadorId The prestador's id
+    * @returns True if the prestador was deleted, false otherwise
     */
-    updatePrestador(prestador): Observable<PrestadorDetail> {
-        return this.http.put<PrestadorDetail>(API_URL + prestadores + '/' + prestador.id, prestador);
+    deletePrestador(prestadorId): Observable<PrestadorDetail> {
+        return this.http.delete<PrestadorDetail>(API_URL + prestadores + '/' + prestadorId);
     }
 }

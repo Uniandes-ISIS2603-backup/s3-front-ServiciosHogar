@@ -18,5 +18,4 @@ export class Prestador{
      * La cédula del prestador
      */
     cedula:number;
-    
 }

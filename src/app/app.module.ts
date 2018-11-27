@@ -15,7 +15,6 @@ import {AuthModule} from './auth/auth.module';
 
 import {ClienteModule} from './cliente/cliente.module';
 import {FacturaModule} from './factura/factura.module';
-import {HojaDeVidaModule} from './hojaDeVida/hojaDeVida.module';
 import {PrestadorModule} from './prestador/prestador.module';
 import {ServicioModule} from './servicio/servicio.module';
 import {SolicitudModule} from './solicitud/solicitud.module';
@@ -46,7 +45,6 @@ import {SharedModule} from './cliente/cliente-create/SharedModule';
 
         ClienteModule,
         FacturaModule,
-        HojaDeVidaModule,
         PrestadorModule,
         ServicioModule,
         SolicitudModule,

@@ -1,90 +1,135 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {DatePipe} from '@angular/common';
+import {Router, ActivatedRoute} from '@angular/router';
+import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
+import {Observable, Subject, merge} from 'rxjs';
+import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
 
 import {PrestadorService} from '../prestador.service';
-import {PrestadorDetail} from '../prestador-detail';
+import {ServicioService} from '../../servicio/servicio.service';
 
+import {PrestadorDetail} from '../prestador-detail';
+import {Servicio} from '../../servicio/servicio';
 
 @Component({
     selector: 'app-prestador-edit',
     templateUrl: './prestador-edit.component.html',
-    styleUrls: ['./prestador-edit.component.css']
+    styleUrls: ['./prestador-edit.component.css'],
+    providers: [DatePipe]
 })
 export class PrestadorEditComponent implements OnInit {
 
     /**
-    * The component's constructor
-    * @param prestadorService The prestador's service
-    * @param toastrService The toastr to show messages to the user 
+    * The constructor of the component
+    * @param prestadorService The prestador service which communicates with the API
+    * @param servicioService The servicio service which communicates with the API
+    * @param toastrService The toastr to show messages to the user
+    * @param router The router which is needed to know when the component needs to reload
+    * @param route The route which helps to retrieves the id of the prestador to be shown
     */
     constructor(
+        private dp: DatePipe,
         private prestadorService: PrestadorService,
-        private toastrService: ToastrService
+        private servicioService: ServicioService,
+        private toastrService: ToastrService,
+        private router: Router,
+        private route: ActivatedRoute
     ) {}
 
+    model: any;
     /**
-    * The id of the prestador that the user wants to edit
-    * This is passed as a parameter by the parent component
+    * The prestador which will be updated
     */
-    @Input() prestador_id: number;
+    prestador: PrestadorDetail
+
+    prestador_id: number;
+    /**
+    * The list of every servicio in the PrestadorStore
+    */
+    servicios: Servicio[];
+
+    @ViewChild('instance') instance: NgbTypeahead;
+    focus$ = new Subject<string>();
+    click$ = new Subject<string>();
+
+    formatter = (x: {name: string}) => x.name;
 
     /**
-    * The output which tells the parent component
-    * that the user no longer wants to create an prestador
-    */
-    @Output() cancel = new EventEmitter();
-
-    /**
-    * The output which tells the parent component
-    * that the user updated a new prestador
-    */
-    @Output() update = new EventEmitter();
-
-    /**
-    * The prestador to edit
-    */
-    prestador: PrestadorDetail;
-
-    /**
-    * Retrieves the information of the prestador
+    * Retrieves the information of the prestador which will be updated
     */
     getPrestador(): void {
-        this.prestadorService.getPrestadorDetail(this.prestador_id)
-            .subscribe(prestador => {
-                this.prestador = prestador;
-            });
+        this.prestadorService.getPrestadorDetail(this.prestador_id).subscribe(prestador => {
+            this.prestador = prestador;
+        });
     }
 
     /**
-    * Updates the prestador's information
-    */
-    editPrestador(): void {
-        this.prestadorService.updatePrestador(this.prestador)
-            .subscribe(() => {
-                this.update.emit();
-                this.toastrService.success("The prestador's information was updated", "Prestador edition");
-            });
+     * Retrives the information of all the servicioes in the aplication.
+     */
+    getServicios(): void {
+        this.servicioService.getServicios().subscribe(servicios => {
+            this.servicios = servicios;
+            for (let item of this.prestador.servicios) {
+                for (let i = 0; i < this.servicios.length; i++) {
+                    if (this.servicios[i].id === item.id) {
+                        this.servicios.splice(i, 1);
+                    }
+                }
+            };
+        });
     }
 
     /**
-    * Informs the parent component that the user no longer wants to update the prestador
+    * Cancels the edition of the prestador
     */
     cancelEdition(): void {
-        this.cancel.emit();
+        this.toastrService.warning('The prestador wasn\'t edited', 'Prestador edition');
+        this.router.navigate(['/prestadores/list']);
+    }
+
+    addServicio(): void {
+        if (this.model != undefined && this.model.id != undefined) {
+            this.prestador.servicios.push(this.model);
+            for (let i = 0; i < this.servicios.length; i++) {
+                if (this.servicios[i].id === this.model.id) {
+                    this.servicios.splice(i, 1);
+                }
+            }
+            this.model = new Servicio();
+        }
+
+    }
+
+    removeServicio(servicio): void {
+        this.servicios.push(servicio);
+        for (let i = 0; i < this.prestador.servicios.length; i++) {
+            if (this.prestador.servicios[i].id == servicio.id) {
+                this.prestador.servicios.splice(i, 1);
+            }
+        }
     }
 
     /**
-    * The function which initializes the component
+    * This function updates the prestador
+    */
+    updatePrestador(): void {
+        this.prestadorService.updatePrestador(this.prestador)
+            .subscribe(() => {
+                this.router.navigate(['/prestadores/' + this.prestador.id]);
+                this.toastrService.success("The prestador was successfully edited", 'Prestador edition');
+            });
+    }
+
+    /**
+    * The function which initilizes the component
     */
     ngOnInit() {
-        this.prestador = new PrestadorDetail();
+        this.prestador_id = +this.route.snapshot.paramMap.get('id');
         this.getPrestador();
+        this.getServicios();
+        this.model = new Servicio();
     }
 
-    /**
-    * The function which is called every time the user chooses to edit a different prestador
-    */
-    ngOnChanges() {
-        this.ngOnInit();
-    }
+
 }
