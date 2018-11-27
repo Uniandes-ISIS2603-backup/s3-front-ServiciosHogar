@@ -8,10 +8,11 @@ import {Tarjeta} from './tarjeta';
 
 
 import {environment} from '../../environments/environment';
+import { Solicitud } from './solicitud';
 const API_URL = environment.apiURL;
 const clientes = 'clientes';
 const tarjetas = '/tarjetas';
-
+const solicitudes = '/solicitudes';
 
 /**
 * The service provider for everything related to clientes
@@ -60,6 +61,15 @@ export class ClienteService {
     }
 
     /**
+    * Creates a solicitud
+    * @param solicitud The solicitud
+    * @returns True if the solicitud was posted, false otherwise
+    */
+   createSolicitud(clienteId, solicitud): Observable<Solicitud> {
+    return this.http.post<Solicitud>(API_URL + clientes + '/' + clienteId + solicitudes, solicitud);
+}
+
+    /**
         * Updates a new cliente
         * @param cliente The updated cliente
         * @returns The updated cliente
@@ -67,4 +77,14 @@ export class ClienteService {
     updateCliente(cliente): Observable<ClienteDetail> {
         return this.http.put<ClienteDetail>(API_URL + clientes + '/' + cliente.id, cliente);
     }
+
+    
+    /**
+    * Deletes a cliente
+    * @param clienteId The cliente's id
+    * @returns True if the cliente was deleted, false otherwise
+    */
+   deleteCliente(clienteId): Observable<ClienteDetail> {
+    return this.http.delete<ClienteDetail>(API_URL + clientes + '/' + clienteId);
+}
 }

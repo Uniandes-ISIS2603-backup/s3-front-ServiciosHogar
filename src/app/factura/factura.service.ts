@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { Factura } from './factura';
+import { FacturaDetail} from './factura-detail';
 
 import { environment } from '../../environments/environment';
 const API_URL = environment.apiURL;
@@ -37,6 +38,14 @@ export class FacturaService {
         return this.http.get<Factura>(API_URL + facturas + '/' + facturaId);
     }
     
+     /**
+    * Returns the Observable object containing the factura retrieved from the API
+    * @returns The servicio
+    */
+   getFacturaDetail(facturaId): Observable<FacturaDetail> {
+    return this.http.get<FacturaDetail>(API_URL + facturas + '/' + facturaId);
+    }
+
     /**
     * Creates an factura
     * @param factura The factura which will be created
