@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 
 import {Prestador} from './prestador';
 import {PrestadorDetail} from './prestador-detail';
-import {HojaDeVida} from './hojaDeVida';
 
 
 import {environment} from '../../environments/environment';
@@ -30,6 +29,7 @@ export class PrestadorService {
     * @returns The list of prestadores in real time
     */
     getPrestadores(): Observable<Prestador[]> {
+        console.log("holi");
         return this.http.get<Prestador[]>(API_URL + prestadores);
     }
 
@@ -48,15 +48,6 @@ export class PrestadorService {
     */
     getPrestadorDetail(prestadorId): Observable<PrestadorDetail> {
         return this.http.get<PrestadorDetail>(API_URL + prestadores + '/' + prestadorId);
-    }
-
-    /**
-    * Creates a hojaDeVida
-    * @param hojaDeVida The hojaDeVida
-    * @returns True if the hojaDeVida was posted, false otherwise
-    */
-    createHojaDeVida(prestadorId, hojaDeVida): Observable<HojaDeVida> {
-        return this.http.post<HojaDeVida>(API_URL + prestadores + '/' + prestadorId + hojaDeVida, hojaDeVida);
     }
 
     /**

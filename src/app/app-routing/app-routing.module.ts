@@ -99,18 +99,9 @@ const routes: Routes = [
                 }
             },
             {
-                path: 'sign-up',
-                component: PrestadorCreateComponent,
-            },
-            {
                 path: 'add',
                 component: PrestadorCreateComponent,
-                canActivate: [NgxPermissionsGuard],
-                data: {
-                    permissions: {
-                        only: ['ADMIN']
-                    }
-                }
+                runGuardsAndResolvers: 'always'
             },
             {
                 path: ':id',

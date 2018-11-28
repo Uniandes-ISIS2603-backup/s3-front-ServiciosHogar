@@ -65,7 +65,7 @@ export class PrestadorEditComponent implements OnInit {
     }
 
     /**
-     * Retrives the information of all the servicioes in the aplication.
+     * Retrives the information of all the servicios in the aplication.
      */
     getServicios(): void {
         this.servicioService.getServicios().subscribe(servicios => {

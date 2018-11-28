@@ -32,8 +32,6 @@ export class ClienteSolicitudComponent implements OnInit {
         this.clienteSolicitudes = solicitudes;
     }
 
-
-
     /**
     * Shows or hides the create component
     */
