@@ -29,6 +29,6 @@ import { PrestadorService } from './prestador.service';
         PrestadorListComponent, PrestadorDetailComponent, PrestadorCreateComponent, PrestadorEditComponent
     ],
     providers: [PrestadorService],
-    exports: [PrestadorListComponent, PrestadorEditComponent]
+    exports: [PrestadorListComponent, PrestadorEditComponent, PrestadorEditComponent]
 })
 export class PrestadorModule { }

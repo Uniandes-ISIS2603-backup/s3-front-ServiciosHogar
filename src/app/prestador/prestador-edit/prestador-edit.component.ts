@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, Input} from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {Router, ActivatedRoute} from '@angular/router';
 import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
@@ -42,7 +42,8 @@ export class PrestadorEditComponent implements OnInit {
     * The prestador which will be updated
     */
     prestador: PrestadorDetail
-
+    
+    @Input()
     prestador_id: number;
     /**
     * The list of every servicio in the PrestadorStore
@@ -53,7 +54,7 @@ export class PrestadorEditComponent implements OnInit {
     focus$ = new Subject<string>();
     click$ = new Subject<string>();
 
-    formatter = (x: {name: string}) => x.name;
+    formatter = (x: {nombre: string}) => x.nombre;
 
     /**
     * Retrieves the information of the prestador which will be updated
@@ -61,22 +62,7 @@ export class PrestadorEditComponent implements OnInit {
     getPrestador(): void {
         this.prestadorService.getPrestadorDetail(this.prestador_id).subscribe(prestador => {
             this.prestador = prestador;
-        });
-    }
-
-    /**
-     * Retrives the information of all the servicios in the aplication.
-     */
-    getServicios(): void {
-        this.servicioService.getServicios().subscribe(servicios => {
-            this.servicios = servicios;
-            for (let item of this.prestador.servicios) {
-                for (let i = 0; i < this.servicios.length; i++) {
-                    if (this.servicios[i].id === item.id) {
-                        this.servicios.splice(i, 1);
-                    }
-                }
-            };
+            this.servicios = prestador.servicios;
         });
     }
 
@@ -85,7 +71,7 @@ export class PrestadorEditComponent implements OnInit {
     */
     cancelEdition(): void {
         this.toastrService.warning('The prestador wasn\'t edited', 'Prestador edition');
-        this.router.navigate(['/prestadores/list']);
+        this.router.navigate(['/prestadores/' + this.prestador.id]);
     }
 
     addServicio(): void {
@@ -119,6 +105,7 @@ export class PrestadorEditComponent implements OnInit {
                 this.router.navigate(['/prestadores/' + this.prestador.id]);
                 this.toastrService.success("The prestador was successfully edited", 'Prestador edition');
             });
+        this.router.navigate(['/prestadores/' + this.prestador.id]);
     }
 
     /**
@@ -127,7 +114,6 @@ export class PrestadorEditComponent implements OnInit {
     ngOnInit() {
         this.prestador_id = +this.route.snapshot.paramMap.get('id');
         this.getPrestador();
-        this.getServicios();
         this.model = new Servicio();
     }
 
