@@ -33,6 +33,7 @@ export class AuthSignUpComponent implements OnInit {
         this.toastrService.success('Successfully signed up')
     }
 
+
     /**
     * This function will initialize the component
     */
