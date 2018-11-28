@@ -8,6 +8,7 @@ import {Prestador} from '../prestador';
 import {PrestadorDetail} from '../prestador-detail';
 import {PrestadorHojaDeVidaComponent} from '../prestador-hojaDeVida/prestador-hojaDeVida.component';
 import {PrestadorAddHojaDeVidaComponent} from '../prestador-add-hojaDeVida/prestador-add-hojaDeVida.component';
+import { Servicio } from 'src/app/servicio/servicio';
 
 @Component({
     selector: 'app-prestador-detail',
@@ -56,6 +57,11 @@ export class PrestadorDetailComponent implements OnInit, OnDestroy {
     other_prestadores: Prestador[];
 
     /**
+     * The prestadors services
+     */
+    servicios: Servicio[];
+
+    /**
     * The suscription which helps to know when a new prestador
     * needs to be loaded
     */
@@ -95,6 +101,7 @@ export class PrestadorDetailComponent implements OnInit, OnDestroy {
         this.prestadorService.getPrestadorDetail(this.prestador_id)
             .subscribe(prestadorDetail => {
                 this.prestadorDetail = prestadorDetail;
+                this.servicios = prestadorDetail.servicios;
             });
     }
 
@@ -154,6 +161,8 @@ export class PrestadorDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.prestador_id = +this.route.snapshot.paramMap.get('id');
         this.prestadorDetail = new PrestadorDetail();
+        this.other_prestadores = [];
+        this.servicios = [];
         this.getPrestadorDetail();
         this.getOtherPrestadores();
     }

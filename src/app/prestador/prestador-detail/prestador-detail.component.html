@@ -1,1 +1,40 @@
-Prestador Detail
+<div class="panel panel-default"> 
+    <div>
+        <div class="border margin">
+            <p class="h3 p-3">{{prestadorDetail.nombre}}</p> 
+            <div class="row">
+                <div class="col-md-8">
+                    <dl>  
+                        <hr>
+                        <dt> Cédula</dt>
+                        <dd>{{prestadorDetail.cedula}}</dd>
+                    </dl>
+                    <div >
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p *ngIf="prestadorDetail.servicios?.length > 0">
+                                        Servicios del prestador                                 
+                                </p>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Descripcion</th>
+                                            <th>Requerimientos </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <tr *ngFor="let servicio of servicios">
+                                            <td><button routerLink="/servicio/{{servicio.id}}" type="button" class="btn btn-link">{{servicio.descripcion}}</button></td>
+                                            <td><span>{{servicio.requerimientos}}</span></td>
+                                        </tr> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

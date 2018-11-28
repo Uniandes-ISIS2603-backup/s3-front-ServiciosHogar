@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 //Importar Prestador
 import {PrestadorService} from '../prestador.service';
@@ -21,6 +21,7 @@ export class PrestadorListComponent implements OnInit
     /**
      * Arreglo de prestadores.
      */
+    @Input()
     prestadores: Prestador[];
     
     /**

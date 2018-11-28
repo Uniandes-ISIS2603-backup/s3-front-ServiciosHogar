@@ -11,7 +11,7 @@ import {NgxPermissionsModule} from 'ngx-permissions';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AuthModule} from './auth/auth.module';
-
+import { ModalDialogModule } from 'ngx-modal-dialog';
 
 import {ClienteModule} from './cliente/cliente.module';
 import {FacturaModule} from './factura/factura.module';
@@ -45,7 +45,8 @@ import {SharedModule} from './cliente/cliente-create/SharedModule';
         FacturaModule,
         PrestadorModule,
         ServicioModule,
-        SharedModule
+        SharedModule,
+        ModalDialogModule.forRoot()
     ],
     bootstrap: [AppComponent],
     providers: [
