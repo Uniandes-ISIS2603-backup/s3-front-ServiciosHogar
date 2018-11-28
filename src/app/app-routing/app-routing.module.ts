@@ -16,6 +16,7 @@ import { ClienteDetailComponent } from '../cliente/cliente-detail/cliente-detail
 import { ClienteCreateComponent } from '../cliente/cliente-create/cliente-create.component';
 import { AuthLoginComponent } from '../auth/auth-login/auth-login.component';
 import { AuthSignUpComponent } from '../auth/auth-sign-up/auth-sign-up.component';
+import { ClienteTarjetaComponent } from '../cliente/cliente-tarjetas/cliente-tarjeta.component';
 
 const routes: Routes = [
 
@@ -59,7 +60,20 @@ const routes: Routes = [
                 path: ':id',
                 component: ClienteDetailComponent,
                 runGuardsAndResolvers: 'always',
-            }
+                children:[
+                    {
+                        path:':tarjetas',
+                        component: ClienteTarjetaComponent,
+                        children:[
+                            {
+                                path:':numero',
+                                component: ClienteTarjetaComponent
+                            }
+                        ]
+                    }
+                ]
+            },
+            
         ]
     },
     {

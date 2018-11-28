@@ -40,6 +40,11 @@ export class SolicitudDetailComponent implements OnInit {
     */
     solicitud_id: number;
 
+       /**
+     * Shows or hides the edit component.
+     */
+    showEdit: boolean;
+    
     /**
     * The method which retrieves the servicios of an solicitud
     */
