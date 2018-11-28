@@ -42,13 +42,13 @@ export class ClienteAddSolicitudComponent implements OnInit, OnChanges {
 
     /**
     * This function posts a solicitud
-    * @param reviewForm The form of the solicitud
+    * @param solicitudForm The form of the solicitud
     */
-    postReview(reviewForm: NgForm): Solicitud {
+    postSolicitud(solicitudForm: NgForm): Solicitud {
         this.solicitud.cliente = this.cliente;
         this.clienteService.createSolicitud(this.cliente.id,this.solicitud)
             .subscribe(() => {
-                reviewForm.resetForm();
+                solicitudForm.resetForm();
                 this.updateSolicitudes.emit();
                 this.toastrService.success("The solicitud was successfully created", 'Solicitud added');
             }, err => {
@@ -66,7 +66,7 @@ export class ClienteAddSolicitudComponent implements OnInit, OnChanges {
 
     /**
     * The function which notices that the input which defines the cliente_id has changed.
-    * If the cliente has changed, we update the reviews to show
+    * If the cliente has changed, we update the solicitudes to show
     */
     ngOnChanges() {
         this.ngOnInit();

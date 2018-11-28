@@ -1,32 +1,38 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {ToastrService} from 'ngx-toastr';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
-import {SolicitudService} from '../solicitud.service';
-import {SolicitudDetail} from '../solicitud-detail';
+import { SolicitudDetail } from '../solicitud-detail';
+import { ClienteService } from '../cliente.service';
+import { Cliente } from '../../cliente/cliente';
 
 
 @Component({
     selector: 'app-solicitud-edit',
-    templateUrl: './solicitud-edit.component.html',
-    styleUrls: ['./solicitud-edit.component.css']
+    templateUrl: './cliente-edit-solicitud.component.html',
+    styleUrls: ['./cliente-edit-solicitud.component.css']
 })
 export class SolicitudEditComponent implements OnInit {
 
     /**
     * The component's constructor
-    * @param solicitudService The solicitud's service
+    * @param clienteService The solicitud's service
     * @param toastrService The toastr to show messages to the user 
     */
     constructor(
-        private solicitudService: SolicitudService,
+        private clienteService: ClienteService,
         private toastrService: ToastrService
-    ) {}
+    ) { }
 
     /**
     * The id of the solicitud that the user wants to edit
     * This is passed as a parameter by the parent component
     */
     @Input() solicitud_id: number;
+
+    /**
+    * The cliente's id
+    */
+    @Input() cliente: Cliente;
 
     /**
     * The output which tells the parent component
@@ -49,7 +55,7 @@ export class SolicitudEditComponent implements OnInit {
     * Retrieves the information of the solicitud
     */
     getSolicitud(): void {
-        this.solicitudService.getSolicitudDetail(this.solicitud_id)
+        this.clienteService.getSolicitudDetail(this.cliente.id, this.solicitud_id)
             .subscribe(solicitud => {
                 this.solicitud = solicitud;
             });
@@ -59,7 +65,7 @@ export class SolicitudEditComponent implements OnInit {
     * Updates the solicitud's information
     */
     editSolicitud(): void {
-        this.solicitudService.updateSolicitud(this.solicitud)
+        this.clienteService.updateSolicitud(this.cliente.id, this.solicitud)
             .subscribe(() => {
                 this.update.emit();
                 this.toastrService.success("The solicitud's information was updated", "Solicitud edition");

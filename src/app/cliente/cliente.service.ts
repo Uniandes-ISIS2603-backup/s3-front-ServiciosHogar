@@ -1,16 +1,17 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
-import {Cliente} from './cliente';
-import {ClienteDetail} from './cliente-detail';
-import {Tarjeta} from './tarjeta';
-
-
-import {environment} from '../../environments/environment';
+import { Cliente } from './cliente';
+import { ClienteDetail } from './cliente-detail';
+import { Tarjeta } from './tarjeta';
 import { Solicitud } from './solicitud';
+import { SolicitudDetail } from './solicitud-detail';
+
+
+import { environment } from '../../environments/environment';
 const API_URL = environment.apiURL;
-const clientes = 'clientes';
+const clientes = '/clientes';
 const tarjetas = '/tarjetas';
 const solicitudes = '/solicitudes';
 
@@ -24,7 +25,7 @@ export class ClienteService {
     * Constructor of the service
     * @param http The HttpClient - This is necessary in order to perform requests
     */
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     /**
     * Returns the Observable object containing the list of clientes retrieved from the API
@@ -52,24 +53,6 @@ export class ClienteService {
     }
 
     /**
-    * Creates a tarjeta
-    * @param tarjeta The tarjeta
-    * @returns True if the tarjeta was posted, false otherwise
-    */
-    createTarjeta(clienteId, tarjeta): Observable<Tarjeta> {
-        return this.http.post<Tarjeta>(API_URL + clientes + '/' + clienteId + tarjetas, tarjeta);
-    }
-
-    /**
-    * Creates a solicitud
-    * @param solicitud The solicitud
-    * @returns True if the solicitud was posted, false otherwise
-    */
-   createSolicitud(clienteId, solicitud): Observable<Solicitud> {
-    return this.http.post<Solicitud>(API_URL + clientes + '/' + clienteId + solicitudes, solicitud);
-}
-
-    /**
         * Updates a new cliente
         * @param cliente The updated cliente
         * @returns The updated cliente
@@ -78,13 +61,57 @@ export class ClienteService {
         return this.http.put<ClienteDetail>(API_URL + clientes + '/' + cliente.id, cliente);
     }
 
-    
+
     /**
     * Deletes a cliente
     * @param clienteId The cliente's id
     * @returns True if the cliente was deleted, false otherwise
     */
-   deleteCliente(clienteId): Observable<ClienteDetail> {
-    return this.http.delete<ClienteDetail>(API_URL + clientes + '/' + clienteId);
-}
+    deleteCliente(clienteId): Observable<ClienteDetail> {
+        return this.http.delete<ClienteDetail>(API_URL + clientes + '/' + clienteId);
+    }
+
+    /**
+    * Returns the Observable object containing the solicitud retrieved from the API
+    * @returns The solicitud
+    */
+    getSolicitudDetail(clienteId, solicitudId): Observable<SolicitudDetail> {
+        return this.http.get<SolicitudDetail>(API_URL + clientes + '/' + clienteId + solicitudes + '/' + solicitudId);
+    }
+
+    /**
+    * Creates an solicitud
+    * @param solicitud The solicitud which will be created
+    * @returns The confirmation of the solicitud's creation
+    */
+    createSolicitud(clienteId, solicitud): Observable<Solicitud> {
+        return this.http.post<Solicitud>(API_URL + clientes + '/' + clienteId + solicitudes, solicitud);
+    }
+
+    /**
+    * Updates an solicitud
+    * @param solicitud The solicitud which will be update
+    * @returns The confirmation of the solicitud's update
+    */
+    updateSolicitud(clienteId, solicitud): Observable<SolicitudDetail> {
+        return this.http.put<SolicitudDetail>(API_URL + clientes + '/' + clienteId + solicitudes + '/' + solicitud.id, solicitud);
+    }
+
+    /**
+    * Deletes a solicitud
+    * @param solicitudId The solicitud's id
+    * @returns True if the solicitud was deleted, false otherwise
+    */
+    deleteSolicitud(clienteId, solicitudId): Observable<SolicitudDetail> {
+        return this.http.delete<SolicitudDetail>(API_URL + clientes + '/' + clienteId + solicitudes + '/' + solicitudId);
+    }
+
+    /**
+    * Creates a tarjeta
+    * @param tarjeta The tarjeta
+    * @returns True if the tarjeta was posted, false otherwise
+    */
+    createTarjeta(clienteId, tarjeta): Observable<Tarjeta> {
+        return this.http.post<Tarjeta>(API_URL + clientes + '/' + clienteId + tarjetas, tarjeta);
+    }
 }

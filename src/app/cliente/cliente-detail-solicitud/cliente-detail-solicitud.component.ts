@@ -1,27 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { SolicitudService } from '../solicitud.service';
-import { Solicitud } from '../solicitud';
-import { SolicitudDetail } from '../solicitud-detail';
+import {SolicitudDetail} from '../solicitud-detail';
+import {ClienteService} from '../cliente.service';
+import { Cliente } from '../../cliente/cliente';
 
 @Component({
     selector: 'app-solicitud-detail',
-    templateUrl: './solicitud-detail.component.html',
-    styleUrls: ['./solicitud-detail.component.css']
+    templateUrl: './cliente-detail-solicitud.component.html',
+    styleUrls: ['./cliente-detail-solicitud.component.css']
 })
 export class SolicitudDetailComponent implements OnInit {
 
     /**
     * The component's constructor
-    * @param solicitudService The solicitud's service
+    * @param clienteService The cliente's service
     * @param route The route element which helps to obtain the solicitud's id
     * @param toastrService The toastr to show messages to the user
     */
     constructor(
-        private solicitudService: SolicitudService,
+        private clienteService: ClienteService,
         private route: ActivatedRoute
     ) { }
+    
+    /**
+    * The cliente's id
+    */
+   @Input() cliente: Cliente;
 
     /**
     * The solicitud whose details we want to show
@@ -39,7 +44,7 @@ export class SolicitudDetailComponent implements OnInit {
     * The method which retrieves the servicios of an solicitud
     */
     getSolicitudDetail(): void {
-        this.solicitudService.getSolicitudDetail(this.solicitud_id)
+        this.clienteService.getSolicitudDetail(this.cliente.id,this.solicitud_id)
             .subscribe(solicitudDetail => {
                 this.solicitudDetail = solicitudDetail
             });

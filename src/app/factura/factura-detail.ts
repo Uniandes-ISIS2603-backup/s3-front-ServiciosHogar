@@ -1,5 +1,5 @@
 import { Factura } from './factura';
-import { Solicitud } from '../solicitud/solicitud';
+import { Solicitud } from '../cliente/solicitud';
 
 /**
 * This class represents a cliente of the ServiciosHogar. 

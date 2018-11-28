@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SolicitudEditComponent } from './solicitud-edit.component';
+import { SolicitudEditComponent } from './cliente-edit-solicitud.component';
 
 describe('SolicitudEditComponent', () => {
   let component: SolicitudEditComponent;

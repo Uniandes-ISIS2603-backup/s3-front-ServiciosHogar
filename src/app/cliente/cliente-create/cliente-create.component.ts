@@ -5,7 +5,8 @@ import {ToastrService} from 'ngx-toastr';
 
 import {ClienteService} from '../cliente.service';
 import {Cliente} from '../cliente';
-import {Solicitud} from '../../solicitud/solicitud';
+import {Solicitud} from '../solicitud';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
     selector: 'app-cliente-create',
@@ -24,6 +25,7 @@ export class ClienteCreateComponent implements OnInit {
     * @param router The router
     */
     constructor(
+        private authService: AuthService,
         private dp: DatePipe,
         private clienteService: ClienteService,
         private toastrService: ToastrService,

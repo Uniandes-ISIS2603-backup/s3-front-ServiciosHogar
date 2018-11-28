@@ -1,4 +1,4 @@
-import { Solicitud } from '../solicitud/solicitud';
+import { Solicitud } from './solicitud';
 import { Cliente } from './cliente';
 import { Tarjeta } from './tarjeta';
 

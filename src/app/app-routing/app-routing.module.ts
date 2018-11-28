@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 
-import { SolicitudListComponent } from '../solicitud/solicitud-list/solicitud-list.component';
-import { SolicitudDetailComponent } from '../solicitud/solicitud-detail/solicitud-detail.component';
-import { SolicitudCreateComponent } from '../solicitud/solicitud-create/solicitud-create.component';
+import { ClienteSolicitudComponent } from '../cliente/cliente-solicitudes/cliente-solicitud.component';
+import { SolicitudDetailComponent } from '../cliente/cliente-detail-solicitud/cliente-detail-solicitud.component';
+import { ClienteAddSolicitudComponent } from '../cliente/cliente-add-solicitud/cliente-add-solicitud.component';
 import { ServicioListComponent } from '../servicio/servicio-list/servicio-list.component';
 import { ServicioDetailComponent } from '../servicio/servicio-detail/servicio-detail.component';
 import { PrestadorListComponent } from '../prestador/prestador-list/prestador-list.component';
@@ -25,52 +25,40 @@ const routes: Routes = [
             {
                 path: 'list',
                 component: ClienteListComponent,
-                canActivate: [NgxPermissionsGuard],
-                data: {
-                    permissions: {
-                        only: ['ADMIN']
-                    }
-                }
+                canActivate: [NgxPermissionsGuard]
             },
+            { path: 'list', redirectTo: 'id', pathMatch: 'full' },
             {
                 path: 'add',
                 component: ClienteCreateComponent,
                 runGuardsAndResolvers: 'always'
             },
             {
+                path: ':id/solicitudes',
+                component: ClienteDetailComponent,
+                runGuardsAndResolvers: 'always',
+                children:[
+                    {
+                        path: 'list',
+                        component: ClienteSolicitudComponent,
+                        canActivate: [NgxPermissionsGuard]
+                    },
+                    {
+                        path: 'add',
+                        component: ClienteAddSolicitudComponent,
+                        canActivate: [NgxPermissionsGuard]
+                    },
+                    {
+                        path: ':id',
+                        component: SolicitudDetailComponent,
+                        runGuardsAndResolvers: 'always'
+                    }
+                ]
+            },
+            {
                 path: ':id',
                 component: ClienteDetailComponent,
-                runGuardsAndResolvers: 'always'
-            }
-        ]
-    },
-    {
-        path: 'solicitudes',
-        children: [
-            {
-                path: 'list',
-                component: SolicitudListComponent,
-                canActivate: [NgxPermissionsGuard],
-                data: {
-                    permissions: {
-                        only: ['CLIENT']
-                    }
-                }
-            },
-            {
-                path: 'add',
-                component: SolicitudCreateComponent,
-                canActivate: [NgxPermissionsGuard],
-                data: {
-                    permissions: {
-                        only: ['CLIENT']
-                    }
-                }
-            },
-            {
-                path: ':id',
-                component: SolicitudDetailComponent,
-                runGuardsAndResolvers: 'always'
+                runGuardsAndResolvers: 'always',
             }
         ]
     },
@@ -80,6 +68,15 @@ const routes: Routes = [
             {
                 path: 'list',
                 component: ServicioListComponent
+            },
+            {
+                path: 'add',
+                component: ClienteCreateComponent,
+                data: {
+                    permissions: {
+                        only: ['ADMIN','CLIENTE']
+                    }
+                }
             },
             {
                 path: ':id',

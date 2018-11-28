@@ -22,8 +22,17 @@ export class FacturaDetailComponent implements OnInit, OnDestroy {
     */
     constructor(
         private facturaService: FacturaService,
-        private route: ActivatedRoute
-    ) { }
+        private route: ActivatedRoute,
+        private router: Router,
+    ) {
+        //This is added so we can refresh the view when one of the books in
+        //the "Other books" list is clicked
+        this.navigationSubscription = this.router.events.subscribe((e: any) => {
+            if (e instanceof NavigationEnd) {
+                this.ngOnInit();
+            }
+        });
+    }
 
     /**
     * The factura's id retrieved from the path
@@ -34,6 +43,12 @@ export class FacturaDetailComponent implements OnInit, OnDestroy {
     * The factura whose details are shown
     */
     facturaDetail: FacturaDetail;
+    
+    /**
+    * The suscription which helps to know when a new book
+    * needs to be loaded
+    */
+   navigationSubscription;
 
     /**
     * The method which retrieves the details of the factura that
@@ -56,4 +71,14 @@ export class FacturaDetailComponent implements OnInit, OnDestroy {
         this.facturaDetail = new FacturaDetail();
         this.getFacturaDetail();
     }
+
+    /**
+    * This method helps to refresh the view when we need to load another book into it
+    * when one of the other books in the list is clicked
+    */
+   ngOnDestroy() {
+    if (this.navigationSubscription) {
+        this.navigationSubscription.unsubscribe();
+    }
+}
 }

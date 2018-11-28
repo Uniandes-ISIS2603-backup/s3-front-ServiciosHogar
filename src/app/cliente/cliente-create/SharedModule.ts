@@ -7,10 +7,12 @@ import { AppRoutingModule } from '../../app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { AuthModule } from '../../auth/auth.module';
+
 
 
 @NgModule({
-    imports: [FormsModule, CommonModule, BrowserModule, AppRoutingModule, HttpClientModule, NgbModule,
+    imports: [AuthModule, FormsModule, CommonModule, BrowserModule, AppRoutingModule, HttpClientModule, NgbModule,
         NgxPermissionsModule.forRoot(),
         NgxPermissionsModule,],
     declarations: [ClienteCreateComponent],
