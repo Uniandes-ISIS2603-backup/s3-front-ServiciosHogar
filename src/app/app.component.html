@@ -1,46 +1,44 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
+<div class="content">
+    <!-- Barra de naveacion -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/" style="text-shadow: 2px 2px black;">
+            Servicios
+            <span class="fa fa-home"></span>
+            Hogar
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<!-- Barra de naveacion -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="width: 100%">
-    <a class="navbar-brand" href="/" style="text-shadow: 2px 2px black;">
-        Servicios
-        <span class="fa fa-home"></span>
-        Hogar
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown" *ngxPermissionsExcept="['GUEST', 'ADMIN']">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"><span class="fa fa-user-circle"></span>
+                        Usuario
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" routerLink="clientes/4"><span class="fa fa-vcard"></span> Mi
+                            perfil</a>
+                        <a class="dropdown-item" href="/" (click)="logout()"><span class="fa fa-sign-out"></span>
+                            Cerrar
+                            sesion</a>
+                    </div>
+                </li>
+                <li class="nav-item" *ngxPermissionsOnly="['GUEST']">
+                    <button class="btn btn-light mr-2" routerLink="/prestadores/add"><span class="fa fa-briefcase"></span>
+                        Trabaja con nosotros</button>
+                    <button class="btn btn-outline-light" routerLink="/auth/login"><span class="fa fa-sign-in"></span>
+                        Iniciar sesion</button>
+                </li>
+            </ul>
 
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown" *ngxPermissionsExcept="['GUEST', 'ADMIN']">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"><span class="fa fa-user-circle"></span>
-                    Usuario
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" routerLink="clientes/4"><span class="fa fa-vcard"></span> Mi perfil</a>
-                    <a class="dropdown-item" href="/" (click)="logout()"><span class="fa fa-sign-out"></span>
-                        Cerrar
-                        sesion</a>
-                </div>
-            </li>
-            <li class="nav-item" *ngxPermissionsOnly="['GUEST']">
-                <button class="btn btn-light mr-2" routerLink="/prestadores/sign-up"><span class="fa fa-briefcase"></span>
-                    Trabaja con nosotros</button>
-                <button class="btn btn-outline-light" routerLink="/auth/login"><span class="fa fa-sign-in"></span>
-                    Iniciar sesion</button>
-            </li>
-        </ul>
-
-    </div>
-</nav>
-
-<div id="wrapper">
-
+        </div>
+    </nav>
     <!-- Menu lateral  -->
     <nav id="sidebar" class="nav flex-column bg-dark text-white pt-5" *ngxPermissionsOnly="['ADMIN']">
         <li class="nav-item bg-secondary text-white mb-4 mt-4 p-3">
@@ -57,73 +55,70 @@
                 sesion</button>
         </li>
     </nav>
-
     <!-- Contenido de la pagina  -->
-    <div id="content">
-        <div class="container-fluid p-5" *ngxPermissionsOnly="['GUEST']">
-            <div class="row no-gutters shadow-lg bg-white rounded" *ngIf="route == 'Home'">
-                <div class="col-sm-8">
-                    <img src="http://portlanddixie.info/wp-content/uploads/2017/07/hero.jpg" style="object-fit: cover; height: 200px; width: 100%;"
-                        class="img" alt="Responsive image">
-                    <div class="text-center p-4">
-                        <h1>¿Quienes somos?</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare leo diam,
-                            in elementum neque condimentum ut. Integer elementum enim posuere lobortis mollis. Sed
-                            pretium diam
-                            turpis, et posuere massa ullamcorper at. Phasellus venenatis justo in enim feugiat
-                            ultricies.
-                            Mauris
-                            magna augue, vulputate et elementum id, consectetur eget neque. Integer finibus
-                            molestie enim eget
-                            sollicitudin. Aliquam at tincidunt erat. Quisque ac pellentesque augue. Aliquam ornare
-                            sodales
-                            nunc, id
-                            interdum nunc dictum at. Pellentesque convallis vulputate risus, nec pretium tellus
-                            mattis at. In
-                            hac
-                            habitasse platea dictumst. Vivamus commodo tortor nulla, sed pharetra risus finibus sit
-                            amet.
-                            Vestibulum varius finibus metus et posuere. Vivamus congue, diam vitae accumsan
-                            condimentum, libero
-                            tellus luctus velit, a feugiat lacus lorem et turpis. Ut bibendum orci et velit
-                            lacinia, ut tempor
-                            felis elementum.</p>
-                    </div>
+    <div *ngxPermissionsOnly="['GUEST']">
+        <div class="row no-gutters shadow-lg bg-white rounded" style="margin-top: 100px" *ngIf="route == 'Home'">
+            <div class="col-md-8">
+                <img src="http://portlanddixie.info/wp-content/uploads/2017/07/hero.jpg" style="object-fit: cover; height: 200px; width: 100%;"
+                    class="img" alt="Responsive image">
+                <div class="text-center p-4">
+                    <h1>¿Quienes somos?</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare leo diam,
+                        in elementum neque condimentum ut. Integer elementum enim posuere lobortis mollis. Sed
+                        pretium diam
+                        turpis, et posuere massa ullamcorper at. Phasellus venenatis justo in enim feugiat
+                        ultricies.
+                        Mauris
+                        magna augue, vulputate et elementum id, consectetur eget neque. Integer finibus
+                        molestie enim eget
+                        sollicitudin. Aliquam at tincidunt erat. Quisque ac pellentesque augue. Aliquam ornare
+                        sodales
+                        nunc, id
+                        interdum nunc dictum at. Pellentesque convallis vulputate risus, nec pretium tellus
+                        mattis at. In
+                        hac
+                        habitasse platea dictumst. Vivamus commodo tortor nulla, sed pharetra risus finibus sit
+                        amet.
+                        Vestibulum varius finibus metus et posuere. Vivamus congue, diam vitae accumsan
+                        condimentum, libero
+                        tellus luctus velit, a feugiat lacus lorem et turpis. Ut bibendum orci et velit
+                        lacinia, ut tempor
+                        felis elementum.</p>
                 </div>
-                <div class="col-sm-4 pb-2">
-                    <div class="text-center p-2 bg-primary text-white">
-                        <h2>Registrate!</h2>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center p-2 bg-primary text-white">
+                    <h2>Registrate!</h2>
+                </div>
 
-                    <!-- Formulario registro cliente (falta poner el real) -->
-                    <div class="container-fluid">
-                        <app-cliente-create></app-cliente-create>
-                        <br>
-                        <br>
-                    </div>
-                    <div class="text-center">
-                        <a href="#" (click)=authService.setAdministradorRole()>¿Eres administrador?</a>
-                    </div>
+                <!-- Formulario registro cliente (falta poner el real) -->
+                <div class="container-fluid" style="padding-left: 60px; padding-right: 60px;">
+                    <app-cliente-create></app-cliente-create>
+                    <br>
+                    <br>
+                </div>
+                <div class="text-center p-3">
+                    <a href="#" (click)=authService.setAdministradorRole()>¿Eres administrador?</a>
                 </div>
             </div>
         </div>
-        
-        <!-- Contenido del rooter  -->
-        <div class="container-fluid">
-            <router-outlet></router-outlet>
-            <br>
-            <br>
-        </div>
-
-        <!-- Pie de pagina  -->
-        <footer class="footer bg-light" id="footer">
-            <div class="container">
-                <p class="navbar-text text-center">
-                    <img src="../assets/uniandes.png" alt="logo" width="8%" /><span id="footer-text">© Grupo 6 -
-                        Sech</span>
-                    <a href="/"> ServiciosHogar</a>
-                </p>
-            </div>
-        </footer>
     </div>
+
+    <!-- Contenido del rooter  -->
+    <div class="mx-auto">
+        <router-outlet style=" max-height: 100%; overflow:scroll;"></router-outlet>
+        <br>
+        <br>
+    </div>
+
+    <!-- Pie de pagina  -->
+    <footer class="footer bg-light" id="footer">
+        <div class="container">
+            <p class="navbar-text text-center">
+                <img src="../assets/uniandes.png" alt="logo" width="8%" /><span id="footer-text">© Grupo 6 -
+                    Sech</span>
+                <a href="/"> ServiciosHogar</a>
+            </p>
+        </div>
+    </footer>
 </div>

@@ -1,1 +1,44 @@
-Prestador Create
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <br>
+                <h2 class="text-center">Registrate como prestador de Servicios <span class="fa fa-home"></span>
+                    Hogar</h2>
+                <br>
+                <form name="prestador" (ngSubmit)="f.form.valid && createPrestador()" #f="ngForm" novalidate>
+                    <div class="form-group">
+                        <label for="prestadorNombre"><b>Nombre</b></label>
+                        <input type="text" name="prestadorNombre" class="form-control" id="prestadorNombre" [(ngModel)]="prestador.nombre"
+                            #prestadorNombre="ngModel" [ngClass]="{ 'is-invalid': f.submitted && prestadorNombre.invalid }" required>
+                        <div class="invalid-feedback">
+                            <div>Necesitamos que ingreses tu nombre</div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="prestadorCedula"><b>Cédula</b></label>
+                        <textarea name="prestadorCedula" class="form-control" id="prestadorCedula" [(ngModel)]="prestador.cedula"
+                            #prestadorCedula="ngModel" [ngClass]="{ 'is-invalid': f.submitted && prestadorCedula.invalid }"
+                            required></textarea>
+                        <div class="invalid-feedback">
+                            <div>Necesitamos que ingreses tu número de identificación</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row form-inline justify-content-center align-self-center">
+                            <div *ngxPermissionsExcept="['GUEST']">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                                <div class="divider"></div>
+                                <button type="button" class="btn btn-danger" (click)="cancelCreation()">Cancel</button>
+                            </div>
+                            <div *ngxPermissionsOnly="['GUEST']">
+                                <button type="submit" class="btn btn-primary">Ingresar</button>
+                            </div>
+                        </div>
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>

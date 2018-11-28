@@ -25,8 +25,8 @@ export class FacturaDetailComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private router: Router,
     ) {
-        //This is added so we can refresh the view when one of the books in
-        //the "Other books" list is clicked
+        //This is added so we can refresh the view when one of the prestadores in
+        //the "Other prestadores" list is clicked
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
             if (e instanceof NavigationEnd) {
                 this.ngOnInit();
@@ -45,7 +45,7 @@ export class FacturaDetailComponent implements OnInit, OnDestroy {
     facturaDetail: FacturaDetail;
     
     /**
-    * The suscription which helps to know when a new book
+    * The suscription which helps to know when a new prestador
     * needs to be loaded
     */
    navigationSubscription;
@@ -73,8 +73,8 @@ export class FacturaDetailComponent implements OnInit, OnDestroy {
     }
 
     /**
-    * This method helps to refresh the view when we need to load another book into it
-    * when one of the other books in the list is clicked
+    * This method helps to refresh the view when we need to load another prestador into it
+    * when one of the other prestadores in the list is clicked
     */
    ngOnDestroy() {
     if (this.navigationSubscription) {

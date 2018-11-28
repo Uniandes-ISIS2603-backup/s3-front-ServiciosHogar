@@ -1,14 +1,16 @@
-#content{
+.navbar{
+    z-index: 10;
+    position: fixed; width: 100%; top: 0px; left: 0px;
+}
+
+.content{
+    margin-top: 50px;
     padding-left: 60px;
     padding-right: 60px;
 }
 
-.navbar{
-    z-index: 10;
-}
-
 .nav{
-    z-index: 5;
+    z-index: 7;
     position: fixed;
     top: 0;
     left: 0;
@@ -23,3 +25,8 @@
 .nav:hover {
     width: 250px;
 } 
+
+#footer {
+    z-index: 5;
+    position: fixed; width: 100%; bottom: 0px; left: 0px;
+}

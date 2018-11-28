@@ -1,6 +1,5 @@
 import { Servicio } from '../servicio/servicio';
 import { Prestador } from './prestador';
-import { HojaDeVida } from './hojaDeVida';
 
 /**
 * This class represents a prestador of the PrestadorStore. 
@@ -9,6 +8,4 @@ import { HojaDeVida } from './hojaDeVida';
 export class PrestadorDetail extends Prestador {
    
     servicios: Servicio[];
-    
-    hojaDeVida: HojaDeVida[];
 }

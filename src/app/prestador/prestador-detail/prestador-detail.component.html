@@ -1,1 +1,19 @@
-Prestador Detail
+<div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-md-3 no-float bg-dark text-white" style="z-index: 7;">
+                <nav class="nav flex-column">
+                    <li class="nav-item bg-secondary text-white mb-4 mt-4 p-3">
+                        <h4><span class="fa fa-calendar mr-4"></span>Servicios</h4>
+                    </li>
+                    <div *ngFor="let servicio of prestadorDetail.servicios">
+                        <li class="nav-item m-1">
+                            <button class="btn btn-dark btn-lg btn-block"><span
+                                    class="
+                                fa fa-calendar-o mr-4"></span>{{servicio.descripcion}}</button>
+                        </li>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-9 no-float">Aqui se debe desplegar el detail del servicio. postdata: tengo sueñooooooooooooo</div>
+        </div>
+    </div>
