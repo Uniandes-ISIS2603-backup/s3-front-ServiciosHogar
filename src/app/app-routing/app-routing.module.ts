@@ -91,13 +91,6 @@ const routes: Routes = [
             },
             {
                 path: ':id/edit',
-                children: [
-                    {
-                        path: 'list',
-                        component: FacturaEditComponent,
-                        canActivate: [NgxPermissionsGuard]
-                    }
-                ],
                 component: FacturaEditComponent
             }
         ]
