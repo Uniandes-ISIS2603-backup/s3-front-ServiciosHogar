@@ -1,0 +1,41 @@
+
+<ng-template #rt let-r="result" let-t="term">
+    <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+</ng-template>
+
+<div class="container-fluid my-5">
+
+    <div class="card m-auto text-center border-info" style="width: 60%;">
+        <h2 class="card-header text-white bg-info">Editar un servicio</h2>
+        <div class="card-body">
+            <form name="solicitud" (ngSubmit)="f.form.valid && updateSolicitud()" #f="ngForm" novalidate>
+                <div class="form-group">
+                    <h5 class="card-title text-info">Fecha</h5>
+                    <div [ngClass]="{ 'is-invalid': f.submitted && solicitudFecha.invalid }">
+                        <input class="form-control" id="solicitudFecha" name="solicitudFecha" [(ngModel)]="solicitud.fecha"
+                            ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" #solicitudFecha="ngModel" [ngClass]="{'is-invalid': (solicitudFecha.untouched || solicitudFecha.invalid) }"
+                            required>
+                        <div class="invalid-feedback">
+                            <div>The solicitud's fecha is missing</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-info">
+                    <label for="servicioDescripcion"><b>Direccion</b></label>
+                    <textarea name="solicitudDireccion" class="form-control" id="solicitudDireccion" [(ngModel)]="solicitud.direccion"
+                        #solicitudDireccion="ngModel" [ngClass]="{ 'is-invalid': f.submitted && solicitudDireccion.invalid }"
+                        required></textarea>
+                    <div class="invalid-feedback">
+                        <div>The solicitud's direccion is missing</div>
+                    </div>
+                </div>
+                <div class="row form-inline justify-content-center ">
+                    <button type="submit" class="btn btn-info">Edit</button>
+
+                    <div class="divider"></div>
+
+                    <button type="button" class="btn btn-danger" (click)="cancelEdition()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>

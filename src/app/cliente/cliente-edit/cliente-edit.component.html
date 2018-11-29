@@ -1,0 +1,56 @@
+<div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <br>
+            <h2 class="text-center">Editar Cliente</h2>
+            <br>
+            <form name="cliente" (ngSubmit)="f.form.valid && updateCliente()" #f="ngForm" novalidate>
+                <div class="form-group">
+                    <label for="clienteNombre"><b>Nombre del cliente</b></label>
+                    <input type="text" name="clienteNombre" class="form-control" id="clienteNombre" [(ngModel)]="cliente.nombre"
+                        #clienteNombre="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clienteNombre.invalid }"
+                        required>
+                    <div class="invalid-feedback">
+                        <div>Debes ingresar el nombre cliente</div>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="clienteDireccion"><b>Dirección del cliente</b></label>
+                    <input type="text" name="clienteDireccion" class="form-control" id="clienteDireccion" [(ngModel)]="cliente.direccion"
+                        #clienteDireccion="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clienteDireccion.invalid }" required>
+                    <div class="invalid-feedback">
+                        <div>Debes ingresas la dirección cliente</div>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="clienteCorreo"><b>Correo del cliente</b></label>
+                    <input type="text" name="clienteCorreo" class="form-control" id="clienteCorreo" [(ngModel)]="cliente.correo"
+                        #clienteCorreo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clienteCorreo.invalid }"
+                        required>
+                    <div class="invalid-feedback">
+                        <div>Debes ingresar el Correo del cliente</div>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="clienteContrasena"><b>Contraseñia  del cliente</b></label>
+                    <input type="text" name="clienteContrasena" class="form-control" id="clienteContrasena" [(ngModel)]="cliente.contrasena"
+                        #clienteContrasena="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clienteContrasena.invalid }"
+                        required>
+                    <div class="invalid-feedback">
+                        <div>Debes ingresar la contraseñia de la cliente</div>
+                    </div>
+                </div>
+    
+                <div class="row form-inline justify-content-center align-self-center">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <div class="divider"></div>
+                    <button type="button" class="btn btn-danger" (click)="cancelEdition()">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>

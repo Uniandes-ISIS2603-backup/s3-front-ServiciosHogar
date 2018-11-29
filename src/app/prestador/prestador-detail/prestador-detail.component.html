@@ -1,41 +1,46 @@
-<div class="panel panel-default"> 
-    <div>
-        <div class="border margin">
+<div class="container-fluid">
+    <div class="row-md-12">
+        <div class="col-md-4">
             <p class="h3 p-3">{{prestadorDetail.nombre}}</p> 
-            <div class="row">
-                <div class="col-md-8">
-                    <dl>  
-                        <hr>
-                        <dt> Cédula</dt>
-                        <dd>{{prestadorDetail.cedula}}</dd>
-                    </dl>
-                    <div >
-                        <div class="row">
-                            <div class="col-md-3">
-                                <p *ngIf="prestadorDetail.habilities?.length > 0">
-                                    <button type="button" class="btn" [ngClass]="{ 'btn-primary': habilidadListComponent.isCollapsed,'btn-outline-primary':!habilidadListComponent.isCollapsed}" (click)="toggleHabilidades()">
-                                        Habilidades del prestador
-                                    </button>
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p>
-                                    <button type="button" class="btn" [ngClass]="{ 'btn-primary': habilidadAddComponent.isCollapsed,'btn-outline-primary':!habilidadAddComponent.isCollapsed}" (click)="toggleCreateHabilidad()">
-                                        Crear una habilidad
-                                    </button>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <app-prestador-habilidades [prestadorHabilidades]="prestadorDetail.habilities"></app-prestador-habilidades>
-                    <app-prestador-add-habilidad [prestador]="prestadorDetail" (updateHabilidades)="updateHabilidades()"></app-prestador-add-habilidad>
-                    <br>
+        </div>
+        <div class="col-md-4">
+            <td>
+                <button class="btn btn-primary" (click)="showHideEdit(prestadorDetail.id)"><span class="fa fa-pencil"></span></button>
+            </td>
+        </div>        
+        <div class="col-md-8">
+                <div *ngIf="showEdit">
+                    <app-prestador-edit [prestador_id]="prestador_id" (cancel)="showHideEdit(prestador_id)" (update)="updatePrestador()"></app-prestador-edit>
                 </div>
+        </div>
+    </div>
+        <div class="row-md">
+            <div class="col-md-4">
+                <dl>  
+                    <hr>
+                    <dt> Cédula</dt>
+                    <dd>{{prestadorDetail.cedula}}</dd>
+                </dl>
+            <div >
+            <div class="col-md-12">
+                <p *ngIf="prestadorDetail.servicios?.length > 0">
+                    Servicios del prestador                                 
+                </p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Requerimientos </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let servicio of servicios">
+                            <td><span>{{servicio.descripcion}}</span></td>
+                            <td><span>{{servicio.requerimientos}}</span></td>
+                        </tr> 
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</div>
-<div class="row border margin">
-    <p class="h3 p-3">Otros prestadores que te podrían interesar</p>
-    <app-prestador-list [prestadores]="otros_prestadores"></app-prestador-list>
 </div>

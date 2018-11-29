@@ -1,0 +1,12 @@
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Solicitudes</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let solicitud of clienteSolicitudes">
+                <td><button routerLink="/clientes/{{solicitud.cliente.id}}/solicitudes/{{solicitud.id}}" type="button" class="btn btn-link">{{solicitud.fecha}}</button></td>
+            </tr>
+        </tbody>
+    </table>

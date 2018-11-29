@@ -1,7 +1,14 @@
-import { Solicitud } from '../solicitud/solicitud';
-import {Cliente} from '../cliente/cliente';
+import { Solicitud } from './solicitud';
+import { Cliente } from './cliente';
+import { Tarjeta } from './tarjeta';
 
-export class ClienteDetail extends Cliente
-{
+/**
+* This class represents a cliente of the ServiciosHogar. 
+* It contains all the information relevant to the cliente.
+*/
+export class ClienteDetail extends Cliente {
+   
     solicitudes: Solicitud[];
+    
+    tarjetas: Tarjeta[];
 }

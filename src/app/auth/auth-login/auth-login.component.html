@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-6 offset-3">
+        <br>
+        <h2 class="text-center">Iniciar sesión</h2>
+        <br>
+        <form name="login" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+            
+                <label for="correo"><b>Correo</b></label>
+                <input type="email" name="correo" class="form-control" id="correo" [(ngModel)]="user.correo" 
+                #correo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && correo.invalid }"
+                    required>
+                <div class="invalid-feedback">
+                    <div>Introduce tu correo</div>
+                </div>
+            
+            
+                <label for="password"><b>Contraseña</b></label>
+                <input type="password" name="password" class="form-control" id="password" [(ngModel)]="user.password" 
+                #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+                    required>
+                <div class="invalid-feedback">
+                    <div>Introduce tu constraseña</div>
+                </div>
+            
+            
+                <label for="role"><b>Soy un</b></label>
+                <select class="custom-select" name="role" id="role" [(ngModel)]="user.role" 
+                 
+                #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+                    required>
+                    <option [value]="role" *ngFor="let role of roles">{{role}}</option>
+                </select>
+                <div class="invalid-feedback">
+                    <div>Selecciona tu rol</div>
+                </div>
+
+
+            <div class="justify-content-center align-self-center">
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</div>

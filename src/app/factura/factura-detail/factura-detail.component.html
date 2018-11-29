@@ -1,10 +1,27 @@
 <div class="container-fluid">
-  <div class="col">
-      <ul>
-          <li>{{tarjetaDetail.titular}}</li>
-          <li>{{tarjetaDetail.date}}</li>
-          <li>{{tarjetaDetail.code}}</li>
-          <li>{{tarjetaDetail.numero}}</li>
-      </ul>
-  </div>
-</div>
+    <div class="row-md-12">
+        <div class="col-md-4">
+            <p class="h3 p-3">{{facturaDetail.number}}</p> 
+        </div>
+    </div>
+        <div class="row-md">
+            <div class="col-md-4">
+                <dl>  
+                    <hr>
+                    <dt> Fecha de la factura</dt>
+                    <dd>{{facturaDetail.date}}</dd>
+                </dl>
+                <dl>  
+                    <hr>
+                    <dt> Valor de la factura</dt>
+                    <dd>{{facturaDetail.valor}}</dd>
+                </dl>
+                <dl>  
+                    <hr>
+                    <dt> Método de pago de la factura</dt>
+                    <dd>{{facturaDetail.pago}}</dd>
+                </dl>
+                <button class="btn-primary" routerLink="/facturas/{{facturaDetail.id}}/edit"> Editar </button>
+            </div>
+        </div>
+    </div>

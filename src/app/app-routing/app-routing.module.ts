@@ -1,71 +1,72 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
-import {NgxPermissionsGuard} from 'ngx-permissions';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { NgxPermissionsGuard } from 'ngx-permissions';
 
-import { CalificacionListComponent } from '../calificacion/calificacion-list/calificacion-list.component';
+import { ClienteSolicitudComponent } from '../cliente/cliente-solicitudes/cliente-solicitud.component';
+import { FacturaDetailComponent } from '../factura/factura-detail/factura-detail.component';
+import { FacturaCreateComponent } from '../factura/factura-create/factura-create.component';
+import { FacturaListComponent } from '../factura/factura-list/factura-list.component';
+import { FacturaEditComponent } from '../factura/factura-edit/factura-edit.component';
+import { SolicitudDetailComponent } from '../cliente/cliente-detail-solicitud/cliente-detail-solicitud.component';
+import { ClienteAddSolicitudComponent } from '../cliente/cliente-add-solicitud/cliente-add-solicitud.component';
+import { ServicioListComponent } from '../servicio/servicio-list/servicio-list.component';
+import { ServicioDetailComponent } from '../servicio/servicio-detail/servicio-detail.component';
+import { PrestadorListComponent } from '../prestador/prestador-list/prestador-list.component';
+import { PrestadorDetailComponent } from '../prestador/prestador-detail/prestador-detail.component';
+import { PrestadorCreateComponent } from '../prestador/prestador-create/prestador-create.component';
 import { ClienteListComponent } from '../cliente/cliente-list/cliente-list.component';
 import { ClienteDetailComponent } from '../cliente/cliente-detail/cliente-detail.component';
 import { ClienteCreateComponent } from '../cliente/cliente-create/cliente-create.component';
-import { PrestadorListComponent } from '../prestador/prestador-list/prestador-list.component';
-import {PrestadorDetailComponent} from '../prestador/prestador-detail/prestador-detail.component';
-import {PrestadorCreateComponent} from '../prestador/prestador-create/prestador-create.component';
-import {SolicitudDetailComponent} from '../solicitud/solicitud-detail/solicitud-detail.component';
-import {SolicitudCreateComponent} from '../solicitud/solicitud-create/solicitud-create.component';
-import {SolicitudEditComponent} from '../solicitud/solicitud-edit/solicitud-edit.component';
-import {SolicitudListComponent } from '../solicitud/solicitud-list/solicitud-list.component';
-import { FacturaListComponent } from '../factura/factura-list/factura-list.component';
-import {FacturaDetailComponent} from '../factura/factura-detail/factura-detail.component';
-import { HojaDeVidaListComponent } from '../hoja-de-vida/hoja-de-vida-list/hoja-de-vida-list.component';
-import { ReferenciaListComponent } from '../referencia/referencia-list/referencia-list.component';
-import { TarjetaCreditoListComponent } from '../tarjeta-credito/tarjeta-credito-list/tarjeta-credito-list.component';
-
+import { ClienteEditComponent } from '../cliente/cliente-edit/cliente-edit.component';
+import { AuthLoginComponent } from '../auth/auth-login/auth-login.component';
+import { AuthSignUpComponent } from '../auth/auth-sign-up/auth-sign-up.component';
+import { ClienteTarjetaComponent } from '../cliente/cliente-tarjetas/cliente-tarjeta.component';
 
 const routes: Routes = [
 
-    {
-        path: 'prestadores',
-        children: [
-            {
-                path: 'list',
-                component: PrestadorListComponent
-            },
-            {
-                path: ':id',
-                component: PrestadorDetailComponent,
-                runGuardsAndResolvers: 'always'
-            },
-            {
-                path: 'add',
-                component: PrestadorCreateComponent,
-                runGuardsAndResolvers: 'always'
-            }
-        ]
-    },
-    {
-        path: 'calificaciones',
-        children: [
-            {
-                path: 'list',
-                component: CalificacionListComponent
-            }
-        ]
-    },
     {
         path: 'clientes',
         children: [
             {
                 path: 'list',
-                component: ClienteListComponent
+                component: ClienteListComponent,
+                canActivate: [NgxPermissionsGuard]
             },
+            { path: 'list', redirectTo: 'id', pathMatch: 'full' },
             {
                 path: 'add',
                 component: ClienteCreateComponent,
-                runGuardsAndResolvers : 'always'
+                runGuardsAndResolvers: 'always'
+            },
+            {
+                path: ':id/solicitudes',
+                children:[
+                    {
+                        path: 'list',
+                        component: ClienteSolicitudComponent,
+                        canActivate: [NgxPermissionsGuard]
+                    },
+                    {
+                        path: 'add',
+                        component: ClienteAddSolicitudComponent,
+                        canActivate: [NgxPermissionsGuard]
+                    },
+                    {
+                        path: ':id',
+                        component: SolicitudDetailComponent,
+                        runGuardsAndResolvers: 'always'
+                    }
+                ]
+            },
+            {
+                path: ':id/edit',
+                component: ClienteEditComponent                
             },
             {
                 path: ':id',
-                component: ClienteDetailComponent
+                component: ClienteDetailComponent,
+                runGuardsAndResolvers: 'always'
             }
         ]
     },
@@ -77,67 +78,78 @@ const routes: Routes = [
                 component: FacturaListComponent
             },
             {
-                path: 'id',
-                component: FacturaListComponent
-            }
-        ]
-    },
-    {
-        path: 'hojasdevida',
-        children: [
-            {
-                path: 'list',
-                component: HojaDeVidaListComponent
-            },
-            {
-                path: 'referencias',
-                component: ReferenciaListComponent
-            }
-        ]
-    },
-    {
-        path: 'referencias',
-        children: [
-            {
-                path: 'list',
-                component: ReferenciaListComponent
-            }
-        ]
-    },
-    {
-        path: 'solicitudes',
-        children: [
-            {
-                path: 'list',
-                component: SolicitudListComponent
-            },
-            {
                 path: 'add',
-                component: SolicitudCreateComponent,
-                canActivate: [NgxPermissionsGuard]
-            },
-            {
-                path: ':id/edit',
-                component: SolicitudEditComponent,
-                canActivate: [NgxPermissionsGuard]
+                component: FacturaCreateComponent
             },
             {
                 path: ':id',
-                component: SolicitudDetailComponent,
+                component: FacturaDetailComponent,
+                runGuardsAndResolvers: 'always'
+            },
+            {
+                path: ':id/edit',
+                component: FacturaEditComponent
+            }
+        ]
+    },
+    {
+        path: 'servicios',
+        children: [
+            {
+                path: 'list',
+                component: ServicioListComponent
+            },
+            {
+                path: 'add',
+                component: ClienteCreateComponent,
+                data: {
+                    permissions: {
+                        only: ['ADMIN','CLIENTE']
+                    }
+                }
+            },
+            {
+                path: ':id',
+                component: ServicioDetailComponent,
                 runGuardsAndResolvers: 'always'
             }
         ]
     },
     {
-        path: 'tarjetascredito',
+        path: 'prestadores',
         children: [
             {
                 path: 'list',
-                component: TarjetaCreditoListComponent
+                component: PrestadorListComponent,
+                canActivate: [NgxPermissionsGuard],
+                data: {
+                    permissions: {
+                        only: ['ADMIN']
+                    }
+                }
             },
             {
-                path: 'id',
-                component: TarjetaCreditoListComponent
+                path: 'add',
+                component: PrestadorCreateComponent,
+                runGuardsAndResolvers: 'always'
+            },
+            {
+                path: ':id',
+                component: PrestadorDetailComponent,
+                runGuardsAndResolvers: 'always'
+            }
+        ]
+    },
+    {
+        path: 'auth',
+        children: [
+            {
+                path: 'login',
+                component: AuthLoginComponent,
+            },
+            {
+                path: ':sign-up',
+                component: AuthSignUpComponent
             }
         ]
     }
@@ -146,7 +158,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
     ],
     exports: [RouterModule],
     declarations: []

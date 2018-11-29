@@ -1,45 +1,45 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
+//Importar Prestador
 import {PrestadorService} from '../prestador.service';
-import {Prestador} from '../prestador'; 
+import {Prestador} from '../prestador';
 
-/**
- * El componente de la lista de prestadores
- */
+
 @Component({
   selector: 'app-prestador-list',
   templateUrl: './prestador-list.component.html',
   styleUrls: ['./prestador-list.component.css']
 })
-export class PrestadorListComponent implements OnInit {
-    
-    /**
-     * La lista de libros que se va a desplegar
-     */
-    @Input() prestadores: Prestador[];
-    
+export class PrestadorListComponent implements OnInit 
+{
     /**
      * Constructor del componente
-     * @param prestadorService El proveedor de servicios del prestador
+     * @param prestadorService - El servicio del prestador
      */
-    constructor(private prestadorService: PrestadorService, private route: ActivatedRoute) { }
-     
+    constructor(private prestadorService: PrestadorService) {}
+    
     /**
-     * Le pregunta al servicio para actualizar la lista de prestadores
+     * Arreglo de prestadores.
      */
-    getPrestadores(): void {
+    @Input()
+    prestadores: Prestador[];
+    
+    /**
+     * Le pregunta al servicio para actualizar la lista de prestadores.
+     */
+    getPrestadores(): void 
+    {
         this.prestadorService.getPrestadores()
-            .subscribe(prestadores => {
-            this.prestadores = prestadores});
+            .subscribe(prestadores => this.prestadores = prestadores);
     }
     
-    /*
+    /**
      * Inicializará el componente y retornará la lista de prestadores del servicio
      * Se llama cuando de crea el componente.
      */
-    ngOnInit() {
-       this.getPrestadores();
+    ngOnInit() 
+    {
+        this.getPrestadores();
     }
 
 }

@@ -1,134 +1,136 @@
-import {Component, OnInit, OnDestroy, ViewContainerRef, ViewChild} from '@angular/core';
-import {ActivatedRoute, Router, NavigationEnd} from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import {PrestadorService} from '../prestador.service';
-import {Prestador} from '../prestador';
-import {PrestadorDetail} from '../prestador-detail';
-import {PrestadorHabilidadComponent} from '../prestador-habilidades/prestador-habilidades.component';
-import {PrestadorAddHabilidadComponent} from '../prestador-add-habilidad/prestador-add-habilidad.component';
+import { Servicio } from '../../servicio/servicio';
+import { PrestadorService } from '../prestador.service';
+import { Prestador } from '../prestador';
+import { PrestadorDetail } from '../prestador-detail';
+import { PrestadorHojaDeVidaComponent } from '../prestador-hojaDeVida/prestador-hojaDeVida.component';
+import { PrestadorAddHojaDeVidaComponent} from '../prestador-add-hojaDeVida/prestador-add-hojaDeVida.component';
 
 @Component({
     selector: 'app-prestador-detail',
     templateUrl: './prestador-detail.component.html',
     styleUrls: ['./prestador-detail.component.css']
 })
-export class PrestadorDetailComponent implements OnInit, OnDestroy {
+export class PrestadorDetailComponent implements OnInit {
+
     /**
-     * El constructor del componente
-     * @param prestadorService El servicio de prestador que se comunica con el API
-     * @param route La ruta que ayuda a retornar el id del prestador a mostrar
-    * @param router El router que es usado para saber cuando el componente debe ser recargado
+    * The component's constructor
+    * @param prestadorService The prestador's service
+    * @param route The route element which helps to obtain the prestador's id
+    * @param toastrService The toastr to show messages to the user
     */
     constructor(
         private prestadorService: PrestadorService,
-        private route: ActivatedRoute,
-        private router: Router) {
-        this.navigationSubscription = this.router.events.subscribe((e: any) => {
-            if (e instanceof NavigationEnd) {
-                this.ngOnInit();
-            }
-        });
-    }
+        private route: ActivatedRoute
+    ) { }
 
     /**
-     * El id del prestador retornado de la dirección
-     */
+    * The prestador's id retrieved from the address
+    */
     prestador_id: number;
 
     /**
-     * El prestador del que se van a mostrar los detalles
-     */
+    * The prestador whose details are shown
+    */
     prestadorDetail: PrestadorDetail;
 
     /**
-     * Los otros prestadores mostrados en la barra lateral
-     */
-    otros_prestadores: Prestador[];
+    * The other prestadores shown in the sidebar
+    */
+    other_prestadores: Prestador[];
 
     /**
-     * La subscribción que ayuda a saber cuando un nuevo prestador necesita ser cargado
+     * The prestadors services
      */
+    servicios: Servicio[];
+
+    /**
+     * Shows or hides the edit component.
+     */
+    showEdit: boolean;
+
+    /**
+    * The suscription which helps to know when a new prestador
+    * needs to be loaded
+    */
     navigationSubscription;
-    
-    /**
-     * El niño PrestadorHabilidadComponent
-     */
-    @ViewChild(PrestadorHabilidadComponent) habilidadListComponent: PrestadorHabilidadComponent;
-    
-    /**
-     * El niño PrestadorAddHabilidadComponent
-     */
-    @ViewChild(PrestadorAddHabilidadComponent) habilidadAddComponent: PrestadorAddHabilidadComponent;
-    
-    /**
-     * Despliega el compoenete de listar habilidades, mientras que contrae el de agregar habilidad
-     */
-    toggleHabilidades(): void {
-        if (this.habilidadAddComponent.isCollapsed == false) {
-            this.habilidadAddComponent.isCollapsed = true;
-        }
-        this.habilidadListComponent.isCollapsed = !this.habilidadListComponent.isCollapsed;
-    }
 
     /**
-     * Despliega el compoenete de agregar habilidad, mientras que contrae el de listar habilidades
+     * The child BookReviewListComponent
      */
-        toggleCreateHabilidad(): void {
-            if (this.habilidadListComponent.isCollapsed == false) {
-                this.habilidadListComponent.isCollapsed = true;
-        }
-            this.habilidadAddComponent.isCollapsed = !this.habilidadAddComponent.isCollapsed;
-    }
+    @ViewChild(PrestadorHojaDeVidaComponent) hojaDeVidaListComponent: PrestadorHojaDeVidaComponent;
 
     /**
-     * La función que retorna el detalle del prestador que queremos mostar
+     * The child BookReviewListComponent
      */
+    @ViewChild(PrestadorAddHojaDeVidaComponent) hojaDeVidaAddComponent: PrestadorAddHojaDeVidaComponent;
+
+    toggleHpjaDeVida(): void {
+        if (this.hojaDeVidaAddComponent.isCollapsed == false) {
+            this.hojaDeVidaAddComponent.isCollapsed = true;
+        }
+        this.hojaDeVidaListComponent.isCollapsed = !this.hojaDeVidaListComponent.isCollapsed;
+    }
+
+    toggleCreateHojaDeVida(): void {
+        if (this.hojaDeVidaListComponent.isCollapsed == false) {
+            this.hojaDeVidaListComponent.isCollapsed = true;
+        }
+        this.hojaDeVidaAddComponent.isCollapsed = !this.hojaDeVidaAddComponent.isCollapsed;
+    }
+
+
+    /**
+    * The method which re
+    * The method which retrieves the  of an prestador
+    */
     getPrestadorDetail(): void {
         this.prestadorService.getPrestadorDetail(this.prestador_id)
-            .subscribe(prestadorDetail => {this.prestadorDetail = prestadorDetail;});
-    }
-    /**
-     * La función que retorna todos los prestadores en HomeServices para mostrarlos en una lista
-     */
-    getOtherPrestadores(): void {
-        this.prestadorService.getPrestadores()
-            .subscribe(prestadores => {
-                this.otros_prestadores = prestadores;
-                this.otros_prestadores = this.otros_prestadores.filter(prestador => prestador.id !== this.prestador_id);
+            .subscribe(prestadorDetail => {
+                this.prestadorDetail = prestadorDetail;
+                this.servicios = prestadorDetail.servicios;
             });
     }
 
     /**
-     * La función llamada cuando una habilidad es posteada, así el componente hijo puede refrescar la lista de habilidad
-     */
-    updateHabilidades(): void {
-        this.getPrestadorDetail();
-        this.habilidadListComponent.updateHabilidades(this.prestadorDetail.habilities);
-        this.habilidadListComponent.isCollapsed = false;
-        this.habilidadAddComponent.isCollapsed = true;
-    }
-
-    /**
-     * Método que inicializa el componente
-     * Necesitamos inicializar el prestador, así nunca es considerado indefinido
-     */
-    ngOnInit() {
-        this.prestador_id = + this.route.snapshot.paramMap.get('id');
-        this.prestadorDetail = new PrestadorDetail();
-        this.otros_prestadores = [];
-        this.getPrestadorDetail();
-        this.getOtherPrestadores();
-    }
-
-    /**
-     * Este método ayuda a refrescar la vista cuando necesitamos cargar otro prestador en ella
-     * cuando otro de los prestadores de la lista es seleccionado
-     */
-    ngOnDestroy() {
-        if (this.navigationSubscription) {
-            this.navigationSubscription.unsubscribe();
+    * Shows or hides the create component
+    */
+   showHideEdit(editorial_id: number): void {
+        if (!this.showEdit || (this.showEdit)) {
+            this.showEdit = true;
+        }
+        else {
+            this.showEdit = false;
         }
     }
+
+    updatePrestador(): void {
+        this.showEdit = false;
+    }
+
+    /**
+     * The function called when a hojaDeVida is posted, so that the child component can refresh the list
+     */
+    updateHojaDeVida(): void {
+        this.getPrestadorDetail();
+        this.hojaDeVidaListComponent.updateHojaDeVida(this.prestadorDetail.hojaDeVida);
+        this.hojaDeVidaListComponent.isCollapsed = false;
+        this.hojaDeVidaAddComponent.isCollapsed = true;
+    }
+
+    /**
+    * The method which initializes the component
+    * We need to initialize the prestador so it is never considered as undefined
+    */
+    ngOnInit() {
+        this.prestador_id = +this.route.snapshot.paramMap.get('id');
+        this.prestadorDetail = new PrestadorDetail();
+        this.other_prestadores = [];
+        this.servicios = [];
+        this.showEdit = false;
+        this.getPrestadorDetail();
+    }
+
 }
-
-

@@ -1,73 +1,79 @@
 import {Injectable} from '@angular/core';
-import {Observable, throwError} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
-/**
- * Interface con los datos básicos del prestador
- */
 import {Prestador} from './prestador';
 import {PrestadorDetail} from './prestador-detail';
-import {Habilidad} from './habilidad';
+import { HojaDeVida } from './hojaDeVida';
 
-import { environment } from '../../environments/environment';
-const API_URL = environment.apiURL; //Cambio de ruta, ahora está en la carpeta assets donde están los JSON
-const prestadores = 'prestadores'; //JSON donde está la información de los prestadores
-const habilidades = '/habilidades';
+import {environment} from '../../environments/environment';
+const API_URL = environment.apiURL;
+const prestadores = '/prestadores';
+const hojaDeVida = 'hojaDeVida';
+
 
 /**
- * El proveedor del servicio para todo lo relacionado con prestadores
- */
+* The service provider for everything related to prestadores
+*/
 @Injectable()
-export class PrestadorService{
+export class PrestadorService {
 
-    
     /**
-     * Constructor del servicio
-     * @param http The HttpClient - es necesario para el performance de los requerimientos
-     */
-    constructor(private http: HttpClient){}
-    
+    * Constructor of the service
+    * @param http The HttpClient - This is necessary in order to perform requests
+    */
+    constructor(private http: HttpClient) {}
+
     /**
-     * Retorna un objeto Observable que contiene una lista de prestadores recuperados del API
-     * @returns La lista de prestadores en tiempo real
-     */
+    * Returns the Observable object containing the list of prestadores retrieved from the API
+    * @returns The list of prestadores in real time
+    */
     getPrestadores(): Observable<Prestador[]> {
+        console.log("holi");
         return this.http.get<Prestador[]>(API_URL + prestadores);
     }
-    
+
     /**
-     * Retorna la información de un prestador en HomeServices dado el id
-     * @param prestadorId El identificador del prestador
-     * @returns El prestador 
-     */
-    getPrestadorDetail(prestadorId): Observable<PrestadorDetail>{
+    * Creates a new prestador
+    * @param prestador The new prestador
+    * @returns The prestador with its new id if it was created, false if it wasn't
+    */
+    createPrestador(prestador): Observable<PrestadorDetail> {
+        return this.http.post<PrestadorDetail>(API_URL + prestadores, prestador);
+    }
+
+    /**
+    * Returns the Observable object with the details of an servicio retrieved from the API
+    * @returns The servicio details
+    */
+    getPrestadorDetail(prestadorId): Observable<PrestadorDetail> {
         return this.http.get<PrestadorDetail>(API_URL + prestadores + '/' + prestadorId);
     }
-    
+
     /**
-     * Retorna las habilidades de un  libro dado su identificador
-     * @param prestadorId El identificador del prestador
-     * @returns La lista de habilidades
-     */
-    getHabilidades(prestadorId): Observable<Habilidad[]> {
-        return this.http.get<Habilidad[]>(API_URL + prestadores + '/' + prestadorId + habilidades);
+        * Updates a new prestador
+        * @param prestador The updated prestador
+        * @returns The updated prestador
+        */
+    updatePrestador(prestador): Observable<PrestadorDetail> {
+        return this.http.put<PrestadorDetail>(API_URL + prestadores + '/' + prestador.id, prestador);
     }
     
     /**
-     * Crea un nuevo prestador
-     * @param prestador El nuevo prestador
-     * @returns El prestador con el nuevo identifcador si fue creado, falso de lo contrario
-     */
-    createPrestador(prestador): Observable<Prestador> {
-        return this.http.post<Prestador>(API_URL + prestadores, prestador);
+    * Deletes a prestador
+    * @param prestadorId The prestador's id
+    * @returns True if the prestador was deleted, false otherwise
+    */
+    deletePrestador(prestadorId): Observable<PrestadorDetail> {
+        return this.http.delete<PrestadorDetail>(API_URL + prestadores + '/' + prestadorId);
     }
-    
+
     /**
-     * Crea una habilidad
-     * @param habilidad La habilidad
-     * @returns True si la habilidad fue creada, falso de lo contrario
-     */
-    createHabilidad(prestadorId, habilidad): Observable<boolean> {
-        return this.http.post<boolean>(API_URL + prestadores + '/'+ prestadorId + habilidades, habilidad);
+    * Creates an hoja de vida
+    * @param hojaDeVida The hoja de vida which will be created
+    * @returns The confirmation of the hojaDeVida's creation
+    */
+   createHojaDeVida(prestadorId, hojaDeVida): Observable<HojaDeVida> {
+    return this.http.post<HojaDeVida>(API_URL + prestadores + '/' + prestadorId + hojaDeVida, hojaDeVida);
     }
 }

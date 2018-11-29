@@ -1,29 +1,35 @@
-<div class="container-fluid" class="row">
-    <div class="card-deck" class="col-sm">
-        <a class="crd card-deck justify-content-center">
-            <img class="img-fluid" src='https://png.pngtree.com/svg/20161113/man_1074208.png' alt="Persona">
-            <div class="card-body">
-                <h5 class="text-center">{{clienteDetail.nombre}}</h5>
 
-            </div>
-            <li class="list-group-item">
-                <h6 class="text-center">Correo</h6>
-                <p class="text-center">{{clienteDetail.correo}}</p>
-            </li>
-            <li class="list-group-item">
-                <h6 class="text-center">Direccion</h6>
-                <p class="text-center">{{clienteDetail.direccion}}</p>
-            </li>
+<div class="container-fluid">
+    <div class="row no-gutters">
+        <div class="col-md-3 no-float bg-dark text-white" style="z-index: 6;">
+            <nav class="nav flex-column">
+                <li class="nav-item bg-secondary text-white mb-4 mt-4 p-3">
+                    <h4 style="padding-left: 60px;"><span class="fa fa-calendar mr-4"></span>Solicitudes</h4>
+                </li>
+                <div *ngFor="let solicitud of clienteDetail.solicitudes" style="padding-left: 60px;">
+                    
+                    <li class="nav-item m-1">
+                            <button class="btn btn-outline-light btn-lg btn-block" [ngClass]="{ 'btn-primary': solicitudDetailComponent.isCollapsed,'btn-outline-primary':!solicitudDetailComponent.isCollapsed}" (click)="toggleSolicitud()"><span class="fa fa-group mr-4"></span>{{solicitud.fecha}}</button>
+                        </li>
+                </div>
 
-        </a>
+                <li class="nav-item bg-secondary text-white mb-4 mt-4 p-3">
+                        <h4 style="padding-left: 60px;"><span class="fa fa-credit-card mr-4"></span>Tarjetas</h4>
+                    </li>
+                    <div *ngFor="let tarjeta of clienteDetail.tarjetas" style="padding-left: 60px;">
+                        
+                            <li class="nav-item m-1">
+                                    <button class="btn btn-outline-light btn-lg btn-block"><span class="fa fa-group mr-4"></span>{{tarjeta.numero}}</button>
+                                </li>
+                    </div>
+            </nav>
+        </div>
+        <div class="col-md-9 no-float">
+            DETAIL
+            <li class="nav-item m-1">
+                    <button class="btn btn-primary btn-lg btn-block" routerLink="/clientes/{{clienteDetail.id}}/edit"><span class="fa fa-group mr-4"></span>Editar Cliente</button>
+                </li>
+            <app-solicitud-detail [cliente_id]="cliente_id" [solicitud_id]=69></app-solicitud-detail>
+        </div>
+        </div>
     </div>
-    <div class="card-deck" class="col-sm">
-        <a class="crd card-deck justify-content-center">
-            <!-- <div class="col-8">
-                        <div *ngIf="selectedCliente">
-                            <app-solicitud-list [solicitudList]="selectedCliente"></app-solicitud-list>
-                        </div>
-             </div>  -->
-        </a>
-    </div>
-</div>

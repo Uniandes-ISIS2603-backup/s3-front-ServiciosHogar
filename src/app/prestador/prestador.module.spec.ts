@@ -1,13 +1,13 @@
-import { PrestadorModule } from './prestador.module';
+import {PrestadorModule} from './prestador.module';
 
 describe('PrestadorModule', () => {
-  let prestadorModule: PrestadorModule;
+    let prestadorModule: PrestadorModule;
 
-  beforeEach(() => {
-    prestadorModule = new PrestadorModule();
-  });
+    beforeEach(() => {
+        prestadorModule = new PrestadorModule();
+    });
 
-  it('should create an instance', () => {
-    expect(prestadorModule).toBeTruthy();
-  });
+    it('should create an instance', () => {
+        expect(prestadorModule).toBeTruthy();
+    });
 });

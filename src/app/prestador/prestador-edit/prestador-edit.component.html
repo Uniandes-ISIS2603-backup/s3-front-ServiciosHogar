@@ -1,0 +1,26 @@
+<div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <br>
+            <h2 class="text-center">Editar un Prestador</h2>
+            <br>
+            <form name="prestador" (ngSubmit)="f.form.valid && updatePrestador()" #f="ngForm" novalidate>
+                <div class="form-group">
+                    <label for="prestadorNombre"><b>Name</b></label>
+                    <input type="text" name="prestadorNombre" class="form-control" id="prestadorNombre" [(ngModel)]="prestador.nombre"
+                        #prestadorNombre="ngModel" [ngClass]="{ 'is-invalid': f.submitted && prestadorNombre.invalid }"
+                        required>
+                    <div class="invalid-feedback">
+                        <div>Debe ingresar un nombre</div>
+                    </div>
+                </div>
+                <div class="row form-inline justify-content-center align-self-center">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <div class="divider"></div>
+                    <button type="button" class="btn btn-danger" (click)="cancelEdition()">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>

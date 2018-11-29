@@ -1,6 +1,11 @@
-import { Cliente } from '../cliente/cliente';
 import { Factura } from './factura';
+import { Solicitud } from '../cliente/solicitud';
 
+/**
+* This class represents a cliente of the ServiciosHogar. 
+* It contains all the information relevant to the cliente.
+*/
 export class FacturaDetail extends Factura {
-    clientes: Cliente[];
+   
+    solicitudes: Solicitud[];
 }

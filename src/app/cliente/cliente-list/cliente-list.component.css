@@ -1,0 +1,16 @@
+th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: left;
+    height: 50px;
+}
+
+table, th, td {
+    border: 1px solid black;
+ }
+
+ table {
+    width: 100%;
+}
+

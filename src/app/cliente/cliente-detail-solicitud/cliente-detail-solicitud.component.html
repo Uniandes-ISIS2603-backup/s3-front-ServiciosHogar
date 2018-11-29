@@ -1,0 +1,40 @@
+
+<div class="container-fluid p-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-10">
+                    <h3 class="border border-info rounded p-2">
+                        Fecha: {{solicitudDetail.fecha| date:'yyyy-MM-dd'}}
+                    </h3>
+                    <h3 class="border border-info rounded p-2">
+                        Direccion: {{solicitudDetail.direccion}}
+                    </h3>
+                </div>
+                <div class="col-md-2">
+
+                    <button type="button" class="btn btn-danger btn-lg">
+                        Factura
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card-group">
+                <div class="crd card justify-content-center" *ngFor="let servicio of solicitudDetail.servicios">
+                    <div class="card-body">
+                        <div class="card-body text-info">
+                            <h5 class="card-title">Descripcion</h5>
+                            <p class="card-text">{{servicio.descripcion}}</p>
+                            <div class="dropdown-divider"></div>
+                            <h5 class="card-title">Requerimientos</h5>
+                            <p class="card-text">{{servicio.requerimientos}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
