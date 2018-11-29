@@ -4,7 +4,7 @@
             <br>
             <h2 *ngxPermissionsExcept="['GUEST']">Crear un cliente</h2>
             <br>
-            <form class="text-left" name="cliente" (ngSubmit)="f.form.valid && createCliente()" #f="ngForm" novalidate>
+            <form class="text-left" name="cliente" (ngSubmit)="f.form.valid && createCliente() && authService.setClienteRole()" #f="ngForm" novalidate>
                 <div class="form-group">
                     <label for="clienteNombre"><b>Nombre</b></label>
                     <input type="text" name="clienteNombre" class="form-control" id="clienteNombre" [(ngModel)]="cliente.nombre"
