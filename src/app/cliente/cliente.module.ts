@@ -40,6 +40,6 @@ import { ClienteService } from './cliente.service';
         ClienteSolicitudComponent, SolicitudDetailComponent, SolicitudEditComponent, ClienteAddSolicitudComponent
     ],
     providers: [ClienteService],
-    exports: [ClienteListComponent, ClienteEditComponent]
+    exports: [ClienteListComponent, ClienteEditComponent, ClienteDetailComponent, SolicitudDetailComponent]
 })
 export class ClienteModule { }

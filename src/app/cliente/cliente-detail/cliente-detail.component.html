@@ -5,11 +5,11 @@
                 <li class="nav-item bg-secondary text-white mb-4 mt-4 p-3">
                     <h4 style="padding-left: 60px;"><span class="fa fa-calendar mr-4"></span>Solicitudes</h4>
                 </li>
-                <div *ngFor="let solicitud of clienteDetail.solicitudes" style="padding-left: 60px;">
+                <div *ngFor="let solicitud of solicitudes" style="padding-left: 60px;">
                     
                     <li class="nav-item m-1">
                             <button class="btn btn-outline-light btn-lg btn-block" [ngClass]="{ 'btn-primary': solicitudDetailComponent.isCollapsed,'btn-outline-primary':!solicitudDetailComponent.isCollapsed}" (click)="toggleSolicitud()"><span class="fa fa-group mr-4"></span>{{solicitud.fecha}}</button>
-                        </li>
+                    </li>
                 </div>
 
                 <li class="nav-item bg-secondary text-white mb-4 mt-4 p-3">
@@ -25,7 +25,7 @@
         </div>
         <div class="col-md-9 no-float">
             DETAIL
-            <app-solicitud-detail [cliente_id]="cliente_id" [solicitud_id]=69></app-solicitud-detail>
+            <app-solicitud-detail [cliente_id]="cliente_id" [solicitud_id]=618></app-solicitud-detail>
         </div>
     </div>
 </div>
