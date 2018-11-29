@@ -5,7 +5,7 @@
                 <h2 class="text-center">Registrate como prestador de Servicios <span class="fa fa-home"></span>
                     Hogar</h2>
                 <br>
-                <form name="prestador" (ngSubmit)="f.form.valid && createPrestador()" #f="ngForm" novalidate>
+                <form name="prestador" (ngSubmit)="f.form.valid && createPrestador() && authService.setPrestadorRole()" #f="ngForm" novalidate>
                     <div class="form-group">
                         <label for="prestadorNombre"><b>Nombre</b></label>
                         <input type="text" name="prestadorNombre" class="form-control" id="prestadorNombre" [(ngModel)]="prestador.nombre"

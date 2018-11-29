@@ -2,7 +2,7 @@
 
     <div class="row">
         <div class="col-auto mr-auto">
-            <h1 style="font-size:300%;">Solicitud {{solicitud_id}}</h1>
+            <h1 style="font-size:300%;">Solicitud {{solicitudDetail.id}}</h1>
             <h5>{{solicitudDetail.fecha| date:'yyyy-MM-dd'}}</h5>
             <h5>{{solicitudDetail.direccion}}</h5>
         </div>
@@ -10,20 +10,4 @@
             <button class="btn btn-outline-light" routerLink="/solicitudes/{{solicitud_id}}/edit">Edit</button>
         </div>
     </div>
-</div><div class="container-fluid">
-    <div class="row">
-
-            <app-solicitud-detail></app-solicitud-detail>
-
-        <div class="row">
-            
-            <div class="col-auto" *ngIf="showEdit">
-                <button type="button" class="btn btn-outline" (click)="toggleCreateServicio()">
-                    + Nuevo servicio
-                </button>
-            </div>
-        </div>
-    </div>
 </div>
-
-

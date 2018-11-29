@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Servicio } from 'src/app/servicio/servicio';
+import { Servicio } from '../../servicio/servicio';
 import { PrestadorService } from '../prestador.service';
 import { Prestador } from '../prestador';
 import { PrestadorDetail } from '../prestador-detail';

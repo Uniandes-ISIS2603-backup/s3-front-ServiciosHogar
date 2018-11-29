@@ -26,7 +26,7 @@ export class SolicitudDetailComponent implements OnInit {
     /**
     * The cliente's id
     */
-   @Input() cliente: Cliente;
+   @Input() cliente_id: number;
 
     /**
     * The solicitud whose details we want to show
@@ -38,18 +38,20 @@ export class SolicitudDetailComponent implements OnInit {
     /**
     * The solicitud's id retrieved from the address
     */
-    solicitud_id: number;
+   @Input() solicitud_id: number;
 
        /**
      * Shows or hides the edit component.
      */
     showEdit: boolean;
+
+    public isCollapsed = false;
     
     /**
     * The method which retrieves the servicios of an solicitud
     */
     getSolicitudDetail(): void {
-        this.clienteService.getSolicitudDetail(this.cliente.id,this.solicitud_id)
+        this.clienteService.getSolicitudDetail(this.cliente_id,this.solicitud_id)
             .subscribe(solicitudDetail => {
                 this.solicitudDetail = solicitudDetail
             });
@@ -60,7 +62,6 @@ export class SolicitudDetailComponent implements OnInit {
     * We need to initialize the solicitud so it is never considered as undefined
     */
     ngOnInit() {
-        this.solicitud_id = +this.route.snapshot.paramMap.get('id');
         this.solicitudDetail = new SolicitudDetail();
         this.getSolicitudDetail();
     }

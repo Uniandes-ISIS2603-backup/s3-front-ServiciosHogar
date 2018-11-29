@@ -1,12 +1,13 @@
-import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
-import {ActivatedRoute, Router, NavigationEnd} from '@angular/router';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 
-import {ClienteService} from '../cliente.service';
-import {Cliente} from '../cliente';
-import {ClienteDetail} from '../cliente-detail';
-import {ClienteTarjetaComponent} from '../cliente-tarjetas/cliente-tarjeta.component';
-import {ClienteAddTarjetaComponent} from '../cliente-add-tarjeta/cliente-add-tarjeta.component';
+import { ClienteService } from '../cliente.service';
+import { Cliente } from '../cliente';
+import { ClienteDetail } from '../cliente-detail';
+import { ClienteTarjetaComponent } from '../cliente-tarjetas/cliente-tarjeta.component';
+import { ClienteAddTarjetaComponent } from '../cliente-add-tarjeta/cliente-add-tarjeta.component';
+import { SolicitudDetailComponent } from '../cliente-detail-solicitud/cliente-detail-solicitud.component';
 
 @Component({
     selector: 'app-cliente-detail',
@@ -59,6 +60,12 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
 
     showEdit: boolean;
 
+
+    /**
+     * The child ClienteTarjetaListComponent
+     */
+    @ViewChild(SolicitudDetailComponent) solicitudDetailComponent: SolicitudDetailComponent;
+
     /**
      * The child ClienteTarjetaListComponent
      */
@@ -68,6 +75,10 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
      * The child ClienteTarjetaListComponent
      */
     @ViewChild(ClienteAddTarjetaComponent) tarjetaAddComponent: ClienteAddTarjetaComponent;
+
+    toggleSolicitud(): void {
+        this.solicitudDetailComponent.isCollapsed = !this.solicitudDetailComponent.isCollapsed;
+    }
 
     toggleTarjetas(): void {
         if (this.tarjetaAddComponent.isCollapsed == false) {
