@@ -1,12 +1,13 @@
 import { Component, OnInit, Input, } from '@angular/core';
 import { Solicitud } from '../solicitud';
-
+import { Tarjeta } from '../tarjeta';
 @Component({
     selector: 'app-cliente-solicitudes',
     templateUrl: './cliente-solicitud.component.html',
 })
 export class ClienteSolicitudComponent implements OnInit {
     @Input() clienteSolicitudes: Solicitud[];
+    @Input() cliente_id: string;
 
     public isCollapsed = false;
 
@@ -24,6 +25,7 @@ export class ClienteSolicitudComponent implements OnInit {
      * The id of the solicitud being edited.
      */
     solicitud_edit_id: number;
+
 
     /**
      * The function called when a solicitud is posted to update the solicitud
@@ -57,6 +59,7 @@ export class ClienteSolicitudComponent implements OnInit {
     updateSolicitud(): void {
         this.showEdit = false;
     }
+
 
     ngOnInit() {
         this.showCreate = false;

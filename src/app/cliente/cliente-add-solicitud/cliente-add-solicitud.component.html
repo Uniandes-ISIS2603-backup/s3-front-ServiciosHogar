@@ -1,1 +1,35 @@
-Añadir solicitud
+<div class="container-fluid">
+    <h3>Agregar solicitud</h3>
+    <form name="post" (ngSubmit)="solicitudForm.form.valid && postSolicitud(solicitudForm)" #solicitudForm="ngForm" novalidate>
+          <div class="row">
+
+                <div class="form-group">
+                        <label for="solicitudFecha"><b>Fecha</b></label>
+                        <div [ngClass]="{ 'is-invalid': solicitudForm.submitted && solicitudFecha.invalid }">
+                            <input class="form-control" id="solicitudFecha" name="solicitudFecha" [(ngModel)]="solicitud.fecha"
+                                ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" #solicitudFecha="ngModel" [ngClass]="{'is-invalid': (solicitudFecha.untouched || solicitudFecha.invalid) }"
+                                required>
+                            <div class="invalid-feedback">
+                                <div>Debes ingresar la fecha de la solicitud</div>
+                            </div>
+                        </div>
+                    </div> 
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="solicitudDireccion"><b>Dirección</b></label>
+                    <textarea name="solicitudDireccion" class="form-control" id="solicitudDireccion" [(ngModel)]="solicitud.direccion"
+                              #solicitudDireccion="ngModel" [ngClass]="{ 'is-invalid': solicitudForm.submitted && solicitudDireccion.invalid }"
+                              required></textarea>
+                    <div class="invalid-feedback">
+                        <div>La Direccion de la solicitud debe ingresarse</div>
+                    </div>
+                </div>
+            </div>       
+        </div>
+
+        <div class="row form-inline justify-content-center align-self-center">
+            <button type="submit" class="btn btn-primary">Post solicitud</button>
+        </div>
+    </form>
+</div>

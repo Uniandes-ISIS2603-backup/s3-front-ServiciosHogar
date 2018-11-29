@@ -6,6 +6,18 @@
                 <li class="nav-item bg-secondary text-white mb-4 mt-4 p-3">
                     <h4 style="padding-left: 60px;"><span class="fa fa-calendar mr-4"></span>Solicitudes</h4>
                 </li>
+                <li class="nav-item m-1 mt-5">
+                        <button class="btn btn-outline-warning btn-lg btn-block" (click)="toggleCreateSolicitud()"><span class="fa fa-credit-card mr-4"></span>Añadir solicitud</button> 
+                 </li>
+                 <li class="nav-item m-1 mt-5">
+                        <button class="btn btn-outline-warning btn-lg btn-block" (click)="toggleCreateTarjeta()"><span class="fa fa-credit-card mr-4"></span>Añadir Tarjeta</button> 
+                 </li>
+                 <li class="nav-item m-1 mt-5">
+                        <button class="btn btn-outline-warning btn-lg btn-block" routerLink ="/clientes/{{clienteDetail.id}}/edit"><span class="fa fa-credit-card mr-4"></span>Editar Cliente</button>
+                </li>
+                <li class="nav-item m-1 mt-5">
+                        <button class="btn btn-outline-warning btn-lg btn-block"><span class="fa fa-credit-card mr-4" (click)="mostrarTarjetas()"></span>Tarjetas</button>
+                </li>
                 <div style="padding-left: 60px;">
                     <div *ngFor="let solicitud of clienteDetail.solicitudes">
 
@@ -14,9 +26,6 @@
                                     class="fa fa-calendar-o mr-4"></span>{{solicitud.fecha}}</button>
                         </li>
                     </div>
-                    <li class="nav-item m-1 mt-5">
-                        <button class="btn btn-outline-warning btn-lg btn-block"><span class="fa fa-credit-card mr-4" (click)="mostrarTarjetas()"></span>Terjetas</button>
-                    </li>
                 </div>
             </nav>
         </div>
@@ -40,6 +49,14 @@
                     </tr>
                 </tbody>
             </table>
+
+
+                <div  class="row-md">
+                        <app-cliente-add-tarjeta *ngIf="showAddH == true"  [cliente]="clienteDetail"></app-cliente-add-tarjeta>
+                </div>
+                <div  class="row-md">
+                        <app-cliente-add-solicitud *ngIf="showEdit == true"  [cliente]="clienteDetail"></app-cliente-add-solicitud>
+                </div>
         </div>
     </div>
 </div>

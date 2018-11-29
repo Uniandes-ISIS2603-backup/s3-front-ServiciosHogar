@@ -9,6 +9,7 @@ import { ClienteTarjetaComponent } from '../cliente-tarjetas/cliente-tarjeta.com
 import { ClienteAddTarjetaComponent } from '../cliente-add-tarjeta/cliente-add-tarjeta.component';
 import { SolicitudDetailComponent } from '../cliente-detail-solicitud/cliente-detail-solicitud.component';
 import { Solicitud } from '../solicitud';
+import { Tarjeta } from '../tarjeta';
 
 @Component({
     selector: 'app-cliente-detail',
@@ -61,12 +62,19 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
     solicitudes: Solicitud[];
 
     /**
+     * Tarjetas del cliente
+     */
+    tarjetas: Tarjeta[];
+
+    /**
     * The suscription which helps to know when a new cliente
     * needs to be loaded
     */
     navigationSubscription;
 
     showEdit: boolean;
+
+    showAddH: boolean;
 
     showSolicitudes: boolean;
 
@@ -88,22 +96,27 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
      */
     @ViewChild(ClienteAddTarjetaComponent) tarjetaAddComponent: ClienteAddTarjetaComponent;
 
-    toggleSolicitud(): void {
-        this.solicitudDetailComponent.isCollapsed = !this.solicitudDetailComponent.isCollapsed;
-    }
-
-    toggleTarjetas(): void {
-        if (this.tarjetaAddComponent.isCollapsed == false) {
-            this.tarjetaAddComponent.isCollapsed = true;
-        }
-        this.tarjetaListComponent.isCollapsed = !this.tarjetaListComponent.isCollapsed;
-    }
 
     toggleCreateTarjeta(): void {
-        if (this.tarjetaListComponent.isCollapsed == false) {
-            this.tarjetaListComponent.isCollapsed = true;
+        if(this.showAddH == true)
+        {
+            this.showAddH = false;
         }
-        this.tarjetaAddComponent.isCollapsed = !this.tarjetaAddComponent.isCollapsed;
+        else
+        {
+            this.showAddH = true;
+        }
+    }
+
+    toggleCreateSolicitud(): void {
+        if(this.showEdit == true)
+        {
+            this.showEdit = false;
+        }
+        else
+        {
+            this.showEdit = true;
+        }
     }
 
     mostrarSolicitudes(id: number): void {
@@ -126,6 +139,7 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
             .subscribe(clienteDetail => {
                 this.clienteDetail = clienteDetail;
                 this.solicitudes = clienteDetail.solicitudes;
+                this.tarjetas = clienteDetail.tarjetas;
                 console.log(this.clienteDetail);
             });
             console.log(this.clienteDetail);

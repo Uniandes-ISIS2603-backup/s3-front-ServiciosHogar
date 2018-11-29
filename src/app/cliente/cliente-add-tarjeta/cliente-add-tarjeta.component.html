@@ -1,1 +1,58 @@
-Cliente Add Tarjeta
+<div class="container-fluid">
+        <h3>Agregar tarjeta</h3>
+        <form name="post" (ngSubmit)="tarjetaForm.form.valid && postTarjeta(tarjetaForm)" #tarjetaForm="ngForm" novalidate>
+              <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="tarjetaTitular"><b>Titular</b></label>
+                        <input type="text" name="tarjetaTitular" class="form-control" id="tarjetaTitular" [(ngModel)]="tarjeta.titular"
+                               #tarjetaTitular="ngModel" [ngClass]="{ 'is-invalid': tarjetaForm.submitted && tarjetaTitular.invalid }" required>
+                               <div class="invalid-feedback">
+                            <div>El Titular de la tarjeta debe ingresarse</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                        <label for="tarjetaFecha"><b>Fecha de vencimiento</b></label>
+                        <div [ngClass]="{ 'is-invalid': tarjetaForm.submitted && tarjetaFecha.invalid }">
+                            <input class="form-control" id="tarjetaFecha" name="tarjetaFecha" [(ngModel)]="tarjeta.date"
+                                ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" #tarjetaFecha="ngModel" [ngClass]="{'is-invalid': (tarjetaFecha.untouched || tarjetaFecha.invalid) }"
+                                required>
+                            <div class="invalid-feedback">
+                                <div>Debes ingresar la fecha de vencimiento</div>
+                            </div>
+                        </div>
+                    </div> 
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="tarjetaCode"><b>Código de seguridad</b></label>
+                        <input type="text" name="tarjetaCode" class="form-control" id="tarjetaCode" [(ngModel)]="tarjeta.code"
+                                  #tarjetaCode="ngModel" [ngClass]="{ 'is-invalid': tarjetaForm.submitted && tarjetaCode.invalid }"
+                                  required>
+                        <div class="invalid-feedback">
+                            <div>EL código de seguridad de la tarjeta debe ingresarse</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                        <div class="form-group">
+                            <label for="tarjetaNumero"><b>Número de la tarjeta</b></label>
+                            <input type="text" name="tarjetaNumero" class="form-control" id="tarjetaNumero" [(ngModel)]="tarjeta.numero"
+                                      #tarjetaNumero="ngModel" [ngClass]="{ 'is-invalid': tarjetaForm.submitted && tarjetaNumero.invalid }"
+                                      required>
+                            <div class="invalid-feedback">
+                                <div>EL número de la tarjeta debe ingresarse</div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="row form-inline justify-content-center align-self-center">
+                <button type="submit" class="btn btn-primary">Post tarjeta</button>
+            </div>
+        </form>
+    </div>

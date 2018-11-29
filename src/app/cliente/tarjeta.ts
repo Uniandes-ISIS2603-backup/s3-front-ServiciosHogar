@@ -8,7 +8,7 @@ export class Tarjeta {
     /**
      * Fecha de vencimiento
      */
-    date: string;
+    date: any;
 
     /**
      * Código de seguridad

@@ -22,6 +22,7 @@ import { ClienteEditComponent } from '../cliente/cliente-edit/cliente-edit.compo
 import { AuthLoginComponent } from '../auth/auth-login/auth-login.component';
 import { AuthSignUpComponent } from '../auth/auth-sign-up/auth-sign-up.component';
 import { ClienteTarjetaComponent } from '../cliente/cliente-tarjetas/cliente-tarjeta.component';
+import { ClienteAddTarjetaComponent } from '../cliente/cliente-add-tarjeta/cliente-add-tarjeta.component';
 
 const routes: Routes = [
 
@@ -59,6 +60,21 @@ const routes: Routes = [
                         path: ':id',
                         component: SolicitudDetailComponent,
                         runGuardsAndResolvers: 'always'
+                    }
+                ]
+            },
+            {
+                path: ':id/tarjetas',
+                children: [
+                    {
+                        path: 'list',
+                        component: ClienteTarjetaComponent,
+                        canActivate: [NgxPermissionsGuard]
+                    },
+                    {
+                        path: 'add',
+                        component: ClienteAddTarjetaComponent,
+                        canActivate: [NgxPermissionsGuard]
                     }
                 ]
             },

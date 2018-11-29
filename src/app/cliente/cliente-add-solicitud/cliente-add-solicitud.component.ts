@@ -51,6 +51,7 @@ export class ClienteAddSolicitudComponent implements OnInit, OnChanges {
                 solicitudForm.resetForm();
                 this.updateSolicitudes.emit();
                 this.toastrService.success("The solicitud was successfully created", 'Solicitud added');
+                window.location.reload();
             }, err => {
                 this.toastrService.error(err, 'Error');
             });
