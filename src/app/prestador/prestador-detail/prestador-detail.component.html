@@ -46,10 +46,20 @@
                     <button class="btn btn-success text-center" (click)="editHojaDeVida()"><span class="fa fa-pencil"> Editar Hoja de Vida</span></button>
                     <app-prestador-edit-hoja-de-vida *ngIf="showEditH == true" [prestador]="prestadorDetail" [hojaDeVida]="hojaDeVida"></app-prestador-edit-hoja-de-vida>
             </div>
-        </div>
-        <div *ngIf="hojaDeVida.trayectoria == null" class="row-md">
-        <button  class="btn btn-primary"  (click)="toggleCreateHojaDeVida()"><span class="fa fa-plus"> Agregar Hoja De Vida</span></button> 
-        <app-prestador-add-hojaDeVida *ngIf="showAdd == true"  [prestador]="prestadorDetail"></app-prestador-add-hojaDeVida>
+            <div *ngIf="hojaDeVida.trayectoria == null" class="row-md">
+                    <button  class="btn btn-primary"  (click)="toggleCreateHojaDeVida()"><span class="fa fa-plus"> Agregar Hoja De Vida</span></button> 
+                    <app-prestador-add-hojaDeVida *ngIf="showAdd == true"  [prestador]="prestadorDetail"></app-prestador-add-hojaDeVida>
+            </div>
+            <div *ngIf="prestadorDetail.habilities?.length > 0" class="col-md-12">
+                <p  class="h3 p-3">
+                    Habilidades del prestador                                 
+                </p>
+                <app-prestador-habilidades [prestadorHabilidades] = "habilities" [prestador_id]="prestadorDetail.id"></app-prestador-habilidades>
+            </div>
+            <div  class="row-md">
+                    <button  class="btn btn-primary"  (click)="toggleCreateHabilidad()"><span class="fa fa-plus"> Agregar Habilidad</span></button> 
+                    <app-prestador-add-habilidad *ngIf="showAddH == true"  [prestador]="prestadorDetail"></app-prestador-add-habilidad>
+            </div>
         </div>
     </div>
 </div>

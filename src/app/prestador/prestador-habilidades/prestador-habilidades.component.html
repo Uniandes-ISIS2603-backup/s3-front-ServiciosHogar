@@ -1,0 +1,21 @@
+  <table class="table table-striped">
+      <thead>
+          <th>Tipo</th>
+          <th>Descripcion</th>
+      </thead>
+      <tbody>
+          <tr *ngFor="let habilidad of prestadorHabilidades">
+            <td><span id="habilidad-tipo">{{habilidad.tipo}}</span></td>
+            <td><span id="habilidad-descripcion">{{habilidad.descripcion}}</span></td>
+            <td>
+                <button class="btn btn-primary" (click)="showHideEdit(habilidad.id)"><span class="fa fa-pencil"></span></button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteHabilidad(habilidad.id)"><span class="fa fa-trash"></span></button>
+            </td>
+          </tr>
+      </tbody>
+  </table>
+  <div *ngIf="showEdit == true">
+        <app-prestador-edit-habilidad [prestador_id]="prestador_id" [author]="selectedHabilidad"></app-prestador-edit-habilidad>
+</div>

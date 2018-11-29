@@ -7,9 +7,11 @@ import {PrestadorDetail} from './prestador-detail';
 import { HojaDeVida } from './hojaDeVida';
 
 import {environment} from '../../environments/environment';
+import { Habilidad } from './habilidad';
 const API_URL = environment.apiURL;
 const prestadores = '/prestadores';
 const hojaDeVida = 'hojaDeVida';
+const habilidades = '/habilidades';
 
 
 /**
@@ -93,5 +95,45 @@ export class PrestadorService {
      */
     updateHojaDeVida(prestadorId, hojaDeVidaA): Observable<HojaDeVida> {
         return this.http.put<HojaDeVida>(API_URL+prestadores+'/'+prestadorId+'/'+hojaDeVida, hojaDeVidaA);
+    }
+
+     /**
+     * Retorna las habilidades de un  libro dado su identificador
+     * @param prestadorId El identificador del prestador
+     * @returns La lista de habilidades
+     */
+    getHabilidades(prestadorId): Observable<Habilidad[]> {
+        return this.http.get<Habilidad[]>(API_URL + prestadores + '/' + prestadorId + habilidades);
+    }
+
+    /**
+    * Crea una habilidad
+    * @param habilidad La habilidad
+    * @returns True si la habilidad fue creada, falso de lo contrario
+    */
+    createHabilidad(prestadorId, habilidad): Observable<boolean> {
+        return this.http.post<boolean>(API_URL + prestadores + '/'+ prestadorId + habilidades, habilidad);
+    }
+
+    updateHabilidad(prestadorId, habilidad, habilidadId): Observable<boolean> {
+        return this.http.put<boolean>(API_URL + prestadores + '/'+ prestadorId + habilidades+'/'+habilidadId, habilidad);
+    }
+
+    /**
+     * 
+     * @param prestadorId 
+     * @param habilidadId 
+     */
+    deleteHabilidad(prestadorId, habilidadId): Observable<Habilidad> {
+        return this.http.delete<Habilidad>(API_URL + prestadores + '/'+ prestadorId + habilidades+'/'+habilidadId);
+    }
+
+    /**
+     * 
+     * @param prestadorId 
+     * @param habilidadId 
+     */
+    getHabilidad(prestadorId, habilidadId): Observable<Habilidad> {
+        return this.http.get<Habilidad>(API_URL + prestadores + '/' + prestadorId + habilidades + '/' + habilidadId);
     }
 }

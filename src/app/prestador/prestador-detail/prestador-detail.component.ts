@@ -10,6 +10,8 @@ import { PrestadorAddHojaDeVidaComponent} from '../prestador-add-hojaDeVida/pres
 import { HojaDeVida } from '../hojaDeVida';
 import { ToastrService } from 'ngx-toastr';
 import { ModalDialogService, SimpleModalComponent } from 'ngx-modal-dialog';
+import { PrestadorAddHabilidadComponent } from '../prestador-add-habilidad/prestador-add-habilidad.component';
+import { Habilidad } from '../habilidad';
 
 @Component({
     selector: 'app-prestador-detail',
@@ -60,7 +62,7 @@ export class PrestadorDetailComponent implements OnInit {
     /**
      * 
      */
-    hoja: HojaDeVida;
+    habilities: Habilidad[];
 
     /**
      * Shows or hides the edit component.
@@ -76,6 +78,8 @@ export class PrestadorDetailComponent implements OnInit {
      * Shows or hides the edit hoja de vida component
      */
     showEditH: boolean;
+
+    showAddH: boolean;
 
     /**
     * The suscription which helps to know when a new prestador
@@ -93,6 +97,11 @@ export class PrestadorDetailComponent implements OnInit {
      */
     @ViewChild(PrestadorAddHojaDeVidaComponent) hojaDeVidaAddComponent: PrestadorAddHojaDeVidaComponent;
 
+    /**
+     * El niño PrestadorAddHabilidadComponent
+     */
+    @ViewChild(PrestadorAddHabilidadComponent) habilidadAddComponent: PrestadorAddHabilidadComponent;
+
     toggleCreateHojaDeVida(): void {
         if(this.showAdd == true)
         {
@@ -104,6 +113,15 @@ export class PrestadorDetailComponent implements OnInit {
         }
     }
 
+    toggleCreateHabilidad(): void {
+        if(this.showAddH == false)
+        {
+            this.showAddH = true;
+        }
+        else {
+            this.showAddH = false;
+        }
+    }
 
     /**
     * The method which re
@@ -115,6 +133,7 @@ export class PrestadorDetailComponent implements OnInit {
                 this.prestadorDetail = prestadorDetail;
                 this.servicios = prestadorDetail.servicios;
                 this.hojaDeVida = prestadorDetail.hojaDeVida;
+                this.habilities = prestadorDetail.habilities;
             });
     }
 
@@ -177,9 +196,11 @@ export class PrestadorDetailComponent implements OnInit {
         this.other_prestadores = [];
         this.servicios = [];
         this.hojaDeVida = new HojaDeVida();
+        this.habilities = [];
         this.showEdit = false;
         this.showAdd = false;
         this.showEditH = false;
+        this.showAddH = false;
         this.getPrestadorDetail();
     }
 

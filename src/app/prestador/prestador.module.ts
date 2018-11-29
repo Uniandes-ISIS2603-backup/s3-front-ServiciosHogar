@@ -18,6 +18,10 @@ import { AuthModule } from '../auth/auth.module';
 import { PrestadorHojaDeVidaComponent } from './prestador-hojaDeVida/prestador-hojaDeVida.component';
 import { PrestadorAddHojaDeVidaComponent } from './prestador-add-hojaDeVida/prestador-add-hojaDeVida.component';
 import { PrestadorEditHojaDeVidaComponent } from './prestador-edit-hoja-de-vida/prestador-edit-hoja-de-vida.component';
+import { PrestadorHabilidadesComponent } from './prestador-habilidades/prestador-habilidades.component';
+import { PrestadorAddHabilidadComponent } from './prestador-add-habilidad/prestador-add-habilidad.component';
+import { PrestadorEditHabilidadComponent } from './prestador-edit-habilidad/prestador-edit-habilidad.component';
+import { PrestadorDeleteHabilidadComponent } from './prestador-delete-habilidad/prestador-delete-habilidad.component';
 
 
 @NgModule({
@@ -33,7 +37,7 @@ import { PrestadorEditHojaDeVidaComponent } from './prestador-edit-hoja-de-vida/
         NgxPermissionsModule
     ],
     declarations: [
-        PrestadorListComponent, PrestadorDetailComponent, PrestadorCreateComponent, PrestadorEditComponent, PrestadorHojaDeVidaComponent, PrestadorAddHojaDeVidaComponent, PrestadorEditHojaDeVidaComponent
+        PrestadorListComponent, PrestadorDetailComponent, PrestadorCreateComponent, PrestadorEditComponent, PrestadorHojaDeVidaComponent, PrestadorAddHojaDeVidaComponent, PrestadorEditHojaDeVidaComponent, PrestadorHabilidadesComponent, PrestadorAddHabilidadComponent, PrestadorEditHabilidadComponent, PrestadorDeleteHabilidadComponent
     ],
     providers: [PrestadorService],
     exports: [PrestadorListComponent, PrestadorEditComponent, PrestadorEditComponent, PrestadorHojaDeVidaComponent, PrestadorAddHojaDeVidaComponent]
