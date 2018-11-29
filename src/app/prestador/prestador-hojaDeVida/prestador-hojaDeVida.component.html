@@ -1,0 +1,14 @@
+<div id="collapseHojaDeVida" [ngbCollapse]="isCollapsed">
+        <table class="table table-striped">
+            <tbody>
+                <tr *ngFor="let hojaDeVida of prestadorHojaDeVida">
+                    <td><span id="prestador-hojaDeVida"><b>{{hojaDeVida.trayectoria}}</b></span><span>: </span>
+                        <span id="hojaDeVida-fechaNacimiento">{{hojaDeVida.fechaNacimiento}}</span>
+                        <br><span id="hojaDeVida-email"><i>{{hojaDeVida.email}}</i></span>
+                        <br><span id="hojaDeVida-telefono"><i>{{hojaDeVida.telefono}}</i></span>
+                        <br><span id="hojaDeVida-direccion"><i>{{hojaDeVida.direccion}}</i></span>
+                        <br><span id="hojaDeVida-hojaDeVida"><i>{{hojaDeVida.formacion}}</i></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

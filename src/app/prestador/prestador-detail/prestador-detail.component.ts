@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Servicio } from '../../servicio/servicio';
 import { PrestadorService } from '../prestador.service';
 import { Prestador } from '../prestador';
 import { PrestadorDetail } from '../prestador-detail';
+import { PrestadorHojaDeVidaComponent } from '../prestador-hojaDeVida/prestador-hojaDeVida.component';
+import { PrestadorAddHojaDeVidaComponent} from '../prestador-add-hojaDeVida/prestador-add-hojaDeVida.component';
 
 @Component({
     selector: 'app-prestador-detail',
@@ -56,6 +58,31 @@ export class PrestadorDetailComponent implements OnInit {
     navigationSubscription;
 
     /**
+     * The child BookReviewListComponent
+     */
+    @ViewChild(PrestadorHojaDeVidaComponent) hojaDeVidaListComponent: PrestadorHojaDeVidaComponent;
+
+    /**
+     * The child BookReviewListComponent
+     */
+    @ViewChild(PrestadorAddHojaDeVidaComponent) hojaDeVidaAddComponent: PrestadorAddHojaDeVidaComponent;
+
+    toggleHpjaDeVida(): void {
+        if (this.hojaDeVidaAddComponent.isCollapsed == false) {
+            this.hojaDeVidaAddComponent.isCollapsed = true;
+        }
+        this.hojaDeVidaListComponent.isCollapsed = !this.hojaDeVidaListComponent.isCollapsed;
+    }
+
+    toggleCreateHojaDeVida(): void {
+        if (this.hojaDeVidaListComponent.isCollapsed == false) {
+            this.hojaDeVidaListComponent.isCollapsed = true;
+        }
+        this.hojaDeVidaAddComponent.isCollapsed = !this.hojaDeVidaAddComponent.isCollapsed;
+    }
+
+
+    /**
     * The method which re
     * The method which retrieves the  of an prestador
     */
@@ -81,6 +108,16 @@ export class PrestadorDetailComponent implements OnInit {
 
     updatePrestador(): void {
         this.showEdit = false;
+    }
+
+    /**
+     * The function called when a hojaDeVida is posted, so that the child component can refresh the list
+     */
+    updateHojaDeVida(): void {
+        this.getPrestadorDetail();
+        this.hojaDeVidaListComponent.updateHojaDeVida(this.prestadorDetail.hojaDeVida);
+        this.hojaDeVidaListComponent.isCollapsed = false;
+        this.hojaDeVidaAddComponent.isCollapsed = true;
     }
 
     /**
