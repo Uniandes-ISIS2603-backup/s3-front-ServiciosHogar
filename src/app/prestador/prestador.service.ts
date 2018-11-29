@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 
 import {Prestador} from './prestador';
 import {PrestadorDetail} from './prestador-detail';
-
+import { HojaDeVida } from './hojaDeVida';
 
 import {environment} from '../../environments/environment';
 const API_URL = environment.apiURL;
@@ -66,5 +66,14 @@ export class PrestadorService {
     */
     deletePrestador(prestadorId): Observable<PrestadorDetail> {
         return this.http.delete<PrestadorDetail>(API_URL + prestadores + '/' + prestadorId);
+    }
+
+    /**
+    * Creates an hoja de vida
+    * @param hojaDeVida The hoja de vida which will be created
+    * @returns The confirmation of the hojaDeVida's creation
+    */
+   createHojaDeVida(prestadorId, hojaDeVida): Observable<HojaDeVida> {
+    return this.http.post<HojaDeVida>(API_URL + prestadores + '/' + prestadorId + hojaDeVida, hojaDeVida);
     }
 }
