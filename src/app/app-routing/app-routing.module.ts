@@ -86,7 +86,7 @@ const routes: Routes = [
                 children:[
                     {
                         path: 'list',
-                        component: ClienteSolicitudComponent,
+                        component: FacturaEditComponent,
                         canActivate: [NgxPermissionsGuard]
                     }
                 ]
