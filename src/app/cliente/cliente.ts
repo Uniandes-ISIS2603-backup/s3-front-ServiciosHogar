@@ -18,4 +18,6 @@ export class Cliente {
      * Correo electronico del cliente.
      */
     correo: string;
+
+    contrasena: string;
 }

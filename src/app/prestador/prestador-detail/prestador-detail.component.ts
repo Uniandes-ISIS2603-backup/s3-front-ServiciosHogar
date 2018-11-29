@@ -45,6 +45,11 @@ export class PrestadorDetailComponent implements OnInit {
     servicios: Servicio[];
 
     /**
+     * Shows or hides the edit component.
+     */
+    showEdit: boolean;
+
+    /**
     * The suscription which helps to know when a new prestador
     * needs to be loaded
     */
@@ -59,8 +64,23 @@ export class PrestadorDetailComponent implements OnInit {
             .subscribe(prestadorDetail => {
                 this.prestadorDetail = prestadorDetail;
                 this.servicios = prestadorDetail.servicios;
-                this.prestadorDetail = prestadorDetail
             });
+    }
+
+    /**
+    * Shows or hides the create component
+    */
+   showHideEdit(editorial_id: number): void {
+        if (!this.showEdit || (this.showEdit)) {
+            this.showEdit = true;
+        }
+        else {
+            this.showEdit = false;
+        }
+    }
+
+    updatePrestador(): void {
+        this.showEdit = false;
     }
 
     /**
@@ -72,6 +92,7 @@ export class PrestadorDetailComponent implements OnInit {
         this.prestadorDetail = new PrestadorDetail();
         this.other_prestadores = [];
         this.servicios = [];
+        this.showEdit = false;
         this.getPrestadorDetail();
     }
 

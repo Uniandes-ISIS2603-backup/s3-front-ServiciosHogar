@@ -4,9 +4,9 @@
 */
 export class User {
     /**
-    * The user's name
+    * The user's mail
     */
-    name: string;
+    correo: string;
 
     /**
     * The user's password
