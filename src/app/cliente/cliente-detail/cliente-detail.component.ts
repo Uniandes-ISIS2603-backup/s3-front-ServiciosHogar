@@ -164,13 +164,10 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
         this.other_clientes = [];
         this.getClienteDetail();
         this.getOtherClientes();
-<<<<<<< HEAD
         this.showEdit = false;
-=======
         this.showEdit = true;
         this.showSolicitudes = false;
         this.showTarjetas = false;
->>>>>>> origin/Ciclo3
     }
 
     /**
