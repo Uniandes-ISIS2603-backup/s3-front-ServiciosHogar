@@ -87,7 +87,7 @@ export class PrestadorHabilidadesComponent implements OnInit {
     this.modalDialogService.openDialog(this.viewRef, {
         title: 'Delete an author',
         childComponent: SimpleModalComponent,
-        data: {text: 'Are you sure your want to delete this habilidad from the BookStore?'},
+        data: {text: 'Está seguro de que desea eliminar esta habilidad?'},
         actionButtons: [
             {
                 text: 'Yes',

@@ -90,6 +90,7 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
 
     toggleSolicitud(): void {
         this.solicitudDetailComponent.isCollapsed = !this.solicitudDetailComponent.isCollapsed;
+        this.mostrarSolicitudes(this.solicitud_actual_id);
     }
 
     toggleTarjetas(): void {
@@ -108,6 +109,7 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
 
     mostrarSolicitudes(id: number): void {
         this.solicitud_actual_id = id;
+        console.log(this.solicitud_actual_id);
         this.showTarjetas = false;
         this.showSolicitudes = true;
     }

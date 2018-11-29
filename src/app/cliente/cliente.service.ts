@@ -16,6 +16,9 @@ const tarjetas = '/tarjetas';
 const solicitudes = '/solicitudes';
 
 /**
+    getSolicitudDetail(cliente_id: number, solicitud_id: number): any {
+        throw new Error("Method not implemented.");
+    }
 * The service provider for everything related to clientes
 */
 @Injectable()
@@ -51,6 +54,7 @@ export class ClienteService {
     getClienteDetail(clienteId): Observable<ClienteDetail> {
         return this.http.get<ClienteDetail>(API_URL + clientes + '/' + clienteId);
     }
+
 
     /**
         * Updates a new cliente
