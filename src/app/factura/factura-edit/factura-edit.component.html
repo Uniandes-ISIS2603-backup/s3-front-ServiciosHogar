@@ -1,1 +1,56 @@
-Factura Edit
+<div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-6">
+        <br>
+        <h2 class="text-center">Editar Factura</h2>
+        <br>
+        <form name="factura" (ngSubmit)="f.form.valid && updateFactura()" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="facturaNumber"><b>Número de la factura</b></label>
+                <input type="text" name="facturaNumber" class="form-control" id="facturaNumber" [(ngModel)]="factura.number"
+                    #facturaNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && facturaNumber.invalid }"
+                    required>
+                <div class="invalid-feedback">
+                    <div>Debes ingresar uel número de la factura</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="facturaDate"><b>Fecha de la factura</b></label>
+                <input type="text" name="facturaDate" class="form-control" id="facturaDate" [(ngModel)]="factura.date"
+                    #facturaDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && facturaDate.invalid }" required>
+                <div class="invalid-feedback">
+                    <div>Debes ingresas la fecha de la factura</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="facturaValor"><b>Valor de la factura</b></label>
+                <input type="text" name="facturaValor" class="form-control" id="facturaValor" [(ngModel)]="factura.valor"
+                    #facturaValor="ngModel" [ngClass]="{ 'is-invalid': f.submitted && facturaValor.invalid }"
+                    required>
+                <div class="invalid-feedback">
+                    <div>Debes ingresar el valor de la factura</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="facturaPago"><b>Método de pago  de la factura</b></label>
+                <input type="text" name="facturaPago" class="form-control" id="facturaPago" [(ngModel)]="factura.pago"
+                    #facturaPago="ngModel" [ngClass]="{ 'is-invalid': f.submitted && facturaPago.invalid }"
+                    required>
+                <div class="invalid-feedback">
+                    <div>Debes ingresar el método de pago de la factura</div>
+                </div>
+            </div>
+
+            <div class="row form-inline justify-content-center align-self-center">
+                <button type="submit" class="btn btn-primary">Edit</button>
+                <div class="divider"></div>
+                <button type="button" class="btn btn-danger" (click)="cancelEdition()">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-3"></div>
+</div>

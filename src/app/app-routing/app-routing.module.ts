@@ -4,6 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 
 import { ClienteSolicitudComponent } from '../cliente/cliente-solicitudes/cliente-solicitud.component';
+import { FacturaDetailComponent } from '../factura/factura-detail/factura-detail.component';
+import { FacturaCreateComponent } from '../factura/factura-create/factura-create.component';
+import { FacturaListComponent } from '../factura/factura-list/factura-list.component';
+import { FacturaEditComponent } from '../factura/factura-edit/factura-edit.component';
 import { SolicitudDetailComponent } from '../cliente/cliente-detail-solicitud/cliente-detail-solicitud.component';
 import { ClienteAddSolicitudComponent } from '../cliente/cliente-add-solicitud/cliente-add-solicitud.component';
 import { ServicioListComponent } from '../servicio/servicio-list/servicio-list.component';
@@ -14,6 +18,7 @@ import { PrestadorCreateComponent } from '../prestador/prestador-create/prestado
 import { ClienteListComponent } from '../cliente/cliente-list/cliente-list.component';
 import { ClienteDetailComponent } from '../cliente/cliente-detail/cliente-detail.component';
 import { ClienteCreateComponent } from '../cliente/cliente-create/cliente-create.component';
+import { ClienteEditComponent } from '../cliente/cliente-edit/cliente-edit.component';
 import { AuthLoginComponent } from '../auth/auth-login/auth-login.component';
 import { AuthSignUpComponent } from '../auth/auth-sign-up/auth-sign-up.component';
 import { ClienteTarjetaComponent } from '../cliente/cliente-tarjetas/cliente-tarjeta.component';
@@ -26,9 +31,12 @@ const routes: Routes = [
             {
                 path: 'list',
                 component: ClienteListComponent,
-                canActivate: [NgxPermissionsGuard]
+                data: {
+                    permissions: {
+                        only: ['ADMIN']
+                    }
+                }
             },
-            { path: 'list', redirectTo: 'id', pathMatch: 'full' },
             {
                 path: 'add',
                 component: ClienteCreateComponent,
@@ -36,7 +44,7 @@ const routes: Routes = [
             },
             {
                 path: ':id/solicitudes',
-                children:[
+                children: [
                     {
                         path: 'list',
                         component: ClienteSolicitudComponent,
@@ -55,9 +63,45 @@ const routes: Routes = [
                 ]
             },
             {
+                path: ':id/edit',
+                component: ClienteEditComponent                
+            },
+            {
                 path: ':id',
                 component: ClienteDetailComponent,
                 runGuardsAndResolvers: 'always'
+            }
+        ]
+    },
+    {
+        path: 'facturas',
+        children: [
+            {
+                path: 'list',
+                component: FacturaListComponent
+            },
+            {
+                path: 'add',
+                component: FacturaCreateComponent
+            },
+            {
+                path: ':id',
+                component: FacturaDetailComponent,
+                runGuardsAndResolvers: 'always'
+            },
+            {
+                path: ':id/edit',
+<<<<<<< HEAD
+                children: [
+                    {
+                        path: 'list',
+                        component: FacturaEditComponent,
+                        canActivate: [NgxPermissionsGuard]
+                    }
+                ]
+=======
+                component: FacturaEditComponent
+>>>>>>> bb948c71164d2c350d508ad52d9f353550056e83
             }
         ]
     },
@@ -73,7 +117,7 @@ const routes: Routes = [
                 component: ClienteCreateComponent,
                 data: {
                     permissions: {
-                        only: ['ADMIN','CLIENTE']
+                        only: ['ADMIN', 'CLIENTE']
                     }
                 }
             },

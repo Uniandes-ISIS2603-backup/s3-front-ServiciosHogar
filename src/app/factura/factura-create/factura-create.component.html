@@ -1,1 +1,62 @@
-Factura Create
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <h2 class="text-center">Registrate una Factura </h2>
+            <br>
+            <form name="factura" (ngSubmit)="f.form.valid && createFactura()" #f="ngForm" novalidate>
+                
+                <div class="form-group">
+                    <label for="facturaNumero"><b>Número de la factura</b></label>
+                    <input type="text" name="facturaNumero" class="form-control" id="facturaNumero" [(ngModel)]="factura.number"
+                        #facturaNumero="ngModel" [ngClass]="{ 'is-invalid': f.submitted && facturaNumero.invalid }" required>
+                    <div class="invalid-feedback">
+                        <div>Debes ingresas el número de la factura</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="facturaDate"><b>Fecha de la factura</b></label>
+                    <input type="text" name="facturaDate" class="form-control" id="facturaDate" [(ngModel)]="factura.date"
+                        #facturaDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && facturaDate.invalid }" required>
+                    <div class="invalid-feedback">
+                        <div>Debes ingresas la fecha de la factura</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="facturaValor"><b>Valor de la factura</b></label>
+                    <textarea name="facturaValor" class="form-control" id="facturaValor" [(ngModel)]="factura.valor"
+                        #facturaValor="ngModel" [ngClass]="{ 'is-invalid': f.submitted && facturaValor.invalid }"
+                        required></textarea>
+                    <div class="invalid-feedback">
+                        <div>Debes ingresar el valor de la factura</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="facturaPago"><b>Método de pago de la factura</b></label>
+                    <textarea name="facturaPago" class="form-control" id="facturaPago" [(ngModel)]="factura.pago"
+                        #facturaPago="ngModel" [ngClass]="{ 'is-invalid': f.submitted && facturaPago.invalid }"
+                        required></textarea>
+                    <div class="invalid-feedback">
+                        <div>Debes ingresar el método de pago de la factura</div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row form-inline justify-content-center align-self-center">
+                        
+                            <button type="submit" class="btn btn-primary">Create</button>
+                            <div class="divider"></div>
+                            <button type="button" class="btn btn-danger" (click)="cancelCreation()">Cancel</button>
+                        
+                            
+                    </div>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+<br>
+<br>

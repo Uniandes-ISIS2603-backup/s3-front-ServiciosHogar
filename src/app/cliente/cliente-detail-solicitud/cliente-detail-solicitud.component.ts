@@ -1,6 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import {Solicitud} from '../solicitud';
 import {SolicitudDetail} from '../solicitud-detail';
 import {ClienteService} from '../cliente.service';
 import { Cliente } from '../../cliente/cliente';
@@ -32,8 +32,8 @@ export class SolicitudDetailComponent implements OnInit {
     * The solicitud whose details we want to show
     */
     solicitudDetail: SolicitudDetail;
-
-
+    
+    solicitud: Solicitud;
 
     /**
     * The solicitud's id retrieved from the address
