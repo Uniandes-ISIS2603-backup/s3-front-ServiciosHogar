@@ -42,6 +42,8 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
     */
     cliente_id: number;
 
+    solicitud_actual_id: number;
+
     /**
     * The cliente whose details are shown
     */
@@ -59,6 +61,10 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
     navigationSubscription;
 
     showEdit: boolean;
+
+    showSolicitudes: boolean;
+
+    showTarjetas: boolean;
 
 
     /**
@@ -94,6 +100,16 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
         this.tarjetaAddComponent.isCollapsed = !this.tarjetaAddComponent.isCollapsed;
     }
 
+    mostrarSolicitudes(id: number): void {
+        this.solicitud_actual_id = id;
+        this.showTarjetas = false;
+        this.showSolicitudes = true;
+    }
+    
+    mostrarTarjetas(): void {
+        this.showTarjetas = true;
+        this.showSolicitudes = false;
+    }
 
     /**
     * The method which retrieves the details of the cliente that
@@ -138,6 +154,8 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
         this.getClienteDetail();
         this.getOtherClientes();
         this.showEdit = true;
+        this.showSolicitudes = false;
+        this.showTarjetas = false;
     }
 
     /**
