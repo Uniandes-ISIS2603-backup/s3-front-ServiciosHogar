@@ -18,6 +18,7 @@ import { PrestadorCreateComponent } from '../prestador/prestador-create/prestado
 import { ClienteListComponent } from '../cliente/cliente-list/cliente-list.component';
 import { ClienteDetailComponent } from '../cliente/cliente-detail/cliente-detail.component';
 import { ClienteCreateComponent } from '../cliente/cliente-create/cliente-create.component';
+import { ClienteEditComponent } from '../cliente/cliente-edit/cliente-edit.component';
 import { AuthLoginComponent } from '../auth/auth-login/auth-login.component';
 import { AuthSignUpComponent } from '../auth/auth-sign-up/auth-sign-up.component';
 import { ClienteTarjetaComponent } from '../cliente/cliente-tarjetas/cliente-tarjeta.component';
@@ -59,6 +60,10 @@ const routes: Routes = [
                 ]
             },
             {
+                path: ':id/edit',
+                component: ClienteEditComponent                
+            },
+            {
                 path: ':id',
                 component: ClienteDetailComponent,
                 runGuardsAndResolvers: 'always'
@@ -83,13 +88,7 @@ const routes: Routes = [
             },
             {
                 path: ':id/edit',
-                children:[
-                    {
-                        path: 'list',
-                        component: FacturaEditComponent,
-                        canActivate: [NgxPermissionsGuard]
-                    }
-                ]
+                component: FacturaEditComponent
             }
         ]
     },

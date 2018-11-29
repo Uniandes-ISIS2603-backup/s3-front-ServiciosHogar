@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
     <div class="row no-gutters">
         <div class="col-md-3 no-float bg-dark text-white" style="z-index: 6;">
@@ -25,6 +26,9 @@
         </div>
         <div class="col-md-9 no-float">
             DETAIL
+            <li class="nav-item m-1">
+                    <button class="btn btn-primary btn-lg btn-block" routerLink="/clientes/{{clienteDetail.id}}/edit"><span class="fa fa-group mr-4"></span>Editar Cliente</button>
+                </li>
             <app-solicitud-detail [cliente_id]="cliente_id" [solicitud_id]=69></app-solicitud-detail>
         </div>
         </div>
