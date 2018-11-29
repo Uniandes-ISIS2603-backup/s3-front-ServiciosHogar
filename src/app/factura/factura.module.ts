@@ -9,6 +9,7 @@ import {FacturaService} from './factura.service';
 import {AppRoutingModule} from '../app-routing/app-routing.module';
 import {FacturaCreateComponent} from './factura-create/factura-create.component';
 import {FacturaEditComponent} from './factura-edit/factura-edit.component';
+import {FacturaDetailComponent} from './factura-detail/factura-detail.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,7 @@ import {FacturaEditComponent} from './factura-edit/factura-edit.component';
         CommonModule,
         FormsModule,
     ],
-    declarations: [FacturaListComponent, FacturaCreateComponent, FacturaEditComponent],
+    declarations: [FacturaListComponent, FacturaCreateComponent, FacturaEditComponent, FacturaDetailComponent],
     providers: [FacturaService]
 })
 export class FacturaModule {}

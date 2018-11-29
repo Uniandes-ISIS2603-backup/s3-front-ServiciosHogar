@@ -1,5 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
+import {Router, ActivatedRoute} from '@angular/router';
+
 
 import {FacturaService} from '../factura.service';
 import {Factura} from '../factura';
@@ -19,7 +21,9 @@ export class FacturaEditComponent implements OnInit {
     */
     constructor(
         private facturaService: FacturaService,
-        private toastrService: ToastrService
+        private toastrService: ToastrService,
+        private router: Router,
+        private route: ActivatedRoute
     ) {}
 
     /**
@@ -70,9 +74,21 @@ export class FacturaEditComponent implements OnInit {
     * Informs the parent component that the user no longer wants to update the factura
     */
     cancelEdition(): void {
-        this.cancel.emit();
+        this.toastrService.warning('The factura wasn\'t edited', 'factura edition');
+        this.router.navigate(['/facturas/' + this.factura.numero]);
     }
 
+    /**
+    * This function updates the factura
+    */
+   updateFactura(): void {
+    this.facturaService.updateFactura(this.factura)
+        .subscribe(() => {
+            this.router.navigate(['/facturas/' + this.factura.numero]);
+            this.toastrService.success("The factura was successfully edited", 'Factura edition');
+        });
+    this.router.navigate(['/facturaes/' + this.factura.numero]);
+}
     /**
     * The function which initializes the component
     */

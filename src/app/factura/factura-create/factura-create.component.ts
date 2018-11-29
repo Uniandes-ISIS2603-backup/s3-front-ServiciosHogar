@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-
+import {DatePipe} from '@angular/common';
 import {ToastrService} from 'ngx-toastr';
 
 import {FacturaService} from '../factura.service';
@@ -9,7 +9,8 @@ import {Factura} from '../factura';
 @Component({
     selector: 'app-factura-create',
     templateUrl: './factura-create.component.html',
-    styleUrls: ['./factura-create.component.css']
+    styleUrls: ['./factura-create.component.css'],
+    providers: [DatePipe]
 })
 export class FacturaCreateComponent implements OnInit {
 
@@ -19,6 +20,7 @@ export class FacturaCreateComponent implements OnInit {
     * @param toastrService The toastr to show messages to the user 
     */
     constructor(
+        private dp: DatePipe,
         private facturaService: FacturaService,
         private toastrService: ToastrService
     ) {}

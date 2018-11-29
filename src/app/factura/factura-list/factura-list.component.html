@@ -1,1 +1,18 @@
-Factura List
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Numero</th>
+            <th>Date </th>
+            <th>Valor</th>
+            <th>Pago </th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor="let factura of facturas">
+            <td><button routerLink="/facturas/{{factura.id}}" type="button" class="btn btn-link">{{factura.numero}}</button></td>
+            <td><span>{{factura.date}}</span></td>
+            <td><span>{{factura.valor}}</span></td>
+            <td><span>{{factura.pago}}</span></td>
+        </tr>
+    </tbody>
+</table>

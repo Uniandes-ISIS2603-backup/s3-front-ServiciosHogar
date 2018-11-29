@@ -4,6 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 
 import { ClienteSolicitudComponent } from '../cliente/cliente-solicitudes/cliente-solicitud.component';
+import { FacturaDetailComponent } from '../factura/factura-detail/factura-detail.component';
+import { FacturaCreateComponent } from '../factura/factura-create/factura-create.component';
+import { FacturaListComponent } from '../factura/factura-list/factura-list.component';
+import { FacturaEditComponent } from '../factura/factura-edit/factura-edit.component';
 import { SolicitudDetailComponent } from '../cliente/cliente-detail-solicitud/cliente-detail-solicitud.component';
 import { ClienteAddSolicitudComponent } from '../cliente/cliente-add-solicitud/cliente-add-solicitud.component';
 import { ServicioListComponent } from '../servicio/servicio-list/servicio-list.component';
@@ -58,6 +62,34 @@ const routes: Routes = [
                 path: ':id',
                 component: ClienteDetailComponent,
                 runGuardsAndResolvers: 'always'
+            }
+        ]
+    },
+    {
+        path: 'facturas',
+        children: [
+            {
+                path: 'list',
+                component: FacturaListComponent
+            },
+            {
+                path: 'add',
+                component: FacturaCreateComponent
+            },
+            {
+                path: ':id',
+                component: FacturaDetailComponent,
+                runGuardsAndResolvers: 'always'
+            },
+            {
+                path: ':id/edit',
+                children:[
+                    {
+                        path: 'list',
+                        component: ClienteSolicitudComponent,
+                        canActivate: [NgxPermissionsGuard]
+                    }
+                ]
             }
         ]
     },
