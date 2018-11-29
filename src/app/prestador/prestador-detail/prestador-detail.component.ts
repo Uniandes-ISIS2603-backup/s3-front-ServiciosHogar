@@ -157,7 +157,7 @@ export class PrestadorDetailComponent implements OnInit {
         this.modalDialogService.openDialog(this.viewRef, {
             title: 'Delete a hoja de vida',
             childComponent: SimpleModalComponent,
-            data: {text: 'Are you sure your want to delete this hoja de vida?'},
+            data: {text: 'Está seguro de que desea eliminar su hoja de vida?'},
             actionButtons: [
                 {
                     text: 'Yes',

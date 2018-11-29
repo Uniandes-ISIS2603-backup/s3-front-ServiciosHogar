@@ -114,18 +114,15 @@ export class AuthService {
     }
 
     existeCliente(user): boolean {
-        console.log("exisitiendo");
        if( this.correoClientes().includes(user.correo)){
-       console.log("EXISTE");
        return true;}
        else{
-           console.log("PAILAAA");
+        
            return false;
        }
     }
 
     validarCliente(user): boolean {
-        console.log("esta validando");
         if(this.existeCliente(user)){
             let clientesL = this.clientes();
             let cliente = clientesL.find(user);
