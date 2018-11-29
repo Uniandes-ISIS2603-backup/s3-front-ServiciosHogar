@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {PrestadorService} from '../prestador.service';
 import {Prestador} from '../prestador';
 import {Servicio} from '../../servicio/servicio';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
     selector: 'app-prestador-create',
@@ -23,6 +24,7 @@ export class PrestadorCreateComponent implements OnInit {
     * @param router The router
     */
     constructor(
+        private authService: AuthService,
         private dp: DatePipe,
         private prestadorService: PrestadorService,
         private toastrService: ToastrService,

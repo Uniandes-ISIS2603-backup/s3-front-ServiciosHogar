@@ -42,7 +42,8 @@ export class AuthService {
     }
 
     setClienteRole(): void {
-        if (!this.roleService.hasOnlyRoles('ADMIN')) {
+        const role = localStorage.getItem('role');
+        if (role!=='ADMIN') {
             this.roleService.flushRoles();
             this.roleService.addRole('CLIENTE', ['']);
             localStorage.setItem('role', 'CLIENTE');
@@ -50,7 +51,8 @@ export class AuthService {
     }
 
     setPrestadorRole(): void {
-        if (!this.roleService.hasOnlyRoles('ADMIN')) {
+        const role = localStorage.getItem('role');
+        if (role!=='ADMIN') {
             this.roleService.flushRoles();
             this.roleService.addRole('PRESTADOR', ['']);
             localStorage.setItem('role', 'PRESTADOR');

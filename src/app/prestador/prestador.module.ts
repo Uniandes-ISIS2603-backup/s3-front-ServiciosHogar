@@ -14,8 +14,11 @@ import { PrestadorEditComponent } from './prestador-edit/prestador-edit.componen
 
 import { PrestadorService } from './prestador.service';
 
+import { AuthModule } from '../auth/auth.module';
+
 @NgModule({
     imports: [
+        AuthModule,
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,

@@ -36,8 +36,6 @@ const routes: Routes = [
             },
             {
                 path: ':id/solicitudes',
-                component: ClienteDetailComponent,
-                runGuardsAndResolvers: 'always',
                 children:[
                     {
                         path: 'list',
@@ -59,21 +57,8 @@ const routes: Routes = [
             {
                 path: ':id',
                 component: ClienteDetailComponent,
-                runGuardsAndResolvers: 'always',
-                children:[
-                    {
-                        path:':tarjetas',
-                        component: ClienteTarjetaComponent,
-                        children:[
-                            {
-                                path:':numero',
-                                component: ClienteTarjetaComponent
-                            }
-                        ]
-                    }
-                ]
-            },
-            
+                runGuardsAndResolvers: 'always'
+            }
         ]
     },
     {
