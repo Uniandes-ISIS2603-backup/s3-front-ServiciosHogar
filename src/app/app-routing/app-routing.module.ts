@@ -30,9 +30,12 @@ const routes: Routes = [
             {
                 path: 'list',
                 component: ClienteListComponent,
-                canActivate: [NgxPermissionsGuard]
+                data: {
+                    permissions: {
+                        only: ['ADMIN']
+                    }
+                }
             },
-            { path: 'list', redirectTo: 'id', pathMatch: 'full' },
             {
                 path: 'add',
                 component: ClienteCreateComponent,
@@ -40,7 +43,7 @@ const routes: Routes = [
             },
             {
                 path: ':id/solicitudes',
-                children:[
+                children: [
                     {
                         path: 'list',
                         component: ClienteSolicitudComponent,
@@ -83,7 +86,7 @@ const routes: Routes = [
             },
             {
                 path: ':id/edit',
-                children:[
+                children: [
                     {
                         path: 'list',
                         component: FacturaEditComponent,
@@ -105,7 +108,7 @@ const routes: Routes = [
                 component: ClienteCreateComponent,
                 data: {
                     permissions: {
-                        only: ['ADMIN','CLIENTE']
+                        only: ['ADMIN', 'CLIENTE']
                     }
                 }
             },
