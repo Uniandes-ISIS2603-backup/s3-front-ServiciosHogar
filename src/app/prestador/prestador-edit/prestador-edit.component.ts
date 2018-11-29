@@ -102,7 +102,7 @@ export class PrestadorEditComponent implements OnInit {
                 this.toastrService.success("The prestador was successfully edited", 'Prestador edition');
             });
         this.router.navigate(['/prestadores/' + this.prestador.id]);
-        window.location.reload()
+        window.location.reload();
     }
 
     /**

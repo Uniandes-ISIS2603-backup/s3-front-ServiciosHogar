@@ -1,20 +1,20 @@
-       <div class="container-fluid">
+ 
+ <div class="container-fluid" >
             <div class="row">
                     <div class="col-12">
-            <h3>Add a review</h3>
+            <h3>Agregar Hoja de Vida</h3>
             <form name="post" (ngSubmit)="hojaDeVidaForm.form.valid && postHojaDeVida(hojaDeVidaForm)" #hojaDeVidaForm="ngForm" novalidate>
                   <div class="row">
                     
                         <div class="form-group">
                                 <label for="hojaDeVidaTrayectoria"><b>Trayectoria</b></label>
                                 <textarea name="hojaDeVidaTrayectoria" class="form-control" id="hojaDeVidaTrayectoria" [(ngModel)]="hojaDeVida.trayectoria"
-                                          #rhojaDeVidaTrayectoria="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaTrayectoria.invalid }"
+                                          #hojaDeVidaTrayectoria="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaTrayectoria.invalid }"
                                           required></textarea>
                                 <div class="invalid-feedback">
                                     <div>Debes ingresar tu correo electrónico</div>
                                 </div>
                             </div>
-                    
                             <div class="form-group">
                                     <label for="hojaDeVidaFechaNacimiento"><b>Fecha de nacimiento</b></label>
                                     <div [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaFechaNacimiento.invalid }">
@@ -25,43 +25,38 @@
                                             <div>Debes ingresar tu fecha de nacimiento</div>
                                         </div>
                                     </div>
-                                </div>
-                   
-                    
+                                </div>                   
                         <div class="form-group">
                             <label for="hojaDeVidaEmail"><b>Correo</b></label>
                             <textarea name="hojaDeVidaEmail" class="form-control" id="hojaDeVidaEmail" [(ngModel)]="hojaDeVida.email"
-                                      #rhojaDeVidaEmail="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaEmail.invalid }"
+                                      #hojaDeVidaEmail="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaEmail.invalid }"
                                       required></textarea>
                             <div class="invalid-feedback">
                                 <div>Debes ingresar tu correo electrónico</div>
                             </div>
                         </div>
-
                         <div class="form-group">
                                 <label for="hojaDeVidaTelefono"><b>Telefono</b></label>
                                 <textarea name="hojaDeVidaTelefono" class="form-control" id="hojaDeVidaTelefono" [(ngModel)]="hojaDeVida.telefono"
-                                          #rhojaDeVidaEmail="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaTelefono.invalid }"
+                                          #hojaDeVidaTelefono="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaTelefono.invalid }"
                                           required></textarea>
                                 <div class="invalid-feedback">
                                     <div>Debes ingresar tu telefono</div>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                     <label for="hojaDeVidaDireccion"><b>Dirección</b></label>
                                     <textarea name="hojaDeVidaDireccion" class="form-control" id="hojaDeVidaDireccion" [(ngModel)]="hojaDeVida.direccion"
-                                              #rhojaDeVidaDireccion="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaDireccion.invalid }"
+                                              #hojaDeVidaDireccion="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaDireccion.invalid }"
                                               required></textarea>
                                     <div class="invalid-feedback">
                                         <div>Debes ingresar tu dirección de residencia</div>
                                     </div>
                                 </div>
-                                
                                 <div class="form-group">
                                         <label for="hojaDeVidaFomacion"><b>Formación</b></label>
                                         <textarea name="hojaDeVidaFomacion" class="form-control" id="hojaDeVidaFomacion" [(ngModel)]="hojaDeVida.formacion"
-                                                  #rhojaDeVidaFomacion="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaFomacion.invalid }"
+                                                  #hojaDeVidaFomacion="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaFomacion.invalid }"
                                                   required></textarea>
                                         <div class="invalid-feedback">
                                             <div>Debes ingresar tu formación estudiantil</div>
@@ -72,7 +67,7 @@
                 
                 </div>
                 <div class="row form-inline justify-content-center align-self-center">
-                    <button type="submit" class="btn btn-primary">Agregar hoja de vida</button>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
                 </div>
             </form>
         </div>

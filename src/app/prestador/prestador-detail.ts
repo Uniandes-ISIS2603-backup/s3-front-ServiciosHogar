@@ -10,5 +10,5 @@ export class PrestadorDetail extends Prestador {
    
     servicios: Servicio[];
 
-    hojaDeVida: HojaDeVida[];
+    hojaDeVida: HojaDeVida;
 }

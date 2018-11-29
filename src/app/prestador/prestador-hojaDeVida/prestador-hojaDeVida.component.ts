@@ -6,18 +6,17 @@ import { HojaDeVida } from '../hojaDeVida';
     templateUrl: './prestador-hojaDeVida.component.html',
 })
 export class PrestadorHojaDeVidaComponent implements OnInit {
-    @Input() prestadorHojaDeVida: HojaDeVida[];
+    @Input() prestadorHojaDeVida: HojaDeVida;
 
     public isCollapsed = false;
-
+    
     /**
      * The function called when a hojaDeVida is posted to update the hojaDeVida
      */
-    updateHojaDeVida(hojaDeVida: HojaDeVida[]): void {
+    updateHojaDeVida(hojaDeVida: HojaDeVida): void {
         this.prestadorHojaDeVida = hojaDeVida;
     }
 
-
-    ngOnInit() {    
+    ngOnInit() {  
     }
 }

@@ -15,6 +15,10 @@ import { PrestadorEditComponent } from './prestador-edit/prestador-edit.componen
 import { PrestadorService } from './prestador.service';
 
 import { AuthModule } from '../auth/auth.module';
+import { PrestadorHojaDeVidaComponent } from './prestador-hojaDeVida/prestador-hojaDeVida.component';
+import { PrestadorAddHojaDeVidaComponent } from './prestador-add-hojaDeVida/prestador-add-hojaDeVida.component';
+import { PrestadorEditHojaDeVidaComponent } from './prestador-edit-hoja-de-vida/prestador-edit-hoja-de-vida.component';
+
 
 @NgModule({
     imports: [
@@ -29,9 +33,9 @@ import { AuthModule } from '../auth/auth.module';
         NgxPermissionsModule
     ],
     declarations: [
-        PrestadorListComponent, PrestadorDetailComponent, PrestadorCreateComponent, PrestadorEditComponent
+        PrestadorListComponent, PrestadorDetailComponent, PrestadorCreateComponent, PrestadorEditComponent, PrestadorHojaDeVidaComponent, PrestadorAddHojaDeVidaComponent, PrestadorEditHojaDeVidaComponent
     ],
     providers: [PrestadorService],
-    exports: [PrestadorListComponent, PrestadorEditComponent, PrestadorEditComponent]
+    exports: [PrestadorListComponent, PrestadorEditComponent, PrestadorEditComponent, PrestadorHojaDeVidaComponent, PrestadorAddHojaDeVidaComponent]
 })
 export class PrestadorModule { }
