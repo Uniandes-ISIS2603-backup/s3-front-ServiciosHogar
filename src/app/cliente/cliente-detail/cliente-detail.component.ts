@@ -157,16 +157,6 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
     }
 
     /**
-     * The function called when a tarjeta is posted, so that the child component can refresh the list
-     */
-    updateTarjetas(): void {
-        this.getClienteDetail();
-        this.tarjetaListComponent.updateTarjetas(this.clienteDetail.tarjetas);
-        this.tarjetaListComponent.isCollapsed = false;
-        this.tarjetaAddComponent.isCollapsed = true;
-    }
-
-    /**
     * The method which initilizes the component
     * We need to initialize the cliente and its factura so that
     * they are never considered undefined
