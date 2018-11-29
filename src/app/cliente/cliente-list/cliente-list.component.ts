@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 //Importar Cliente
 import {ClienteService} from '../cliente.service';
 import {Cliente} from '../cliente';
+import { ClienteDetail } from '../cliente-detail';
 
 
 @Component({

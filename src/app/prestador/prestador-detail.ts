@@ -1,4 +1,5 @@
 import { Servicio } from '../servicio/servicio';
+import { HojaDeVida } from './hojaDeVida';
 import { Prestador } from './prestador';
 
 /**
@@ -8,4 +9,6 @@ import { Prestador } from './prestador';
 export class PrestadorDetail extends Prestador {
    
     servicios: Servicio[];
+
+    hojaDeVida: HojaDeVida[];
 }
