@@ -6,51 +6,21 @@
                 <li class="nav-item bg-secondary text-white mb-4 mt-4 p-3">
                     <h4 style="padding-left: 60px;"><span class="fa fa-calendar mr-4"></span>Solicitudes</h4>
                 </li>
-
-<div class="container-fluid">
-    <div class="row no-gutters">
-        <div class="col-md-3 no-float bg-dark text-white" style="z-index: 6;">
-            <nav class="nav flex-column">
-                <li class="nav-item bg-secondary text-white mb-4 mt-4 p-3">
-                    <h4 style="padding-left: 60px;"><span class="fa fa-calendar mr-4"></span>Solicitudes</h4>
-                </li>
-
-                <div *ngFor="let solicitud of solicitudes" style="padding-left: 60px;">
-                    
-                    <li class="nav-item m-1">
-                            <button class="btn btn-outline-light btn-lg btn-block" [ngClass]="{ 'btn-primary': solicitudDetailComponent.isCollapsed,'btn-outline-primary':!solicitudDetailComponent.isCollapsed}" (click)="toggleSolicitud()"><span class="fa fa-group mr-4"></span>{{solicitud.fecha}}</button>
-                    </li>
-                </div>
-=======
                 <div style="padding-left: 60px;">
                     <div *ngFor="let solicitud of clienteDetail.solicitudes">
 
-            <table class="table table-striped" *ngIf="showTarjetas">
-                <thead>
-                    <tr>
-                        <th>titular</th>
-                        <th>date </th>
-                        <th>code </th>
-                        <th>numero </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let tarjeta of clienteDetail.tarjetas">
-                        <td><span>{{tarjeta.titular}}</span></td>
-                        <td><span>{{tarjeta.date}}</span></td>
-                        <td><span>{{tarjeta.code}}</span></td>
-                        <td><span>{{tarjeta.numero}}</span></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <li class="nav-item m-1">
-                    <button class="btn btn-primary btn-lg btn-block" routerLink="/clientes/{{clienteDetail.id}}/edit"><span class="fa fa-group mr-4"></span>Editar Cliente</button>
-                </li>
-            <app-solicitud-detail [cliente_id]="cliente_id" [solicitud_id]=69></app-solicitud-detail>
-
-
+                        <li class="nav-item m-1">
+                            <button class="btn btn-outline-light btn-lg btn-block" (click)="mostrarSolicitudes(solicitud.id)"><span
+                                    class="fa fa-calendar-o mr-4"></span>{{solicitud.fecha}}</button>
+                        </li>
+                    </div>
+                    <li class="nav-item m-1 mt-5">
+                        <button class="btn btn-outline-warning btn-lg btn-block"><span class="fa fa-credit-card mr-4" (click)="mostrarTarjetas()"></span>Terjetas</button>
+                    </li>
+                </div>
+            </nav>
         </div>
+        <div class="col-md-9 no-float">
             <app-solicitud-detail [cliente_id]="cliente_id" [solicitud_id]="solicitud_actual_id" *ngIf="showSolicitudes"></app-solicitud-detail>
             <table class="table table-striped" *ngIf="showTarjetas">
                 <thead>
@@ -71,5 +41,5 @@
                 </tbody>
             </table>
         </div>
-    
-
+    </div>
+</div>
