@@ -86,11 +86,11 @@ export class AuthService {
             // if(this.validarCliente(this.logInComp.user) )
             // {
             this.setClienteRole()
-            this.router.navigateByUrl('/clientes/{{user.id}}');
+            this.router.navigateByUrl('/clientes/3');
             // }
         } else if (role === 'PRESTADOR') {
             this.setPrestadorRole()
-            this.router.navigateByUrl('/prestadores/{{user.id}}');
+            this.router.navigateByUrl('/prestadores/1');
         }
 
     }
