@@ -1,0 +1,68 @@
+ 
+ <div class="container-fluid" >
+    <div class="row">
+            <div class="col-12">
+    <h3>Agregar Hoja de Vida</h3>
+    <form name="hojaDeVida" (ngSubmit)="hojaDeVidaForm.form.valid && editHojaDeVida()" #hojaDeVidaForm="ngForm" novalidate>
+          <div class="row">
+            
+                <div class="form-group">
+                        <label for="hojaDeVidaTrayectoria"><b>Trayectoria</b></label>
+                        <textarea name="hojaDeVidaTrayectoria" class="form-control" id="hojaDeVidaTrayectoria" [(ngModel)]="hojaDeVida.trayectoria"
+                                  #hojaDeVidaTrayectoria="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaTrayectoria.invalid }"
+                                  required></textarea>
+                        <div class="invalid-feedback">
+                            <div>Debes ingresar tu correo electrónico</div>
+                        </div>
+                    </div>
+           
+                <div class="form-group">
+                    <label for="hojaDeVidaEmail"><b>Correo</b></label>
+                    <textarea name="hojaDeVidaEmail" class="form-control" id="hojaDeVidaEmail" [(ngModel)]="hojaDeVida.email"
+                              #hojaDeVidaEmail="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaEmail.invalid }"
+                              required></textarea>
+                    <div class="invalid-feedback">
+                        <div>Debes ingresar tu correo electrónico</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                        <label for="hojaDeVidaTelefono"><b>Telefono</b></label>
+                        <textarea name="hojaDeVidaTelefono" class="form-control" id="hojaDeVidaTelefono" [(ngModel)]="hojaDeVida.telefono"
+                                  #hojaDeVidaTelefono="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaTelefono.invalid }"
+                                  required></textarea>
+                        <div class="invalid-feedback">
+                            <div>Debes ingresar tu telefono</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                            <label for="hojaDeVidaDireccion"><b>Dirección</b></label>
+                            <textarea name="hojaDeVidaDireccion" class="form-control" id="hojaDeVidaDireccion" [(ngModel)]="hojaDeVida.direccion"
+                                      #hojaDeVidaDireccion="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaDireccion.invalid }"
+                                      required></textarea>
+                            <div class="invalid-feedback">
+                                <div>Debes ingresar tu dirección de residencia</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                                <label for="hojaDeVidaFomacion"><b>Formación</b></label>
+                                <textarea name="hojaDeVidaFomacion" class="form-control" id="hojaDeVidaFomacion" [(ngModel)]="hojaDeVida.formacion"
+                                          #hojaDeVidaFomacion="ngModel" [ngClass]="{ 'is-invalid': hojaDeVidaForm.submitted && hojaDeVidaFomacion.invalid }"
+                                          required></textarea>
+                                <div class="invalid-feedback">
+                                    <div>Debes ingresar tu formación estudiantil</div>
+                                </div>
+                            </div>
+                        
+           
+        
+        </div>
+        <div class="row form-inline justify-content-center align-self-center">
+            <button type="submit" class="btn btn-success">Editar</button>
+        </div>
+    </form>
+</div>
+    </div>
+</div>

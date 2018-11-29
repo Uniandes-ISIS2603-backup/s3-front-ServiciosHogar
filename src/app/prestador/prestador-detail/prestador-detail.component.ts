@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Servicio } from '../../servicio/servicio';
@@ -7,6 +7,9 @@ import { Prestador } from '../prestador';
 import { PrestadorDetail } from '../prestador-detail';
 import { PrestadorHojaDeVidaComponent } from '../prestador-hojaDeVida/prestador-hojaDeVida.component';
 import { PrestadorAddHojaDeVidaComponent} from '../prestador-add-hojaDeVida/prestador-add-hojaDeVida.component';
+import { HojaDeVida } from '../hojaDeVida';
+import { ToastrService } from 'ngx-toastr';
+import { ModalDialogService, SimpleModalComponent } from 'ngx-modal-dialog';
 
 @Component({
     selector: 'app-prestador-detail',
@@ -23,7 +26,10 @@ export class PrestadorDetailComponent implements OnInit {
     */
     constructor(
         private prestadorService: PrestadorService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,        
+        private viewRef: ViewContainerRef,
+        private toastrService: ToastrService,
+        private modalDialogService: ModalDialogService
     ) { }
 
     /**
@@ -47,9 +53,29 @@ export class PrestadorDetailComponent implements OnInit {
     servicios: Servicio[];
 
     /**
+     * 
+     */
+    hojaDeVida: HojaDeVida;
+
+    /**
+     * 
+     */
+    hoja: HojaDeVida;
+
+    /**
      * Shows or hides the edit component.
      */
     showEdit: boolean;
+
+    /**
+     * Shows or hides the add hoja de vida component
+     */
+    showAdd: boolean;
+
+    /**
+     * Shows or hides the edit hoja de vida component
+     */
+    showEditH: boolean;
 
     /**
     * The suscription which helps to know when a new prestador
@@ -67,18 +93,15 @@ export class PrestadorDetailComponent implements OnInit {
      */
     @ViewChild(PrestadorAddHojaDeVidaComponent) hojaDeVidaAddComponent: PrestadorAddHojaDeVidaComponent;
 
-    toggleHpjaDeVida(): void {
-        if (this.hojaDeVidaAddComponent.isCollapsed == false) {
-            this.hojaDeVidaAddComponent.isCollapsed = true;
-        }
-        this.hojaDeVidaListComponent.isCollapsed = !this.hojaDeVidaListComponent.isCollapsed;
-    }
-
     toggleCreateHojaDeVida(): void {
-        if (this.hojaDeVidaListComponent.isCollapsed == false) {
-            this.hojaDeVidaListComponent.isCollapsed = true;
+        if(this.showAdd == true)
+        {
+            this.showAdd = false;
         }
-        this.hojaDeVidaAddComponent.isCollapsed = !this.hojaDeVidaAddComponent.isCollapsed;
+        else
+        {
+            this.showAdd = true;
+        }
     }
 
 
@@ -91,6 +114,7 @@ export class PrestadorDetailComponent implements OnInit {
             .subscribe(prestadorDetail => {
                 this.prestadorDetail = prestadorDetail;
                 this.servicios = prestadorDetail.servicios;
+                this.hojaDeVida = prestadorDetail.hojaDeVida;
             });
     }
 
@@ -110,14 +134,37 @@ export class PrestadorDetailComponent implements OnInit {
         this.showEdit = false;
     }
 
-    /**
-     * The function called when a hojaDeVida is posted, so that the child component can refresh the list
-     */
-    updateHojaDeVida(): void {
-        this.getPrestadorDetail();
-        this.hojaDeVidaListComponent.updateHojaDeVida(this.prestadorDetail.hojaDeVida);
-        this.hojaDeVidaListComponent.isCollapsed = false;
-        this.hojaDeVidaAddComponent.isCollapsed = true;
+    deleteHojaDeVida(): void {
+        this.modalDialogService.openDialog(this.viewRef, {
+            title: 'Delete a hoja de vida',
+            childComponent: SimpleModalComponent,
+            data: {text: 'Are you sure your want to delete this hoja de vida?'},
+            actionButtons: [
+                {
+                    text: 'Yes',
+                    buttonClass: 'btn btn-danger',
+                    onAction: () => {
+                        this.prestadorService.deleteHojaDeVida(this.prestador_id).subscribe(book => {
+                            this.toastrService.success("The hoja de vida  ", "Hoja de vida deleted");
+                            window.location.reload();
+                        }, err => {
+                            this.toastrService.error(err, "Error");
+                        });
+                        return true;
+                    }
+                },
+                {text: 'No', onAction: () => true}
+            ]
+        });
+    }
+
+    editHojaDeVida(): void {
+        if (this.showEditH == false) {
+            this.showEditH = true;
+        }
+        else {
+            this.showEditH = false;
+        }
     }
 
     /**
@@ -129,7 +176,10 @@ export class PrestadorDetailComponent implements OnInit {
         this.prestadorDetail = new PrestadorDetail();
         this.other_prestadores = [];
         this.servicios = [];
+        this.hojaDeVida = new HojaDeVida();
         this.showEdit = false;
+        this.showAdd = false;
+        this.showEditH = false;
         this.getPrestadorDetail();
     }
 

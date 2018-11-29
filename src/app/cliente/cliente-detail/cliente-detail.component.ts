@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 
@@ -8,6 +8,7 @@ import { ClienteDetail } from '../cliente-detail';
 import { ClienteTarjetaComponent } from '../cliente-tarjetas/cliente-tarjeta.component';
 import { ClienteAddTarjetaComponent } from '../cliente-add-tarjeta/cliente-add-tarjeta.component';
 import { SolicitudDetailComponent } from '../cliente-detail-solicitud/cliente-detail-solicitud.component';
+import { Solicitud } from '../solicitud';
 
 @Component({
     selector: 'app-cliente-detail',
@@ -53,6 +54,11 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
     * The other clientes shown in the sidebar
     */
     other_clientes: Cliente[];
+
+    /**
+     * Solicitudes del cliente
+     */
+    solicitudes: Solicitud[];
 
     /**
     * The suscription which helps to know when a new cliente
@@ -119,7 +125,10 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
         this.clienteService.getClienteDetail(this.cliente_id)
             .subscribe(clienteDetail => {
                 this.clienteDetail = clienteDetail;
+                this.solicitudes = clienteDetail.solicitudes;
+                console.log(this.clienteDetail);
             });
+            console.log(this.clienteDetail);
     }
 
     /**
@@ -151,8 +160,11 @@ export class ClienteDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.cliente_id = +this.route.snapshot.paramMap.get('id');
         this.clienteDetail = new ClienteDetail();
+        this.solicitudes = [];
+        this.other_clientes = [];
         this.getClienteDetail();
         this.getOtherClientes();
+        this.showEdit = false;
         this.showEdit = true;
         this.showSolicitudes = false;
         this.showTarjetas = false;

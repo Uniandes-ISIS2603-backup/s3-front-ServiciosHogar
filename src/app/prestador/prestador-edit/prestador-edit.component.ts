@@ -50,11 +50,6 @@ export class PrestadorEditComponent implements OnInit {
     */
     servicios: Servicio[];
 
-    @ViewChild('instance') instance: NgbTypeahead;
-    focus$ = new Subject<string>();
-    click$ = new Subject<string>();
-
-    formatter = (x: {nombre: string}) => x.nombre;
 
     /**
     * Retrieves the information of the prestador which will be updated
@@ -72,6 +67,7 @@ export class PrestadorEditComponent implements OnInit {
     cancelEdition(): void {
         this.toastrService.warning('The prestador wasn\'t edited', 'Prestador edition');
         this.router.navigate(['/prestadores/' + this.prestador.id]);
+        window.location.reload();
     }
 
     addServicio(): void {
@@ -106,6 +102,7 @@ export class PrestadorEditComponent implements OnInit {
                 this.toastrService.success("The prestador was successfully edited", 'Prestador edition');
             });
         this.router.navigate(['/prestadores/' + this.prestador.id]);
+        window.location.reload();
     }
 
     /**

@@ -1,14 +1,28 @@
-<div id="collapseHojaDeVida" [ngbCollapse]="isCollapsed">
         <table class="table table-striped">
             <tbody>
-                <tr *ngFor="let hojaDeVida of prestadorHojaDeVida">
-                    <td><span id="prestador-hojaDeVida"><b>{{hojaDeVida.trayectoria}}</b></span><span>: </span>
-                        <span id="hojaDeVida-fechaNacimiento">{{hojaDeVida.fechaNacimiento}}</span>
-                        <br><span id="hojaDeVida-email"><i>{{hojaDeVida.email}}</i></span>
-                        <br><span id="hojaDeVida-telefono"><i>{{hojaDeVida.telefono}}</i></span>
-                        <br><span id="hojaDeVida-direccion"><i>{{hojaDeVida.direccion}}</i></span>
-                        <br><span id="hojaDeVida-hojaDeVida"><i>{{hojaDeVida.formacion}}</i></span></td>
+                <tr>
+                    <td>Trayectoria: </td>
+                    <td><span id="prestador-hojaDeVida"><i>{{prestadorHojaDeVida.trayectoria}}</i></span></td>
+                </tr>
+                <tr>
+                    <td>Fecha de nacimiento: </td>
+                    <td><span id="hojaDeVida-fechaNacimiento"><i>{{prestadorHojaDeVida.fechaNacimiento}}</i></span></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><span id="hojaDeVida-email"><i>{{prestadorHojaDeVida.email}}</i></span></td>
+                </tr>
+                <tr>
+                    <td>Telefono: </td>
+                    <td><span id="hojaDeVida-telefono"><i>{{prestadorHojaDeVida.telefono}}</i></span></td>
+                </tr>
+                <tr>
+                    <td> Direccion: </td>
+                    <td><span id="hojaDeVida-direccion"><i>{{prestadorHojaDeVida.direccion}}</i></span></td>
+                </tr>
+                <tr>
+                    <td> Formacion: </td>
+                    <td><span id="hojaDeVida-hojaDeVida"><i>{{prestadorHojaDeVida.formacion}}</i></span></td>
                 </tr>
             </tbody>
         </table>
-    </div>

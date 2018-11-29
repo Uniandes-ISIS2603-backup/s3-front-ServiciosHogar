@@ -32,7 +32,7 @@ export class PrestadorAddHojaDeVidaComponent implements OnInit, OnChanges {
     */
     hojaDeVida: HojaDeVida;
     
-    public isCollapsed = true;
+    public isCollapsed = false;
 
     /**
     * The Event Emitter which sends the signal when a ojaDeVida has just been posted
@@ -51,6 +51,7 @@ export class PrestadorAddHojaDeVidaComponent implements OnInit, OnChanges {
                 hojaDeVidaForm.resetForm();
                 this.updateHojaDeVida.emit();
                 this.toastrService.success("The hojaDeVida was successfully created", 'HojaDeVida added');
+                window.location.reload();
             }, err => {
                 this.toastrService.error(err, 'Error');
             });

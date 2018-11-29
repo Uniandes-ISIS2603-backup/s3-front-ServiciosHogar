@@ -89,6 +89,15 @@ export class ClienteService {
     }
 
     /**
+     * 
+     * @param clienteId 
+     */
+    getSolicitudes(clienteId): Observable<SolicitudDetail[]> {
+        return this.http.get<SolicitudDetail[]>(API_URL + clientes + '/' + clienteId + solicitudes);
+    }
+
+
+    /**
     * Updates an solicitud
     * @param solicitud The solicitud which will be update
     * @returns The confirmation of the solicitud's update

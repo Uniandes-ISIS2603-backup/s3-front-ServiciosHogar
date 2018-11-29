@@ -73,7 +73,25 @@ export class PrestadorService {
     * @param hojaDeVida The hoja de vida which will be created
     * @returns The confirmation of the hojaDeVida's creation
     */
-   createHojaDeVida(prestadorId, hojaDeVida): Observable<HojaDeVida> {
-    return this.http.post<HojaDeVida>(API_URL + prestadores + '/' + prestadorId + hojaDeVida, hojaDeVida);
+   createHojaDeVida(prestadorId, hojaDeVidaA): Observable<HojaDeVida> {
+    return this.http.post<HojaDeVida>(API_URL + prestadores + '/' + prestadorId +'/'+ hojaDeVida, hojaDeVidaA);
+    }
+
+    /**
+     * 
+     * @param prestadorId 
+     * @param hojaDeVida 
+     */
+    deleteHojaDeVida(prestadorId): Observable<HojaDeVida> {
+        return this.http.delete<HojaDeVida>(API_URL+prestadores+'/'+prestadorId+ '/'+hojaDeVida);
+    }
+
+    /**
+     * 
+     * @param prestadorId 
+     * @param hojaDeVidaA 
+     */
+    updateHojaDeVida(prestadorId, hojaDeVidaA): Observable<HojaDeVida> {
+        return this.http.put<HojaDeVida>(API_URL+prestadores+'/'+prestadorId+'/'+hojaDeVida, hojaDeVidaA);
     }
 }
