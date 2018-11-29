@@ -1,50 +1,54 @@
-<div class="container-fluid">
+<div class="container-fluid pb-5">
     <div class="row-md-12">
         <div class="col-md-12">
-            <p class="h3 p-3">{{prestadorDetail.nombre}}</p>         
-            <button class="btn btn-primary" (click)="showHideEdit(prestadorDetail.id)"><span class="fa fa-pencil"></span></button>     
-        </div> 
+            <p class="h3 p-3">{{prestadorDetail.nombre}}</p>
+            <button class="btn btn-primary" (click)="showHideEdit(prestadorDetail.id)"><span class="fa fa-pencil"></span></button>
+        </div>
         <div class="col-md-12">
-                <div *ngIf="showEdit">
-                    <app-prestador-edit [prestador_id]="prestador_id" (cancel)="showHideEdit(prestador_id)" (update)="updatePrestador()"></app-prestador-edit>
-                </div>
+            <div *ngIf="showEdit">
+                <app-prestador-edit [prestador_id]="prestador_id" (cancel)="showHideEdit(prestador_id)" (update)="updatePrestador()"></app-prestador-edit>
+            </div>
         </div>
     </div>
-        <div class="row-md">
-            <div class="col-md-12">
-                <dl>  
-                    <hr>
-                    <dt> Cédula</dt>
-                    <dd>{{prestadorDetail.cedula}}</dd>
-                </dl>
-            <div >
-            <div *ngIf="prestadorDetail.servicios?.length > 0" class="col-md-12">
-                <p  class="h3 p-3">
-                    Servicios del prestador                                 
-                </p>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Descripcion</th>
-                            <th>Requerimientos </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let servicio of servicios">
-                            <td><span>{{servicio.descripcion}}</span></td>
-                            <td><span>{{servicio.requerimientos}}</span></td>
-                        </tr> 
-                    </tbody>
-                </table>
-            </div>
-            <div *ngIf="hojaDeVida.trayectoria != null " class="col-md-12">
-                    <p  class="h3 p-3">
-                            Hoja De Vida                             
+    <div class="row-md">
+        <div class="col-md-12">
+            <dl>
+                <hr>
+                <dt> Cédula</dt>
+                <dd>{{prestadorDetail.cedula}}</dd>
+            </dl>
+            <div>
+                <div *ngIf="prestadorDetail.servicios?.length > 0" class="col-md-12">
+                    <p class="h3 p-3">
+                        Servicios del prestador
                     </p>
-                    <app-prestador-hojaDeVida [prestadorHojaDeVida]="hojaDeVida" ></app-prestador-hojaDeVida>
-                    <button class="btn btn-danger text-center" (click)="deleteHojaDeVida()"><span class="fa fa-trash"> Eliminar Hoja de Vida</span></button>
-                    <button class="btn btn-success text-center" (click)="editHojaDeVida()"><span class="fa fa-pencil"> Editar Hoja de Vida</span></button>
-                    <app-prestador-edit-hoja-de-vida *ngIf="showEditH == true" [prestador]="prestadorDetail" [hojaDeVida]="hojaDeVida"></app-prestador-edit-hoja-de-vida>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Descripcion</th>
+                                <th>Requerimientos </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let servicio of servicios">
+                                <td><span>{{servicio.descripcion}}</span></td>
+                                <td><span>{{servicio.requerimientos}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="hojaDeVida.trayectoria != null " class="col-md-12">
+                    <p class="h3 p-3">
+                        Hoja De Vida
+                    </p>
+                    <app-prestador-hojaDeVida [prestadorHojaDeVida]="hojaDeVida"></app-prestador-hojaDeVida>
+                    <button class="btn btn-danger text-center" (click)="deleteHojaDeVida()"><span class="fa fa-trash">
+                            Eliminar Hoja de Vida</span></button>
+                    <button class="btn btn-success text-center" (click)="editHojaDeVida()"><span class="fa fa-pencil">
+                            Editar Hoja de Vida</span></button>
+                    <app-prestador-edit-hoja-de-vida *ngIf="showEditH == true" [prestador]="prestadorDetail"
+                        [hojaDeVida]="hojaDeVida"></app-prestador-edit-hoja-de-vida>
+                </div>
             </div>
             <div *ngIf="hojaDeVida.trayectoria == null" class="row-md">
                     <button  class="btn btn-primary"  (click)="toggleCreateHojaDeVida()"><span class="fa fa-plus"> Agregar Hoja De Vida</span></button> 
